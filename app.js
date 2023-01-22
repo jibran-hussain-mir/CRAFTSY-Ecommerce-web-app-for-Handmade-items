@@ -1,5 +1,8 @@
 const express=require('express');
-const userRouter=require('./routes/user');
+const authRoutes=require('./routes/auth');
+const userRoutes=require('./routes/user');
+const productRoutes=require('./routes/product');
+const categoryRoutes=require('./routes/category');
 const morgan=require('morgan');
 const bodyParser=require('body-parser');
 const cookieParser=require('cookie-parser');
@@ -16,7 +19,10 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Route Middlewares
-app.use('/api',userRouter);
+app.use('/api',authRoutes);
+app.use('/api',userRoutes);
+app.use('/api',categoryRoutes);
+app.use('/api',productRoutes);
 
 
 

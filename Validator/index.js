@@ -8,7 +8,7 @@ exports.userSignupValidator = [
     .isEmail()
     .withMessage('Must be a valid email address'),
   check('password')
-    .isLength({min: 5})
+    .isLength({min:5})
     .withMessage('Password must be at least 5 characters')
 ]
   
@@ -20,5 +20,5 @@ exports.validateResults = function(req,res,next){
       error: errors.array()
     })
   }
-  return next();
+   next();
 }

@@ -1,7 +1,7 @@
 const User = require("../models/user")
 const {errorHandler}=require('../helper/dbErrorHandler')
 const jwt=require('jsonwebtoken')
-
+const {expressjwt}=require('express-jwt');
 
 exports.signup=async (req,res)=>{
     const user=new User(req.body);
@@ -19,7 +19,7 @@ exports.signup=async (req,res)=>{
 exports.signin=async (req,res)=>{
     try{
         const {email,password}=req.body;
-        const user=await User.findOne({email});
+        const user=await User.findOne({email});  
         if(!user)
             {
                return  res.status(404).json({error:'This Email-ID is not registered with CRAFTSY'});
@@ -44,4 +44,36 @@ exports.signin=async (req,res)=>{
     }catch(error){
         res.status(400).json({error:error.message})
     }
+}
+
+exports.signout=(req,res)=>{
+    res.clearCookie('jwt');
+    res.json({message:'Signout Successfull'});
+}
+
+exports.requireSignin=expressjwt({
+    secret:()=>process.env.JWT_SECRET_KEY,
+    algorithms: ["HS256"],
+    userProperty:'auth'
+})
+
+exports.isAuth=(req,res,next)=>{
+
+    if(!(req.profile && req.auth && req.profile._id.toString() === req.auth._id))
+        {
+          return res.status(403).json({
+                error:'Acess denied'
+            })
+        }
+    next();
+}
+
+exports.isAdmin=(req,res,next)=>{
+    if(req.profile.role == 0)
+        {
+           return res.status(403).json({
+                error:'You are not admin.Access denied'
+            })
+        }
+    next();
 }
