@@ -34,7 +34,7 @@ const productSchema=mongoose.Schema({
         data:Buffer, //The data property is used to specify the name of the property that will hold the binary data in the Mongoose schema, while type is used to specify the data type of the field
         contentType:String
      },
-     Shipping:{
+     shipping:{
         required:true,
         type:Boolean
      }
