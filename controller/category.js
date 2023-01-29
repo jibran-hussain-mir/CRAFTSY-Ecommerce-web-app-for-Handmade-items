@@ -22,7 +22,7 @@ exports.categoryById=async (req,res,next,categoryId)=>{
          req.category=category;
          next();
       }catch(e){
-         return res.staus(500).json({error:e.message});
+         return res.status(500).json({error:e.message});
       }
 }
 
@@ -47,7 +47,7 @@ exports.remove=async (req,res)=>{
       const category=await Category.findByIdAndDelete({_id:req.category._id.toString()}).exec();
       return res.status(200).json({category});
    }catch(e){
-      return res.status(500).json({error:e.message});
+      return res.status(500).json({error:"e.message"});
    }
 }
 

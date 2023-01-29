@@ -12,6 +12,7 @@ require('./db/connection');
 const port=process.env.PORT||3000;
 const app=express();
 
+
 // Middlewares
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:false}));
@@ -23,7 +24,6 @@ app.use('/api',authRoutes);
 app.use('/api',userRoutes);
 app.use('/api',categoryRoutes);
 app.use('/api',productRoutes);
-
 
 
 app.listen(port,()=>{

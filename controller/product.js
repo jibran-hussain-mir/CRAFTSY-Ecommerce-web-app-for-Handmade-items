@@ -117,5 +117,38 @@ exports.update=  (req,res)=>{
         })
           
     }
-    
 
+    exports.list=async (req,res)=>{
+        const sortBy=req.query.sortBy?req.query.sortBy:'_id';
+        const order=req.query.order?req.query.order:'asc';
+        const limit=req.query.limit?parseInt(req.query.limit):6;
+
+        try{
+            const products=await Product.find({}).select('-photo').populate('category').sort([[sortBy,order]]).limit(limit).exec();
+            return res.json({products});
+        }catch(e){  
+            return res.status(400).json({error:e.message});
+        }
+    }
+    
+exports.listRelated=async (req,res)=>{
+    const limit=req.query.limit?parseInt(req.query.limit):6;
+    try{
+        const relatedProducts=await Product.find({_id:{$ne:req.product._id},category:req.product.category}).select('-photo').populate('category', '_id name').limit(limit).exec();
+        if(!relatedProducts)
+            return res.status(404).josn({message:`No relevent products found`});
+        return res.json({relatedProducts});
+    }catch(e){
+        return res.status(400).json({error:e.message});
+    }
+}
+
+exports.listCategories=async (req,res)=>{
+    try{
+        const categories=await Product.distinct('category',{}).exec();
+        return res.json(categories);
+    }catch(e)
+        {
+            return res.status(400).json({error:e.message});
+        }
+}
