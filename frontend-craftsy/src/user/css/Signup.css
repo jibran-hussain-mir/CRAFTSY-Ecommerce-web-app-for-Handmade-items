@@ -1,36 +1,30 @@
 .signup-container {
   display: flex;
   align-items: center;
-  flex-direction: column;
   box-shadow: 10px 19px 174px -1px rgba(0, 0, 0, 0.33);
-  justify-content: center;
   font-family: "Inter", sans-serif;
-  margin: 5rem 38rem;
-  padding: 2rem 8rem 3rem 8rem;
+  margin: 5rem 30rem;
   border-radius: 8px;
+  gap: 6rem;
+  width: 60%;
 }
 
 .form-input-name,
 .form-input-email,
 .form-input-password {
   padding: 1rem;
-  width: 100%;
+  width: 150%;
   border: none;
-  margin-bottom: 6px;
-  font-size: 20px;
   border: 1px solid #000000;
   border-top: none;
   border-left: none;
   border-right: none;
-  margin-bottom: 4rem;
-  font-size: 2rem;
+  margin-bottom: 3rem;
+  font-size: 1.5rem;
   letter-spacing: 1px;
 }
 
-.form-heading h1 {
-  color: pink;
-  margin-bottom: 5rem;
-  font-size: 2.5rem;
+.form-heading {
 }
 
 input:focus {
@@ -40,7 +34,9 @@ input:focus {
 .form-email,
 .form-name,
 .form-password {
-  font-size: 3rem;
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 .form-btn-submit {
@@ -50,11 +46,20 @@ input:focus {
   background-color: #000000;
   color: #ffffff;
   letter-spacing: 2px;
-  width: 100%;
+  width: 160%;
+  margin-top: 1rem;
 }
 .form-btn-submit:hover {
   color: #000000;
   background-color: #ffffff;
+}
+
+.signup-image {
+  width: 45%;
+  border-radius: 12px 0 0 12px;
+}
+
+.form-container {
 }
 
 @media (max-width: 768px) {
@@ -83,7 +88,7 @@ input:focus {
     letter-spacing: 1px;
   }
 
-  .form-heading h1 {
+  .form-heading {
     color: pink;
     margin-bottom: 1rem;
     font-size: 2.5rem;
