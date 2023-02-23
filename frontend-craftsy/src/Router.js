@@ -10,6 +10,7 @@ import AdminDashboard from "./user/AdminDashboard";
 import PrivateRoute from "./auth/PrivateRoute";
 import AdminRoute from "./auth/AdminRoute";
 import UserDashboard from "./user/UserDashboard";
+import AddCategory from "./admin/AddCategory";
 
 function Router() {
   return (
@@ -28,6 +29,10 @@ function Router() {
         <Route
           path="/admin/dashboard"
           element={<AdminRoute Component={AdminDashboard} />}
+        />
+        <Route
+          path="/create/category"
+          element={<AdminRoute Component={AddCategory} />}
         />
       </Routes>
     </BrowserRouter>
