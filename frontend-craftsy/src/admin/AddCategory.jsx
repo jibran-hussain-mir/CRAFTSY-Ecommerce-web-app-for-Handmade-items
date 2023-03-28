@@ -21,7 +21,6 @@ const AddCategory = () => {
     createCategory(user._id, token, { name })
       .then((data) => {
         if (data.error) {
-          console.log(error);
           setError(data.error);
         } else {
           setError("");
@@ -46,6 +45,7 @@ const AddCategory = () => {
   );
   return (
     <>
+      <h1>{error}</h1>
       <h1>{name}</h1>
       {newCategoryForm()}
     </>

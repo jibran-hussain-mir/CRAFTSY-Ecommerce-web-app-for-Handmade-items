@@ -11,6 +11,7 @@ import PrivateRoute from "./auth/PrivateRoute";
 import AdminRoute from "./auth/AdminRoute";
 import UserDashboard from "./user/UserDashboard";
 import AddCategory from "./admin/AddCategory";
+import AddProduct from "./admin/AddProduct";
 
 function Router() {
   return (
@@ -33,6 +34,10 @@ function Router() {
         <Route
           path="/create/category"
           element={<AdminRoute Component={AddCategory} />}
+        />
+        <Route
+          path="/create/product"
+          element={<AdminRoute Component={AddProduct} />}
         />
       </Routes>
     </BrowserRouter>

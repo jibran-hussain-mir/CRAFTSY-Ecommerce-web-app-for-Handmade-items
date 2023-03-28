@@ -52,10 +52,21 @@ exports.remove = async (req, res) => {
 };
 
 exports.list = async (req, res) => {
-  Category.find().exec((err, result) => {
+  const result = Category.find().exec((err, result) => {
     if (err) {
       return res.status(500).json({ error: "hi" });
     }
     return res.json({ result });
   });
 };
+
+// exports.list = async (req, res) => {
+//   try {
+//     console.log("is it");
+//     // const categories = await Category.find({});
+//     // return res.json({ categories });
+//     return res.json({ name: "hi" });
+//   } catch (e) {
+//     return res.status(500).json({ error: "hi" });
+//   }
+// };

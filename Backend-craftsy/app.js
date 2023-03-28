@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const { urlencoded } = require("body-parser");
+const Category = require("./models/category");
 require("dotenv").config();
 require("./db/connection");
 const port = process.env.PORT || 3000;
@@ -28,10 +29,19 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Route Middlewares
+app.use("/api", categoryRoutes);
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
-app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
+
+app.get("/categories", (req, res) => {
+  Category.find().exec((err, result) => {
+    if (err) {
+      return res.status(500).json({ error: "hi" });
+    }
+    return res.json(result);
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server is Running at port ${port}`);
