@@ -45,8 +45,6 @@ const Signup = () => {
 
   return (
     <>
-      <Header />
-
       <div className="signup signup-container">
         <img src={SignupImg} alt="qll" className="signup-image" />
         <div>

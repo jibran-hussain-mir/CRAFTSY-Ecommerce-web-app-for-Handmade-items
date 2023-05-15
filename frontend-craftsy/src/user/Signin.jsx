@@ -59,7 +59,6 @@ const Signin = (userCredentials) => {
   return (
     <>
       {redirectToReferer()}
-      <Header />
       <div>
         {/* If any error occured */}
         {userSignin.error && (

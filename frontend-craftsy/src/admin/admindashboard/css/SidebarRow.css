@@ -1,0 +1,22 @@
+.list {
+  padding-left: 1.31rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.4rem;
+}
+
+.label-icon {
+  font-size: 1.8rem;
+  font-weight: bolder;
+  color: #dcdcdc;
+}
+.label {
+  font-size: 1.3rem;
+  margin-left: 1rem;
+  font-weight: 550;
+  cursor: pointer;
+  color: #dcdcdc;
+}
+.label:hover {
+  font-size: 1.4rem;
+}

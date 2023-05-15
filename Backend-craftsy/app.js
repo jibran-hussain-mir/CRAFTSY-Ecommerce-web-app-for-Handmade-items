@@ -29,6 +29,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Route Middlewares
+app.use("/api", productRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);

@@ -1,0 +1,31 @@
+.sidebar {
+  flex: 12%;
+  background-color: #fff;
+  height: 100vh;
+  font: 1.3rem Roboto, Arial, sans-serif;
+  /*background: linear-gradient(#cc2b5e, #753a88);*/
+  background-color: #353c4e;
+  border-radius: 1.3rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  max-height: 90vh;
+}
+.user_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.5rem;
+  color: #dcdcdc;
+}
+.user_name {
+  font-weight: bolder;
+  margin-top: 2rem;
+
+  margin-bottom: 1.2rem;
+}
+.row-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5rem;
+  margin-left: 0.5rem;
+}
