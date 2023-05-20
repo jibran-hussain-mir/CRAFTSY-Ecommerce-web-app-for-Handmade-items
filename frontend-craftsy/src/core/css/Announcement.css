@@ -1,0 +1,25 @@
+.announcement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #8a4af3;
+  height: 2.5rem;
+}
+
+.message {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  color: white;
+  font-family: "Roboto", sans-serif;
+}
+
+.close-button {
+  margin-left: 10px;
+  font-size: small;
+  color: white;
+  font-weight: bolder;
+}
+
+.announcement-hidden {
+  display: none;
+}

@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import { CardActionArea } from "@mui/material";
-
 const ProductCard = ({ name, description, price, productId }) => {
   return (
     <>
