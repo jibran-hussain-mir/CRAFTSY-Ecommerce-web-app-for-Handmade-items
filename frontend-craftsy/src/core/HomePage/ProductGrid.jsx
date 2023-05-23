@@ -31,7 +31,6 @@ const ProductGrid = () => {
         columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 1, xl: 3 }}
       >
         {data.map((product) => {
-          console.log(product);
           return (
             <Grid item key={product._id}>
               <ProductCard

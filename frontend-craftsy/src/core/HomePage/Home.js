@@ -6,7 +6,7 @@ import Carosal from "./Carosal";
 const Home = () => {
   return (
     <div>
-      {/* <Carosal /> */}
+      <Carosal />
       <ProductGrid />
     </div>
   );
