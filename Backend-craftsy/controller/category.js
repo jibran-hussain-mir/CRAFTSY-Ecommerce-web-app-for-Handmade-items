@@ -1,14 +1,48 @@
 const Category = require("../models/category");
+const formidable = require("formidable");
+const { IncomingForm } = require("formidable");
+const fs = require("fs");
 
 exports.create = async (req, res) => {
-  try {
-    const category = new Category(req.body);
-    await category.save();
-    ``;
-    res.status(201).json({ category });
-  } catch (e) {
-    res.status(420).json({ error: e.message });
-  }
+  const form = new IncomingForm();
+  form.keepExtentions = true;
+  form.parse(req, (err, fields, files) => {
+    if (err) {
+      res.status(401).json({
+        error: "Image could not be uploaded",
+      });
+    }
+    const category = new Category(fields);
+
+    const { name } = fields;
+
+    if (!name) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
+
+    if (files.photo) {
+      if (files.photo.size > 1048576) {
+        return res.status(400).json({
+          error: "Image should be less than 1mb in size",
+        });
+      }
+      category.photo.data = fs.readFileSync(files.photo.filepath); // change path to filepath
+      category.photo.contentType = files.photo.mimetype; // change type to mimetype
+    }
+    category.save((err, result) => {
+      if (err) {
+        return res.status(400).json({ error: err.message });
+      }
+      return res.status(201).json({ result });
+    });
+  });
+  // try {
+  //   const category = new Category(req.body);
+  //   await category.save();
+  //   res.status(201).json({ category });
+  // } catch (e) {
+  //   res.status(420).json({ error: e.message });
+  // }
 };
 
 exports.categoryById = async (req, res, next, categoryId) => {

@@ -5,10 +5,9 @@ exports.createCategory = async (user_id, token, category) => {
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(category),
+        body: category,
       }
     );
     return await response.json();
