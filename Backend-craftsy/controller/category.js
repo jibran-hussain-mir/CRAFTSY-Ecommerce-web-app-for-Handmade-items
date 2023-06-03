@@ -36,13 +36,6 @@ exports.create = async (req, res) => {
       return res.status(201).json({ result });
     });
   });
-  // try {
-  //   const category = new Category(req.body);
-  //   await category.save();
-  //   res.status(201).json({ category });
-  // } catch (e) {
-  //   res.status(420).json({ error: e.message });
-  // }
 };
 
 exports.categoryById = async (req, res, next, categoryId) => {

@@ -11,3 +11,14 @@ exports.getProducts = async (sortBy) => {
     return console.log(e);
   }
 };
+
+exports.fetchCategories = async () => {
+  try {
+    const response = await fetch(`http://localhost:8000/api/categories`, {
+      method: "GET",
+    });
+    return response.json();
+  } catch (e) {
+    console.log(e);
+  }
+};
