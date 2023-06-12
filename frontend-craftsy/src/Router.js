@@ -14,6 +14,7 @@ import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
 import ErrorPage from "./ErrorPage";
 import Layout from "./core/Layout";
+import SingleProduct from "./SingleProduct";
 import SearchBar from "./core/SearchBar";
 
 function Router() {
@@ -25,6 +26,10 @@ function Router() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />
+          <Route
+            path="/singleproduct"
+            element={<SingleProduct element={<SingleProduct />} />}
+          />
         </Route>
 
         <Route path="/cart" element={<Cart />} />

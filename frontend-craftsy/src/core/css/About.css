@@ -1,0 +1,173 @@
+.contact-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+}
+
+.contact-heading{
+    font-family: 'Inter', sans-serif;
+    color:#110120;;
+    font-weight: 800;
+    text-align: center;
+    padding: 1rem;
+    font-size: 3rem;
+    letter-spacing: 1px;
+}
+
+.head-about{
+    color: #000000;
+}
+.hr-about{
+    border: 2px solid #620029;
+    border-bottom: 0;
+    height: 3px;
+}
+.contact-form{
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contact-form input, textarea{
+        padding: 1rem;
+        margin: 0.5rem;
+        width: 35%;
+        font-size: 1.3rem;
+        border-radius: 12px;
+        border: none;
+}
+
+.contact-btn{
+    padding: 12px 24px 12px 24px;
+    border-radius: 12px;
+    border: 2px solid #000000  !important;
+    font-weight:600;
+    letter-spacing: 1px;
+    color: #000000;
+    background: linear-gradient(to right, #E100FF, #7F00FF);
+  
+}
+
+.dev-sec{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+}
+
+
+.about-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-weight: 800;
+    color: #000000;
+  }
+
+  .bs-icons:hover{
+    color: #000000;
+  }
+
+  .icon-links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+  
+  .contact-names{
+    color: #000000;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+
+.contact-btn:hover{
+    cursor: pointer;
+    background-color: #ff0099;
+}
+
+@media (max-width:786px){
+    
+    .contact-heading{
+        font-size: 2rem;
+    }
+    
+    .contact-form{
+        padding: 1rem;
+    }
+    
+    .contact-form input, textarea{
+            width: 80%;
+    }
+    .contact-form textarea{
+          height: 8rem;
+    }
+    .contact-btn{
+
+        letter-spacing: 4px;
+      
+    }
+
+    .about-us-container {
+
+        padding: 7px;
+        
+      }
+      .contact-names{
+        font-size: 1.7rem;
+      }
+
+      .icon-links{
+        gap: 1rem;
+      }
+
+      .dev-sec{
+        gap: 1.5rem;
+    }
+
+}
+
+@media (max-width:300px){
+    
+    .contact-heading{
+        font-size: 1.5rem;
+    }
+    .contact-names{
+        font-size: 1.6rem;
+      }
+    
+    .contact-form{
+        padding: 0.1rem;
+    }
+    
+    .contact-form input, textarea{
+            width:80%;
+            padding: 8px;
+            font-size: 1rem;
+    }
+    .contact-form textarea{
+          height: 7rem;
+    }
+    .contact-btn{
+
+        letter-spacing: 4px;
+      
+    }
+    .icon-links{
+        gap: 1rem;
+      }
+
+}
