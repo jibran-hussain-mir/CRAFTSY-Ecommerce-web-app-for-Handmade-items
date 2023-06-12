@@ -8,6 +8,7 @@ import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
 import { signout, isAuthenticated } from "../auth/index";
 import { useNavigate } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   const [name, setName] = useState("nav-links");

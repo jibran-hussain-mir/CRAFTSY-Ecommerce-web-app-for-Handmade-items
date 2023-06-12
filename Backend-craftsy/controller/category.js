@@ -84,7 +84,7 @@ exports.list = async (req, res) => {
     if (err) {
       return res.status(500).json({ error: "hi" });
     }
-    return res.json({ result });
+    return res.json(result);
   });
 };
 

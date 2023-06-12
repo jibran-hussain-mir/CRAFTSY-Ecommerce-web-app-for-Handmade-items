@@ -14,6 +14,7 @@ import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
 import ErrorPage from "./ErrorPage";
 import Layout from "./core/Layout";
+import SearchBar from "./core/SearchBar";
 
 function Router() {
   return (
@@ -44,6 +45,7 @@ function Router() {
           path="/create/product"
           element={<AdminRoute Component={AddProduct} />}
         />
+        <Route path="/search" element={<SearchBar />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

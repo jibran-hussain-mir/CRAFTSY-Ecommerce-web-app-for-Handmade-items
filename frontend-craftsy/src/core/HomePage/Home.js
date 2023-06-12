@@ -9,7 +9,7 @@ const Home = () => {
     <div>
       <Carosal />
       <ProductGrid />
-      {/* <DisplayCategories /> */}
+      <DisplayCategories />
     </div>
   );
 };
