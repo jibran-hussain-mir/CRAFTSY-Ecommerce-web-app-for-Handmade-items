@@ -1,0 +1,331 @@
+.main-cont{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+ margin:5rem 32rem 5rem 32rem;
+ background: #fff;
+ border-radius:1rem ;
+ box-shadow: 0px 10px 25px 5px #0000000f;
+overflow: hidden;
+}
+.addH4{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.addH4:hover{
+  color: #7F00FF;
+  transition: 0.3s ease-in;
+}
+
+.h1-login{
+  cursor:pointer
+}
+
+
+.NavLinks{
+  color: inherit;
+text-decoration: none;
+margin: 0;
+padding: 0;
+}
+.signup-image{
+ width: 80%;
+  border-radius: 1rem 0  0 1rem;
+  display: flex;
+  justify-content: center;
+  padding-left: 6rem;
+}
+.img-cont{
+overflow: hidden;
+}
+
+a {
+  color: black;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+}
+label {
+  color: black;
+  font-weight: 600;
+  font-size: 1em;
+  
+}
+input:focus {
+  outline: none;
+}
+.form {
+  font-family: Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sign-in-section {
+  padding: 0rem;
+}
+
+.sign-in-section h1 {
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  
+}
+.sign-in-section h1:after {
+  position: absolute;
+  content: "";
+  height: 6px;
+  bottom: -15px;
+  margin:  auto;
+  left: 0;
+  right: 0;
+  width: 45px;
+  background: #7F00FF;
+  background: linear-gradient(to right, #E100FF, #7F00FF);
+  transition: 0.25s;
+  
+}
+.sign-in-section h1:hover:after {
+  width: 12rem;
+}
+
+.sign-in-section p {
+  text-align: center;
+  font-size: 0.85em;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+  width: 36rem;
+  margin: 1rem auto;
+}
+.form-field label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom:1.3rem;
+}
+.form-field input[type="email"],
+input[type="password"] {
+  width: 90%;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #e8e8e8;
+}
+.form-field input::placeholder {
+  color: #888888;
+}
+.form-field input:focus {
+  border: 1px solid #AE00FF;
+}
+
+.form-options a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #000000;
+}
+.btn {
+  padding: 15px;
+  font-size: 1em;
+  width: 100%;
+  border-radius: 25px;
+  border: none;
+  margin: 20px 0px;
+}
+.btn-signin {
+  cursor: pointer;
+  background: #7F00FF;
+  background: linear-gradient(to right, #E100FF, #7F00FF);
+  box-shadow: 0px 5px 15px 5px #840fe440;
+  color: #fff;
+}
+
+.btn-signin:hover {
+  cursor: pointer;
+  background:  #E100FF;
+
+}
+
+
+/* media queries */
+
+@media (max-width: 1600px) {
+  .main-cont{
+   margin:4rem 22rem 4rem 22rem;
+  }
+}
+
+
+
+
+
+@media (max-width: 1300px) {
+  .main-cont{
+   margin:2rem 10rem 2rem 10rem;
+  }
+  .signup-image{
+    padding-left: 10rem;
+   width: 80%
+  }
+  
+  a {
+    font-size: 10px;
+  }
+  label {
+    font-size: 1em;
+  }
+  
+  .sign-in-section {
+    padding: 1rem;
+  }
+  
+  .sign-in-section h1:hover:after {
+    width: 12rem;
+  }
+  
+  .form-field {
+    padding: 0.8rem;
+    width: 26rem;
+  }
+  .form-field
+input[type="password"] {
+  width: 90%;
+ 
+}
+}
+
+
+@media (max-width: 1020px) {
+  .main-cont{
+   margin:2rem 10rem 2rem 10rem;
+  }
+  .signup-image{
+   width:80%;
+   padding-left: 6rem;
+  }
+  
+  a {
+    font-size: 10px;
+  }
+  label {
+    font-size: 1em;
+  }
+  
+  .sign-in-section {
+    padding: 1rem;
+  }
+  
+  .sign-in-section h1:hover:after {
+    width: 12rem;
+  }
+  
+  .form-field {
+    padding: 1rem;
+    width: 23rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-cont{
+   margin:2rem 10rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+  }
+  .signup-image{
+   width: 130%;
+  }
+
+  .hidden{
+    display: none;
+  }
+  
+  .h1-login{
+    font-size: 2.4rem;
+  }
+
+
+  a {
+    font-size: 8px;
+  }
+  label {
+    font-size: 1.2rem;
+  }
+  
+  .sign-in-section {
+    padding: 1rem;
+  }
+  
+  .sign-in-section h1:hover:after {
+    width: 12rem;
+  }
+  
+  .form-field {
+    padding: 0rem;
+    width: 28rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .main-cont{
+   margin:2rem 5rem;
+   
+  }
+
+  .form-field {
+    width: 20.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .main-cont{
+   margin:1rem 2rem;
+   
+  }
+
+  .form-field {
+    width: 20rem;
+  }
+}
+
+
+@media (max-width: 300px) {
+  .main-cont{
+    margin:3rem 2rem;
+    
+   }
+
+ 
+   .form-field {
+     width: 13rem;
+   }
+
+   .form-field input[type="email"],
+input[type="password"] {
+  font-size: 0.8rem;
+  padding: 1rem;
+  
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
