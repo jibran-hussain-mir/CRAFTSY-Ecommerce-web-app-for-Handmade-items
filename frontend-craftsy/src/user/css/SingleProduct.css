@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css?family=Pontano+Sans');
+    
+    img{
+        width: 90%;
+     
+    }
+
+    
+    .containerx{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    
+     margin: 3rem 8rem 0 8rem;
+
+    }
+    .product-image{
+           width:108%;
+    }
+
+    .active-img{
+        height: 10%;
+    }
+
+    .image-list{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   align-items:flex-start;
+   margin: 0;
+   padding:0;
+   justify-content: center;
+    }
+
+    .image-item:hover{
+            cursor: pointer;
+          filter: opacity(70%);
+          transition: ease-out 0.3s;
+    }
+    
+    .description{
+    font-family: 'Pontano Sans', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.5;
+    }
+
+    .main-name{
+        font-size: 4.5rem;
+        margin: 0;
+    }
+    .main-price{
+        font-size: 2.5rem;
+  margin: 0;
+    }
+    .description2{
+
+    }
+    .hrule1{
+        margin-right: 10rem;
+    }
+    .paras{
+        color: gray;
+        font-weight: normal;
+        margin: 1.75rem 0 1rem 0;
+        padding-right: 10rem;
+    }
+
+    .add-to-cart-btn{
+        position: relative;
+        display: inline-block;
+        background: #000000;
+        color: white;
+        border: 1px solid #000000 ;
+        font-weight: 400;
+        border-radius: 0;
+        padding: 1.25rem 2.5rem;
+        font-size: 1rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        letter-spacing: 0.0625rem;
+    }
+    .add-to-cart-btn:hover{
+      cursor: pointer;
+      background: white;
+      color: #000000;
+      font-weight: 600;
+         
+    }
+
+
+    .amountToggle{
+        display: flex;
+        gap: 1rem;
+        margin: 0rem;
+        border-radius: 12px;
+        position: relative;
+    }
+    
+    .toggle-btns{
+        border: none; 
+        border-radius: 12px;   
+        background: none;
+    }
+    
+    .amt-style{
+        color:#000000;
+        font-weight: 600;
+        font-size: 2rem;
+    }
+    
+    .toggleicons{
+        color: grey;
+    }
+
+    .twobtns{
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        justify-content: center;
+    }
+    .related-products{
+        font-family: 'Pontano Sans', sans-serif;
+        margin: 3rem 8rem;
+    }
+
+    .grid-columns{
+        display: flex;
+        
+        align-items: center;
+        justify-content: center;
+    }
+
+    .r-h3{
+        padding-top: 5rem;
+        font-size: 3rem;
+        font-weight: 200;
+    }
+
+    .price-h4{
+        color: rgb(149, 149, 149);
+    }
+
+
+    .r-h4{
+
+ font-size: 1.5rem;
+        margin: 1rem 0 0.5rem 0;
+    }
+
+    .d-icons{
+        display: flex;
+      margin-top: 2rem;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .d-icon{
+            background-color: rgb(213, 213, 213);
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+    }
+
+.d-divs{
+   font-family: "Inter", sans-serif;;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px;
+}
+
+
+@media (max-width: 900px) {
+    .active-img {
+       width: 100%;
+       overflow: hidden;
+    }
+
+    
+    .containerx{
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    margin: 4rem 0rem 3rem 12rem;
+ 
+    }
+
+    .image-i{
+         overflow: hidden; 
+    }
+
+    .image-list{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        gap: 2rem;
+        margin: 1rem;
+    }
+.image-item{
+    
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+.image-section{
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 2rem;
+ align-items: center;
+ justify-content: center;
+
+}
+
+.image-i{
+    overflow: hidden;
+}
+
+    .description{
+    font-family: 'Pontano Sans', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.5;
+    }
+
+    .main-name{
+        font-size: 3.5rem;
+        margin: 0;
+    }
+    .main-price{
+        font-size: 2.5rem;
+  margin: 0;
+    }
+    .description2{
+ 
+    }
+    .hrule1{
+        margin-right: 10rem;
+    }
+    .paras{
+        color: rgb(85, 84, 84);
+        font-weight: normal;
+        margin: 1.75rem 0 1rem 0;
+        padding-right: 10rem;
+    }
+
+    .add-to-cart-btn{
+       
+        padding: 1.25rem 2.5rem;
+        font-size: 1rem;
+    }
+   
+
+    .amountToggle{
+        gap: 1rem;
+       
+    }
+    
+    
+    .amt-style{
+        font-size: 2rem;
+    }
+    
+    .toggleicons{
+        color: rgb(71, 70, 70);
+    }
+
+    .twobtns{
+        gap: 12px;
+    }
+    .related-products{
+        font-family: 'Pontano Sans', sans-serif;
+        margin: 3rem 8rem;
+    }
+
+    .grid-columns{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .r-h3{
+        padding-top: 5rem;
+        font-size: 3rem;
+        font-weight: 200;
+    }
+
+    .price-h4{
+        color: rgb(149, 149, 149);
+    }
+
+
+    .r-h4{
+
+ font-size: 1.5rem;
+        margin: 1rem 0 0.5rem 0;
+    }
+    .end-hr{
+        margin-right: 1rem;
+    }
+
+    .mid-hr{
+        margin-right: 10rem;
+        margin-top: 2rem;
+    }
+    .d-icons{
+        display: flex;
+      margin-top: 2rem;
+        justify-content: flex-start;
+        align-items: center;
+        gap:2.2rem;
+    }
+
+    .d-icon{
+            background-color: rgb(213, 213, 213);
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+    }
+
+.d-divs{
+    padding: 12px;
+}
+  }
+  
+
+  @media (max-width: 768px) {
+    
+    
+    .containerx{
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    margin: 4rem 0rem 3rem 8rem;
+ 
+    }
+
+   
+  }
+  
+  @media (max-width: 600px) {
+    
+    
+    .containerx{
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    margin: 4rem 0rem 2rem 5rem;
+ 
+    }
+
+   
+    .main-name{
+        font-size: 3rem;
+        margin: 0;
+    }
+    .main-price{
+        font-size: 2rem;
+    }
+
+    .d-icons{
+      margin-top: 2rem;
+        gap:2rem;
+    }
+
+    .d-icon{
+            background-color: rgb(213, 213, 213);
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+    }
+
+.d-divs{
+    padding: 1px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+  }
+  
+  @media (max-width: 500px) {
+    
+    
+    .containerx{
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    margin: 2rem 0rem 2rem 2.5rem;
+ 
+    }
+
+   
+    .main-name{
+        font-size: 2rem;
+        margin: 0;
+    }
+    .main-price{
+        font-size: 1.5rem;
+    }
+  .mid-hr{
+    margin-right: 5rem;
+  }
+  .end-hr{
+        margin-right: 0;
+  }
+    .d-icons{
+       margin-top: 2rem;
+       margin-left: -5rem;
+        gap: 0.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .d-icon{
+            background-color: rgb(213, 213, 213);
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+    }
+
+.d-divs{
+    padding: 1px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.paras{
+        font-size: 1.4rem;
+        padding: 0 2rem 0 0;
+      color: rgb(25, 24, 24);
+    }
+
+    .grid-columns{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .price-h4{
+        color: rgb(149, 149, 149);
+        margin: 0 0 2rem 0;
+    }
+    
+
+
+    .r-h4{
+ font-size: 1.5rem;
+        margin: 0rem 0 0.5rem 0;
+    }
+  }
+  

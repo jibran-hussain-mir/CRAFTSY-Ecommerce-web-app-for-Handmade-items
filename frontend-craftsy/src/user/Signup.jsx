@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import "./css/Signup.css";
 import { userSignup } from "../auth/index";
-import Header from "../core/Header";
 import "../user/css/Signup.css";
-import SignupImg from "../assets/signup.png";
+import { NavLink } from "react-router-dom";
+import {FaUserFriends} from "react-icons/fa"
+import signupimg from "../assets/signupp.jpg";
 
 const Signup = () => {
   const [userRegistration, setUserRegistration] = useState({
@@ -44,82 +44,75 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <div className="signup signup-container">
-        <img src={SignupImg} alt="qll" className="signup-image" />
-        <div>
-          {/* If any error occured */}
-          {userRegistration.error && (
+    
+       <div className="signup-main-container">
+      <div className="signup-image-cont hidden">
+      <img src={signupimg} alt="qll" className="signin-image hide" />
+      <div className="logo-container">
+         <h1 className="img-name"><span className="logo-welcome">Welcome to</span> <span className="logo-name">Craftsy</span></h1>
+        </div>
+      </div>
+   <div>
+    <div className="signup-form-cont">
+    <div className="signup-form">
+      <div className="sign-up-section">
+       
+        <h1 className="signup-h1-login">SIGN UP</h1>
+        <NavLink to="/signin" className="signup-NavLinks">
+        <h6 className="signup-addH4"><span  className="signup-addSvg"><FaUserFriends size={16}/></span>Already have an account?</h6>
+        </NavLink>
+        {userRegistration.error && (
             <div>
               <h3>{userRegistration.error}</h3>
             </div>
           )}
-
-          {/* If the From is submitted successfully */}
-          {userRegistration.success && (
-            <div className="form-container">
-              <h3>
-                New Account has been created Successfully.{" "}
-                <Link to="/signin">Signin</Link> to continue...
-              </h3>
-            </div>
-          )}
-
-          <form method="POST" onSubmit={handleSubmit}>
-            <label htmlFor="full-name" className="form-name">
-              Name
-            </label>
-            <br />
-            <br />
-            <input
-              className="form-input-name"
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={userRegistration.name}
-              onChange={handleChange}
-              autoComplete="off"
+         <form method="POST"  onSubmit={handleSubmit} className="signup-form">
+          <div className="signup-form-field">
+            <label  htmlFor="full-name">Name</label>
+            <input 
+             type="signup-name"
+             name="name"
+             placeholder="Your Name"
+             value={userRegistration.name}
+             onChange={handleChange}
+             autoComplete="off"
+             
             />
-            <br />
-
-            <label htmlFor="email" className="form-email">
-              Email
-            </label>
-            <br />
-            <br />
-            <input
-              className="form-input-email"
-              type="text"
-              name="email"
-              placeholder="Your Email"
-              value={userRegistration.email}
-              onChange={handleChange}
-              autoComplete="off"
+          </div>
+          <div className="signup-form-field">
+            <label htmlFor="from-email">Email</label>
+            <input 
+               type="email"
+               name="email"
+               placeholder="Your Email"
+               value={userRegistration.email}
+               onChange={handleChange}
+               autoComplete="off"
             />
-            <br />
-
-            <label htmlFor="Password" className="form-password">
-              Password
-            </label>
-            <br />
-            <br />
-            <input
-              className="form-input-password"
-              type="password"
-              name="password"
-              placeholder="Your Password"
-              value={userRegistration.password}
-              onChange={handleChange}
-              autoComplete="off"
+          </div>
+          <div className="signup-form-field">
+            <label htmlFor="Password">Password</label>
+            <input 
+               type="password"
+               name="password"
+               placeholder="Your Password"
+               value={userRegistration.password}
+               onChange={handleChange}
+               autoComplete="off"
             />
-            <br />
-
-            <button className="form-btn-submit">Submit</button>
-          </form>
-        </div>
+          </div>
+          <div className="signup-form-field">
+          <button className="signup-btn ">Submit</button>
+          </div>
+        </form>
+        </div>  
       </div>
-    </>
-  );
+    </div>
+  </div>
+  </div>
+
+);
 };
+
 
 export default Signup;
