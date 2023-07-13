@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { MutatingDots } from "react-loader-spinner";
+
 import { signin } from "../auth/index";
 import { authenticate, isAuthenticated } from "../auth/index";
 import "../user/css/Signin.css";
@@ -10,8 +12,8 @@ import signinimg from "../assets/signin.jpg";
 
 const Signin = (userCredentials) => {
   const [userSignin, setUserSignin] = useState({
-    email: "mirjibranhussain@gmail.com",
-    password: "jibran",
+    email: "",
+    password: "",
     error: "",
     loading: false,
     redirectToReferer: false,
@@ -37,28 +39,40 @@ const Signin = (userCredentials) => {
     event.preventDefault();
     setUserSignin({ ...userSignin, error: "", loading: true });
     const { email, password } = userSignin;
-    signin({ email, password }).then((res) => {
-      if (res.error) {
-        setUserSignin({
-          ...userSignin,
-          email: "",
-          password: "",
-          error: res.error,
-          loading: false,
-        });
-      } else {
-        authenticate(res, () => {
+    signin({ email, password })
+      .then((res) => {
+        if (res.error) {
           setUserSignin({
             ...userSignin,
             email: "",
             password: "",
-            error: "",
-            redirectToReferer: true,
+            error: res.error,
+            loading: false,
           });
-        });
-      }
-    });
+          console.log(userSignin.error);
+        } else {
+          authenticate(res, () => {
+            setUserSignin({
+              ...userSignin,
+              email: "",
+              password: "",
+              error: "",
+              redirectToReferer: true,
+            });
+          });
+        }
+      })
+      .catch((error) => console.log(`here is the ${error}`));
   };
+
+  const showError = () => (
+    <div
+      className="signin-error-text"
+      style={{ display: userSignin.error ? "" : "none" }}
+    >
+      <p>{userSignin.error}</p>
+    </div>
+  );
 
   return (
     <div className="main-cont">
@@ -78,6 +92,7 @@ const Signin = (userCredentials) => {
                   Don't have an account?
                 </h6>
               </NavLink>
+              {showError()}
 
               <form onSubmit={handleSubmit} className="form">
                 <div className="form-field">
@@ -108,7 +123,23 @@ const Signin = (userCredentials) => {
                   <a href="#">Forgot Password?</a>
                 </div>
                 <div className="form-field">
-                  <button className="btn btn-signin">Login</button>
+                  <button className="btn btn-signin">
+                    {userSignin.loading ? (
+                      <MutatingDots
+                        height="100"
+                        width="100"
+                        color="#4fa94d"
+                        secondaryColor="#4fa94d"
+                        radius="12.5"
+                        ariaLabel="mutating-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
+                      />
+                    ) : (
+                      "Login"
+                    )}
+                  </button>
                   {userSignin.loading && (
                     <div>
                       <h1>Loading....</h1>
@@ -120,53 +151,11 @@ const Signin = (userCredentials) => {
           </div>
         </div>
       </div>
+
+      {redirectToReferer()}
     </div>
   );
 };
-
-//         <form onSubmit={handleSubmit}>
-//           <label htmlFor="email">Email</label>
-//           <input
-//             type="text"
-//             autoComplete="off"
-//             value={userSignin.email}
-//             name="email"
-//             placeholder="Your email"
-//             id="email"
-//             onChange={handleChange}
-//           ></input>
-//           <br />
-//           <br />
-
-//           <label htmlFor="password">Password</label>
-//           <input
-//             type="password"
-//             autoComplete="off"
-//             value={userSignin.password}
-//             name="password"
-//             placeholder="Your password"
-//             id="password"
-//             onChange={handleChange}
-//           ></input>
-//           <br />
-
-//           <button>Login</button>
-//           {userSignin.loading && (
-//             <div>
-//               <h1>Loading....</h1>
-//             </div>
-//           )}
-//         </form>
-//         Error : {userSignin.error}
-//         <br />
-//         <h1>
-//           Email: {userSignin.email},Password: {userSignin.password}
-//         </h1>
-//         <h1>{JSON.stringify(userSignin)}</h1>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default Signin;
 

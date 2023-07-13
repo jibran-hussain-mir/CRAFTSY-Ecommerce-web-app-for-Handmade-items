@@ -22,3 +22,71 @@ exports.fetchCategories = async () => {
     console.log(e);
   }
 };
+
+exports.getClientToken = async (userId, token) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8000/api/braintree/getToken/${userId}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.processPayment = async (userId, token, paymentData) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8000/api/braintree/payment/${userId}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(paymentData),
+      }
+    );
+    console.log(`Kahan pe hai error`);
+    // Read the response data once
+
+    // console.log(`apiCore : ${responseD a}`);
+    const responseData = await response.json();
+    console.log(responseData);
+
+    return responseData;
+    // return response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+exports.createOrder = async (userId, token, orderedProducts) => {
+  try {
+    console.log(`Bye world`);
+    const response = await fetch(
+      `http://localhost:8000/api/order/create/${userId}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(orderedProducts),
+      }
+    );
+    return response.json();
+  } catch (e) {
+    console.log(e);
+  }
+};

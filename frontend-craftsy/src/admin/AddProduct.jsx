@@ -60,12 +60,12 @@ const AddProduct = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setValues({ ...values, error: " ", loading: true });
+    console.log(formData);
     createProduct(user._id, token, formData)
       .then((data) => {
         if (data.error) {
           setValues({ ...values, error: data.error, loading: false });
         } else {
-          console.log(data);
           setValues({
             ...values,
             error: "",
@@ -187,6 +187,7 @@ const AddProduct = () => {
           </form>
         </div>
       </div>
+      {JSON.stringify(values.category)}
     </>
   );
 };

@@ -1,46 +1,45 @@
-.main-cont{
+.main-cont {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-content: center;
- margin:5rem 32rem 5rem 32rem;
- background: #fff;
- border-radius:1rem ;
- box-shadow: 0px 10px 25px 5px #0000000f;
-overflow: hidden;
+  margin: 5rem 32rem 5rem 32rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0px 10px 25px 5px #0000000f;
+  overflow: hidden;
 }
-.addH4{
+.addH4 {
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   font-size: 1rem;
 }
-.addH4:hover{
-  color: #7F00FF;
+.addH4:hover {
+  color: #7f00ff;
   transition: 0.3s ease-in;
 }
 
-.h1-login{
-  cursor:pointer
+.h1-login {
+  cursor: pointer;
 }
 
-
-.NavLinks{
+.NavLinks {
   color: inherit;
-text-decoration: none;
-margin: 0;
-padding: 0;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
 }
-.signup-image{
- width: 80%;
-  border-radius: 1rem 0  0 1rem;
+.signup-image {
+  width: 80%;
+  border-radius: 1rem 0 0 1rem;
   display: flex;
   justify-content: center;
   padding-left: 6rem;
 }
-.img-cont{
-overflow: hidden;
+.img-cont {
+  overflow: hidden;
 }
 
 a {
@@ -53,7 +52,6 @@ label {
   color: black;
   font-weight: 600;
   font-size: 1em;
-  
 }
 input:focus {
   outline: none;
@@ -73,21 +71,19 @@ input:focus {
   text-align: center;
   font-weight: 700;
   position: relative;
-  
 }
 .sign-in-section h1:after {
   position: absolute;
   content: "";
   height: 6px;
   bottom: -15px;
-  margin:  auto;
+  margin: auto;
   left: 0;
   right: 0;
   width: 45px;
-  background: #7F00FF;
-  background: linear-gradient(to right, #E100FF, #7F00FF);
+  background: #7f00ff;
+  background: linear-gradient(to right, #e100ff, #7f00ff);
   transition: 0.25s;
-  
 }
 .sign-in-section h1:hover:after {
   width: 12rem;
@@ -107,7 +103,7 @@ input:focus {
 .form-field label {
   display: flex;
   flex-direction: column;
-  margin-bottom:1.3rem;
+  margin-bottom: 1.3rem;
 }
 .form-field input[type="email"],
 input[type="password"] {
@@ -120,7 +116,7 @@ input[type="password"] {
   color: #888888;
 }
 .form-field input:focus {
-  border: 1px solid #AE00FF;
+  border: 1px solid #ae00ff;
 }
 
 .form-options a {
@@ -140,91 +136,96 @@ input[type="password"] {
 }
 .btn-signin {
   cursor: pointer;
-  background: #7F00FF;
-  background: linear-gradient(to right, #E100FF, #7F00FF);
+  background: #7f00ff;
+  background: linear-gradient(to right, #e100ff, #7f00ff);
   box-shadow: 0px 5px 15px 5px #840fe440;
   color: #fff;
 }
 
 .btn-signin:hover {
   cursor: pointer;
-  background:  #E100FF;
-
+  background: #e100ff;
 }
 
+.signin-success-text {
+  font-weight: 900;
+  font-size: 1.4em;
+  font-family: Roboto, sans-serif;
+  color: rgb(92, 184, 92);
+}
+
+.signin-error-text {
+  font-weight: 900;
+  font-size: 1.4em;
+  font-family: Roboto, sans-serif;
+  color: #ff3333;
+}
 
 /* media queries */
 
 @media (max-width: 1600px) {
-  .main-cont{
-   margin:4rem 22rem 4rem 22rem;
+  .main-cont {
+    margin: 4rem 22rem 4rem 22rem;
   }
 }
 
-
-
-
-
 @media (max-width: 1300px) {
-  .main-cont{
-   margin:2rem 10rem 2rem 10rem;
+  .main-cont {
+    margin: 2rem 10rem 2rem 10rem;
   }
-  .signup-image{
+  .signup-image {
     padding-left: 10rem;
-   width: 80%
+    width: 80%;
   }
-  
+
   a {
     font-size: 10px;
   }
   label {
     font-size: 1em;
   }
-  
+
   .sign-in-section {
     padding: 1rem;
   }
-  
+
   .sign-in-section h1:hover:after {
     width: 12rem;
   }
-  
+
   .form-field {
     padding: 0.8rem;
     width: 26rem;
   }
-  .form-field
-input[type="password"] {
-  width: 90%;
- 
+  .form-field input[type="password"] {
+    width: 90%;
+  }
 }
-}
-
 
 @media (max-width: 1020px) {
-  .main-cont{
-   margin:2rem 10rem 2rem 10rem;
+  .main-cont {
+    margin: 2rem 10rem 2rem 10rem;
   }
-  .signup-image{
-   width:80%;
-   padding-left: 6rem;
+  .signup-image {
+    width: 80%;
+    padding-left: 6rem;
   }
-  
+
   a {
     font-size: 10px;
   }
   label {
     font-size: 1em;
   }
-  
+
   .sign-in-section {
     padding: 1rem;
   }
-  
+
   .sign-in-section h1:hover:after {
     width: 12rem;
   }
-  
+
   .form-field {
     padding: 1rem;
     width: 23rem;
@@ -232,24 +233,23 @@ input[type="password"] {
 }
 
 @media (max-width: 768px) {
-  .main-cont{
-   margin:2rem 10rem;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+  .main-cont {
+    margin: 2rem 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .signup-image{
-   width: 130%;
+  .signup-image {
+    width: 130%;
   }
 
-  .hidden{
+  .hidden {
     display: none;
   }
-  
-  .h1-login{
+
+  .h1-login {
     font-size: 2.4rem;
   }
-
 
   a {
     font-size: 8px;
@@ -257,15 +257,15 @@ input[type="password"] {
   label {
     font-size: 1.2rem;
   }
-  
+
   .sign-in-section {
     padding: 1rem;
   }
-  
+
   .sign-in-section h1:hover:after {
     width: 12rem;
   }
-  
+
   .form-field {
     padding: 0rem;
     width: 28rem;
@@ -273,9 +273,8 @@ input[type="password"] {
 }
 
 @media (max-width: 500px) {
-  .main-cont{
-   margin:2rem 5rem;
-   
+  .main-cont {
+    margin: 2rem 5rem;
   }
 
   .form-field {
@@ -284,9 +283,8 @@ input[type="password"] {
 }
 
 @media (max-width: 360px) {
-  .main-cont{
-   margin:1rem 2rem;
-   
+  .main-cont {
+    margin: 1rem 2rem;
   }
 
   .form-field {
@@ -294,38 +292,18 @@ input[type="password"] {
   }
 }
 
-
 @media (max-width: 300px) {
-  .main-cont{
-    margin:3rem 2rem;
-    
-   }
+  .main-cont {
+    margin: 3rem 2rem;
+  }
 
- 
-   .form-field {
-     width: 13rem;
-   }
+  .form-field {
+    width: 13rem;
+  }
 
-   .form-field input[type="email"],
-input[type="password"] {
-  font-size: 0.8rem;
-  padding: 1rem;
-  
+  .form-field input[type="email"],
+  input[type="password"] {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
 }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

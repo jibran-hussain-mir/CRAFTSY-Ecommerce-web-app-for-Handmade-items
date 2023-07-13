@@ -1,0 +1,55 @@
+.f-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 35rem;
+  font-family: "Nunito", sans-serif;
+  margin-top: 8rem;
+  border: 2px solid #000000;
+  border-radius: 12px;
+
+  /*  */
+}
+
+.crd-img {
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+  height: 30rem;
+  object-fit: fit;
+}
+
+.crd-p {
+}
+.crd-h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.crd-h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  padding: 1rem 0 1rem 0;
+}
+
+.crd-p {
+  font-size: 2rem;
+  color: rgb(72, 6, 134);
+}
+
+.crd-btn {
+  border: 3px solid #ffffff;
+  background: rgb(0, 0, 0);
+  padding: 10px 42px;
+  border-radius: 22px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 90%;
+  color: #ffffff;
+}
+
+.crd-btn:hover {
+  background: #000000;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}

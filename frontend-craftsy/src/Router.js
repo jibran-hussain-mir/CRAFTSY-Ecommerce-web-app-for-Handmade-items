@@ -30,6 +30,7 @@ function Router() {
             path="/singleproduct"
             element={<SingleProduct element={<SingleProduct />} />}
           />
+          <Route path="/cart" element={<Cart />} />
         </Route>
 
         <Route path="/cart" element={<Cart />} />

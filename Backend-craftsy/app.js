@@ -3,6 +3,8 @@ const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const productRoutes = require("./routes/product");
 const categoryRoutes = require("./routes/category");
+const paymentRoutes = require("./routes/braintree");
+const orderRoutes = require("./routes/order");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -34,6 +36,8 @@ app.use("/api", categoryRoutes);
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", productRoutes);
+app.use("/api", paymentRoutes);
+app.use("/api", orderRoutes);
 
 app.get("/categories", (req, res) => {
   Category.find().exec((err, result) => {

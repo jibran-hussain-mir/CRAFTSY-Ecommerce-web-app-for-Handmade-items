@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -9,10 +10,14 @@ import { CardActionArea } from "@mui/material";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 
 const ProductCard = ({ name, description, price, productId }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`singleproduct?id=${productId}`);
+  };
   return (
     <>
       <Card sx={{ maxWidth: 210 }}>
-        <CardActionArea>
+        <CardActionArea onClick={handleClick}>
           <CardMedia
             component="img"
             height="150"
