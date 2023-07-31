@@ -9,6 +9,8 @@ var gateway = new braintree.BraintreeGateway({
 });
 exports.generateToken = (req, res) => {
   gateway.clientToken.generate({}, function (err, response) {
+    console.log("error is here");
+    console.log(`This is the erRor: ${err}`);
     if (err) {
       res.status(500).json(err);
     } else {

@@ -60,7 +60,6 @@ exports.requireSignin = expressjwt({
 });
 
 exports.isAuth = (req, res, next) => {
-  console.log(req.profile);
   if (
     !(req.profile && req.auth && req.profile._id.toString() === req.auth._id)
   ) {

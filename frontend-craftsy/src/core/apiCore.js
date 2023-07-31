@@ -63,7 +63,7 @@ exports.processPayment = async (userId, token, paymentData) => {
     const responseData = await response.json();
     console.log(responseData);
 
-    return responseData;
+    return responseData; // returns Transaction id
     // return response.json();
   } catch (error) {
     console.error(error);
@@ -82,7 +82,7 @@ exports.createOrder = async (userId, token, orderedProducts) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(orderedProducts),
+        body: JSON.stringify({ order: orderedProducts }),
       }
     );
     return response.json();

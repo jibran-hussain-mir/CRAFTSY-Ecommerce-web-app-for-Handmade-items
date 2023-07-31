@@ -14,39 +14,10 @@ const Checkout = () => {
   });
 
   const { cart, clearCart, total_amount } = useContext(CartContext);
+  console.log(`here is my cart ${JSON.stringify(cart)}`);
 
   const userId = isAuthenticated()?.user?._id;
   const token = isAuthenticated()?.token;
-
-  const buy = async () => {
-    try {
-      const nonce = await data.instance.requestPaymentMethod();
-      const paymentData = {
-        paymentMethodNonce: nonce,
-        amount: total_amount,
-      };
-
-      console.log(nonce);
-
-      const response = await processPayment(userId, token, paymentData);
-      createOrder(userId, token, cart);
-      clearCart();
-      console.log(`The transaction id : ${response}.  `);
-      return response;
-    } catch (e) {
-      console.log(e);
-      setData({ ...data, error: e });
-    }
-  };
-  const { total_items } = useContext(CartContext);
-
-  const showCheckout = () => {
-    return isAuthenticated() ? (
-      <div>{showDropIn()}</div>
-    ) : (
-      <button>Sign in</button>
-    );
-  };
 
   const showDropIn = () => (
     <div onBlur={() => setData({ ...data, error: "" })}>
@@ -54,6 +25,14 @@ const Checkout = () => {
         <>
           <h2>Checkout Page</h2>
           {showError()}
+          <div>
+            <label>Delivery Address</label>
+            <textarea
+              onChange={handleAddressChange}
+              value={data.address}
+              placeholder="Enter the delivery address"
+            />
+          </div>
           <DropIn
             options={{ authorization: data.clientToken }}
             onInstance={(instance) => {
@@ -77,6 +56,49 @@ const Checkout = () => {
       ) : null}
     </div>
   );
+
+  const buy = async () => {
+    try {
+      const nonce = await data.instance.requestPaymentMethod();
+      const paymentData = {
+        paymentMethodNonce: nonce,
+        amount: total_amount,
+      };
+
+      console.log(nonce);
+
+      const response = await processPayment(userId, token, paymentData);
+
+      console.log(`here is transid : ${response}`);
+
+      const orderDetails = {
+        products: cart,
+        transaction_id: response,
+        amount: total_amount,
+        address: data.address,
+      };
+      createOrder(userId, token, orderDetails);
+      clearCart();
+      console.log(`The transaction id : ${response}.  `);
+      return response;
+    } catch (e) {
+      console.log(e);
+      setData({ ...data, error: e });
+    }
+  };
+  const { total_items } = useContext(CartContext);
+
+  const showCheckout = () => {
+    return isAuthenticated() ? (
+      <div>{showDropIn()}</div>
+    ) : (
+      <button>Sign in</button>
+    );
+  };
+
+  const handleAddressChange = (event) => {
+    setData({ ...data, address: event.target.value });
+  };
 
   const clientToken = async () => {
     try {
