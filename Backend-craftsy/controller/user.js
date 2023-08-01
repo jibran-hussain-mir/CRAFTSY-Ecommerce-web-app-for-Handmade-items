@@ -1,4 +1,6 @@
 const User = require("../models/user");
+const Product = require("../models/product");
+const { Order } = require("../models/order");
 exports.userById = async (req, res, next, userId) => {
   try {
     const user = await User.findById(userId);
@@ -36,16 +38,43 @@ exports.addOrderToUserHistory = async (req, res, next) => {
   }
 };
 
-// exports.decreaseQuantityAndIncreaseSold = async (req, res, next) => {
-//   try {
-//     const updatedUserDocument = await User.findOneAndUpdate(
-//       { _id: req.profile._id },
-//       { sold: sold + 1, quantity: quantity - 1 }
-//     );
-//     next();
-//   } catch (error) {
-//     return res.json({
-//       error: "Could not decrement the product quantity and increment sold",
-//     });
-//   }
-// };
+exports.decreaseQuantityAndIncreaseSold = async (req, res, next) => {
+  try {
+    console.log("jojo");
+    const bulkUpdate = req.body.order.products.map((product) => {
+      console.log(product);
+      return {
+        updateOne: {
+          filter: { _id: product.id },
+          update: {
+            $inc: { quantity: -product.quantity, sold: +product.quantity },
+          },
+        },
+      };
+    });
+    await Product.bulkWrite(bulkUpdate, {});
+    next();
+  } catch (error) {
+    return res.status(400).json({
+      error: "Could not decrement the product quantity and increment sold",
+    });
+  }
+};
+
+exports.listOrders = async (req, res) => {
+  try {
+    const orders = await Order.find()
+      .populate("user", "_id name")
+      .sort("-createdAt")
+      .exec();
+    // Selecting orders of this particular seller/admin only
+    const updatedOrders = orders.filter((order) => {
+      console.log(req.profile._id);
+      if (order.user._id.toString() === req.profile._id.toString())
+        return order;
+    });
+    return res.status(200).json({ updatedOrders });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+};

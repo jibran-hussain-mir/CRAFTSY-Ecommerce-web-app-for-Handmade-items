@@ -38,9 +38,25 @@ exports.fetchCategories = async () => {
   try {
     const response = await fetch("http://localhost:8000/categories", {
       method: "GET",
+      headers: {},
     });
     return response.json();
   } catch (e) {
     return console.log(e);
+  }
+};
+
+exports.listOrders = async (userId, token) => {
+  try {
+    const orders = fetch(`http://localhost:8000/api/order/list/${userId}`, {
+      mentod: "GET",
+      header: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return orders.json();
+  } catch (e) {
+    console.log(`adminApi mai error hai`);
   }
 };

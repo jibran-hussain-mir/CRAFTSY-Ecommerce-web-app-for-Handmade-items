@@ -28,6 +28,7 @@ const CartReducer = (state, action) => {
         name,
         price,
         quantity,
+        sold: product_info.sold,
         max: product_info?.quantity,
       };
       return {
