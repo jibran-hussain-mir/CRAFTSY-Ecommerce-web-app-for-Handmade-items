@@ -6,6 +6,7 @@ const { ResultWithContext } = require("express-validator/src/chain");
 const product = require("../models/product");
 
 exports.create = (req, res) => {
+  console.log(`Here is the creators id :${req.profile._id}`);
   const form = new IncomingForm();
   form.keepExtentions = true;
   form.parse(req, (err, fields, files) => {
@@ -15,6 +16,7 @@ exports.create = (req, res) => {
       });
     }
     const product = new Product(fields);
+    product.createdBy = req.profile._id;
 
     const { name, description, price, category, quantity, shipping } = fields;
 
@@ -28,7 +30,7 @@ exports.create = (req, res) => {
     ) {
       return res.status(400).json({ error: "All fields are required" });
     }
-
+    console.log(product);
     if (files.photo) {
       if (files.photo.size > 1048576) {
         return res.status(400).json({

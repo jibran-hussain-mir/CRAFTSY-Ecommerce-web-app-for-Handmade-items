@@ -17,10 +17,10 @@ const CartProvider = ({ children }) => {
     shipping_fee: 500,
   };
   const [state, dispatch] = useReducer(reducer, initialState);
-  const addToCart = (id, name, price, quantity, product_info) => {
+  const addToCart = (id, name, price, createdBy, quantity, product_info) => {
     dispatch({
       type: "ADD_TO_CART",
-      payload: { id, name, price, quantity, product_info },
+      payload: { id, name, price, createdBy, quantity, product_info },
     });
   };
 
@@ -43,6 +43,7 @@ const CartProvider = ({ children }) => {
   useEffect(() => {
     dispatch({ type: "CART_ITEM_UPDATE" });
     dispatch({ type: "TOTAL_AMOUNT_UPDATE" });
+    console.log(`hahahahahahah ${JSON.stringify(state.cart)}`);
     localStorage.setItem("myCart", JSON.stringify(state.cart));
   }, [state.cart]);
 

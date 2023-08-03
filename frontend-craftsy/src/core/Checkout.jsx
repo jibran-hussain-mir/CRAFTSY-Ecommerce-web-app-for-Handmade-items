@@ -70,6 +70,7 @@ const Checkout = () => {
       const response = await processPayment(userId, token, paymentData);
 
       console.log(`here is transid : ${response}`);
+      console.log("here is the cart", cart);
 
       const orderDetails = {
         products: cart,
@@ -77,6 +78,8 @@ const Checkout = () => {
         amount: total_amount,
         address: data.address,
       };
+      console.log(`Prod-det`);
+      console.log(orderDetails);
       createOrder(userId, token, orderDetails);
       clearCart();
       console.log(`The transaction id : ${response}.  `);

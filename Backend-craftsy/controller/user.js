@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const Product = require("../models/product");
 const { Order } = require("../models/order");
+
 exports.userById = async (req, res, next, userId) => {
   try {
     const user = await User.findById(userId);
@@ -23,7 +24,7 @@ exports.addOrderToUserHistory = async (req, res, next) => {
         name: product.name,
         quantity: product.quantity,
         price: product.price,
-        // transactionId:
+        //  transactionId:
       });
     });
     // console.log(req.body.order.products);
@@ -67,13 +68,30 @@ exports.listOrders = async (req, res) => {
       .populate("user", "_id name")
       .sort("-createdAt")
       .exec();
-    // Selecting orders of this particular seller/admin only
-    const updatedOrders = orders.filter((order) => {
-      console.log(req.profile._id);
-      if (order.user._id.toString() === req.profile._id.toString())
-        return order;
+
+    const updatedProducts = orders.flatMap((order) => {
+      return order.products
+        .filter((singleProduct) => {
+          return (
+            singleProduct.createdBy.toString() === req.profile._id.toString()
+          );
+        })
+        .map((matchingProduct) => ({
+          productId: matchingProduct._id,
+          userId: order.user._id,
+          userName: order.user.name,
+          name: matchingProduct.name,
+          price: matchingProduct.price,
+          quantity: matchingProduct.quantity,
+          orderId: order._id,
+          address: order.address,
+          transaction_id: order.transaction_id,
+          amount: order.amount,
+          status: order.status,
+        }));
     });
-    return res.status(200).json({ updatedOrders });
+
+    return res.status(200).json(updatedProducts);
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }

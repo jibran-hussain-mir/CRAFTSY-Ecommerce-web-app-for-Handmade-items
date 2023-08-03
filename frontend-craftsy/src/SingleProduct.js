@@ -125,6 +125,7 @@ const SingleProduct = () => {
                           product?._id,
                           product?.name,
                           product?.price,
+                          product?.createdBy,
                           amount,
                           product
                         );

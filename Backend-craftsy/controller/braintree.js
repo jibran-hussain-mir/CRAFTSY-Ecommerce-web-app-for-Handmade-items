@@ -34,6 +34,7 @@ exports.processPayment = (req, res) => {
         console.log(`From Braintree Controller : ${err.message}`);
         return;
       } else {
+        console.log(`Here is transaction details : ${result.transaction}`);
         res.json(result.transaction.id);
       }
     }

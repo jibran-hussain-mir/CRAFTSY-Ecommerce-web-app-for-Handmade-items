@@ -72,7 +72,7 @@ exports.processPayment = async (userId, token, paymentData) => {
 
 exports.createOrder = async (userId, token, orderedProducts) => {
   try {
-    console.log(`Bye world`);
+    console.log(`Bye world`, orderedProducts);
     const response = await fetch(
       `http://localhost:8000/api/order/create/${userId}`,
       {

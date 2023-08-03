@@ -16,6 +16,7 @@ import ErrorPage from "./ErrorPage";
 import Layout from "./core/Layout";
 import SingleProduct from "./SingleProduct";
 import SearchBar from "./core/SearchBar";
+import Order from "./admin/Orders";
 
 function Router() {
   return (
@@ -50,6 +51,10 @@ function Router() {
         <Route
           path="/create/product"
           element={<AdminRoute Component={AddProduct} />}
+        />
+        <Route
+          path="/admin/orders"
+          element={<AdminRoute Component={Order} />}
         />
         <Route path="/search" element={<SearchBar />} />
         <Route path="*" element={<ErrorPage />} />

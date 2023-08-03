@@ -4,6 +4,10 @@ const { ObjectId } = mongoose.Schema;
 const CartItemSchema = new mongoose.Schema(
   {
     product: { type: ObjectId, ref: "Product" },
+    createdBy: {
+      type: ObjectId,
+      ref: "User",
+    },
     name: String,
     price: Number,
     quantity: Number,
