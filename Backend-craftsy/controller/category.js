@@ -47,6 +47,7 @@ exports.categoryById = async (req, res, next, categoryId) => {
         .json({ error: `Category with this ID does not exist` });
     }
     req.category = category;
+    console.log(req.category._id);
     next();
   } catch (e) {
     return res.status(500).json({ error: e.message });
@@ -86,6 +87,15 @@ exports.list = async (req, res) => {
     }
     return res.json(result);
   });
+};
+
+exports.photo = (req, res, next) => {
+  console.log(req.category.photo);
+  if (req.category.photo.data) {
+    res.set("Content-Type", req.category.photo.contentType);
+    return res.send(req.category.photo.data);
+  }
+  next();
 };
 
 // exports.list = async (req, res) => {

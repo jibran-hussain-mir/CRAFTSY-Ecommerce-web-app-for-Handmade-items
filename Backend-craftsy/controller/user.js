@@ -15,6 +15,30 @@ exports.userById = async (req, res, next, userId) => {
   }
 };
 
+exports.read = (req, res) => {
+  console.log(req.profile);
+  req.profile.hashed_password = undefined;
+  req.profile.salt = undefined;
+  return res.json(req.profile);
+};
+
+exports.update = async (req, res) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      { _id: req.profile._id },
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+    user.hashed_password = undefined;
+    user.salt = undefined;
+    return res.json(user);
+  } catch (e) {
+    return res.status(400).json({ error: e.message });
+  }
+};
+
 exports.addOrderToUserHistory = async (req, res, next) => {
   try {
     const history = [];
@@ -94,5 +118,17 @@ exports.listOrders = async (req, res) => {
     return res.status(200).json(updatedProducts);
   } catch (err) {
     return res.status(500).json({ error: err.message });
+  }
+};
+
+exports.purchaseHistory = async (req, res) => {
+  try {
+    const orders = await Order.find({ user: req.profile._id })
+      .populate("user", "_id name")
+      .sort("-createdAt")
+      .exec();
+    return res.json(orders);
+  } catch (e) {
+    return res.status(400).json({ error: e });
   }
 };

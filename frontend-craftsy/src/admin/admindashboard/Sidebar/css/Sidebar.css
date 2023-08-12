@@ -1,0 +1,61 @@
+/* Default styles */
+.side-panel {
+  width: 30rem;
+  color: #fff;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #161616;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  font-family: "inter", sans-serif;
+  border-radius: 12px;
+}
+
+.side-panel h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.side-panel ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.side-panel li {
+  margin-bottom: 10px;
+  padding: 1rem 0rem;
+  font-size: 18px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.side-panel li:last-child {
+  margin-bottom: 0;
+}
+.admin-user-img {
+  border-radius: 44px;
+  width: 6rem;
+}
+.users-image-small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Responsive styles */
+@media (max-width: 768px) {
+  .side-panel {
+    width: 18%;
+    padding: 1rem;
+    box-shadow: none;
+  }
+
+  .side-panel h2 {
+    font-size: 20px;
+  }
+
+  .side-panel li {
+    font-size: 16px;
+  }
+}

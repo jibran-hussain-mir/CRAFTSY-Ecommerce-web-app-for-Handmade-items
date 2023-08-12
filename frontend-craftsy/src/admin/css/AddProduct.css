@@ -1,137 +1,106 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
-.container {
-  max-width: 700px;
-  width: 100%;
-  background-color: #fff;
-  padding: 25px 30px;
-  border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-  margin: auto;
-}
-.container .title {
-  font-size: 25px;
-  font-weight: 500;
-  position: relative;
-}
 
-.container .title::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 30px;
-  border-radius: 5px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
-}
-.content form .user-details {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 20px 0 12px 0;
-}
-form .user-details .input-box {
-  margin-bottom: 15px;
-  width: calc(100% / 2 - 20px);
-}
-form .input-box span.details {
-  display: block;
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-.user-details .input-box input,
-.user-details .input-box textarea,
-.user-details .input-box select {
-  height: 45px;
-  width: 100%;
-  outline: none;
-  font-size: 16px;
-  padding-left: 15px;
-  border: none;
-  border-bottom: 1px solid #9b59b6;
-  border-bottom-width: 2px;
-  transition: all 0.3s ease;
-}
-.user-details .input-box input:focus,
-.user-details .input-box textarea:focus,
-.user-details .input-box input:valid {
-  border-color: #9b59b6;
-}
-
-form .category {
-  display: flex;
-  width: 80%;
-  margin: 14px 0;
-  justify-content: space-between;
-}
-form .category label {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-form .category label .dot {
-  height: 18px;
-  width: 18px;
-  border-radius: 50%;
-  margin-right: 10px;
-  background: #d9d9d9;
-  border: 5px solid transparent;
-  transition: all 0.3s ease;
-}
-#dot-1:checked ~ .category label .one,
-#dot-2:checked ~ .category label .two,
-#dot-3:checked ~ .category label .three {
-  background: #9b59b6;
-  border-color: #d9d9d9;
-}
-form input[type="radio"] {
-  display: none;
-}
-form .button {
-  height: 45px;
-  margin: 35px 0;
-}
-form .button input {
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
-}
-
-form .button input:hover {
-  transform: scale(0.99);
-  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
-}
-@media (max-width: 584px) {
-  .container {
-    max-width: 100%;
-  }
-  form .user-details .input-box {
-    margin-bottom: 15px;
-    width: 100%;
-  }
-  form .category {
-    width: 100%;
-  }
-  .content form .user-details {
-    max-height: 300px;
-    overflow-y: scroll;
-  }
-  .user-details::-webkit-scrollbar {
-    width: 5px;
-  }
-}
-@media (max-width: 459px) {
-  .container .content .category {
+.formsx-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
   }
-}
+  
+  
+  .product-form {
+    width: 100%;
+    padding: 3rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'inter', sans-serif;
+  }
+  @media( max-width:600px){
+    .product-form {
+      width: 75%;
+      padding: 3rem;
+    }
+  }
+  
+  .formx-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family:'inter' , sans-serif;
+    color: #333333;
+  }
+  
+  
+  .input-box {
+    margin-bottom: 20px;
+  }
+  
+  .details {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555555;
+  }
+  
+  input[type="text"],
+  textarea,
+  select,
+  input[type="number"],
+  input[type="file"] {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #333333;
+    transition: border-color 0.3s;
+  }
+  
+  input[type="text"]:focus,
+  textarea:focus,
+  select:focus,
+  input[type="number"]:focus,
+  input[type="file"]:focus {
+    border-color: #007bff;
+  }
+  
+  /* Styling the custom file upload */
+  .custom-file-upload {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .custom-file-upload:hover {
+    background-color: #0056b3;
+  }
+  
+  .custom-file-upload i {
+    margin-right: 8px;
+  }
+  
+  
+  button.submitx-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #000;
+    color: #ffffff;
+    border: 1px solid #000;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button.submitx-button:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  

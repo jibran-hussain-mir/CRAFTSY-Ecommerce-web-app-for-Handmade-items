@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
+import "./css/Home.css";
 import axios from "axios";
 import CategorieCard from "./CategorieCard";
-import "../css/Home.css";
-import forbes from "./../../assets/logos/forbes.png";
-import tbi from "./../../assets/logos/business-insider.png";
-import tc from "./../../assets/logos/techcrunch.png";
-import ut from "./../../assets/logos/usa-today.png";
-import tnyt from "./../../assets/logos/the-new-york-times.png";
-import first from "./../../assets/slideshow/1.png";
+import BestSellingProducts from "./BestSellingProducts";
 import second from "./../../assets/slideshow/2.png";
 import third from "./../../assets/slideshow/3.png";
 import fourth from "./../../assets/slideshow/4.png";
@@ -15,41 +10,37 @@ import fifth from "./../../assets/slideshow/5.png";
 import sixth from "./../../assets/slideshow/6.png";
 import seventh from "./../../assets/slideshow/7.png";
 import eighth from "./../../assets/slideshow/8.png";
-// import cardsimg from "./../../assets/handi1.jpg";
-import bsimg1 from "./../../assets/bs-img1.jpg";
-import tshirt1 from "./../../assets/tshirt1.jpg";
-import tshirt2 from "./../../assets/tshirt2.jpg";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import FeaturedProductCards from "./FeaturedProductCards";
+import Testimonials from "./Testimonials";
+import Footer from "./Footer";
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 2,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
-
-function Home() {
+const Home = () => {
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 2,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
   const [data, setData] = useState([]);
 
   const getAllProducts = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/products?limit=20"
+        "http://localhost:8000/api/products?limit=12"
       );
       console.log(response);
       const { products } = response.data;
@@ -63,171 +54,127 @@ function Home() {
   useEffect(() => {
     getAllProducts();
   }, []);
-
   return (
     <div>
       <div className="hero-section">
         <h1 className="hero-heading">
           {" "}
-          Discover. Create. Connect. Shop Handmade with{" "}
+          Discover. Create. Connect.{" "}
+          <span className="q-span">Shop Handmade with</span>{" "}
           <span className="h-span">Craftsy</span>
         </h1>
-        <div className="arrow-down">
-          <div className="left"></div>
-          <div className="right"></div>
+      </div>
+      <div className="cate-heading">Shop by Categories</div>
+      <div className="categories-container">
+        <div className="categorie-cards">
+          <CategorieCard />
         </div>
       </div>
-      <CategorieCard />
+      <div className="aboutus-section">
+        <div className="aboutus-heading">
+          Craftsy <span className="aboutus-span">Empowering Artisans</span>
+        </div>
+        <div className="">
+          <a href="/" className="aboutus-btn btnz">
+            About us
+          </a>
+        </div>
+      </div>
 
-      <div className="cate-cards-cont">
-        {/* For simiple Products */}
-        <div className="featured-product-card">
-          {data.map((product) => (
-            <FeaturedProductCards
-              key={product._id}
-              productId={product._id}
-              title={product.name}
-              price={product.price}
-              img={product.photo}
-              description={product.description.slice(0, 60)}
-            />
-          ))}
-        </div>
+      <div className="section-heading">Shop our best selling products</div>
+      <div className="page-content">
+        {data.map((product) => (
+          <BestSellingProducts
+            key={product._id}
+            productId={product._id}
+            title={product.name}
+            price={product.price}
+            imgURL={product.photo}
+            copy={product.description.slice(0, 60)}
+          />
+        ))}
       </div>
-      <div className="hero-section2">
-        <h1 className="herosec2-h1">Empowering Artisans,</h1>
-        <p className="herosec2-p">One Handmade Treasure at a Time.</p>
-        <button className="herosec2-btn">About Us</button>
-      </div>
-      <div className="shop-limited-section">
-        <div className="fig-1">
-          <h3 className="first-txt">Shop Limited Edition with Craftsy</h3>
-          <div>
-            <button className="shop-l-btn">Shop Limited Edition</button>
-          </div>
-        </div>
-        <div className="fig-2">
-          <h3 className="scnd-txt">Handmade Food, Now Available</h3>
-          <div>
-            <button className="shop-l-btn">Shop Handmade Food</button>
-          </div>
-        </div>
-      </div>
-      <section className="section-featured">
-        <div className="containeer">
-          <h2 className="heading-featured-in">As featured in</h2>
-          <div className="logosx">
-            <img src={tc} alt="Techcrunch logo" />
-            <img src={tbi} alt="Business Insider logo" />
-            <img src={tnyt} alt="The New York Times logo" />
-            <img src={forbes} alt="Forbes logo" />
-            <img src={ut} alt="USA Today logo" />
-          </div>
-        </div>
-      </section>
+      <hr />
       <div className="car-section">
         <Carousel
           responsive={responsive}
           autoPlay={true}
-          autoPlaySpeed={3000}
+          autoPlaySpeed={1800}
           infinite={true}
           arrows={false}
         >
-          <div>
-            <img src={first} alt="alala" />
+          <div className="imageFlex">
+            <img src={second} alt="alala" className="car-img" />
           </div>
-          <div>
-            <img src={second} alt="alala" />
+          <div className="imageFlex">
+            <img src={third} alt="alala" className="car-img" />
           </div>
-          <div>
-            <img src={third} alt="alala" />
+          <div className="imageFlex">
+            <img src={fourth} alt="alala" className="car-img" />
           </div>
-          <div>
-            <img src={fourth} alt="alala" />
+          <div className="imageFlex">
+            <img src={fifth} alt="alala" className="car-img" />
           </div>
-          <div>
-            <img src={fifth} alt="alala" />
+          <div className="imageFlex">
+            <img src={sixth} alt="alala" className="car-img" />
           </div>
-          <div>
-            <img src={sixth} alt="alala" />
+          <div className="imageFlex">
+            <img src={seventh} alt="alala" className="car-img" />
           </div>
-          <div>
-            <img src={seventh} alt="alala" />
-          </div>
-          <div>
-            <img src={eighth} alt="alala" />
+          <div className="imageFlex">
+            <img src={eighth} alt="alala" className="car-img" />
           </div>
         </Carousel>
       </div>
-      <div className="bs-h1">
-        <h1>Shop Our Best Selling Products.</h1>
+      <hr />
+      <div className="testimonial-heading">Testimonials</div>
+      <div className="testmonial-section">
+        <Testimonials
+          srcx={
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80"
+          }
+          testimonial="sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus orci ac auctor augue mauris augue neque gravida in"
+          name="Jibran Hussain"
+        />
+        <Testimonials
+          srcx={
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80"
+          }
+          testimonial="sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus orci ac auctor augue mauris augue neque gravida in"
+          name="Fahad Farooq"
+        />
+        <Testimonials
+          srcx={
+            "https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cmFuZG9tJTIwcGVyc29ufGVufDB8fDB8fHww&w=1000&q=80"
+          }
+          testimonial="sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus orci ac auctor augue mauris augue neque gravida in"
+          name="Aqeel Sidiq"
+        />
+        <Testimonials
+          srcx={
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80"
+          }
+          testimonial="sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus orci ac auctor augue mauris augue neque gravida in"
+          name="Jibran Hussain"
+        />
+        <Testimonials
+          srcx={
+            "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80"
+          }
+          testimonial="sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus orci ac auctor augue mauris augue neque gravida in"
+          name="Abdullah Fazili"
+        />
+        <Testimonials
+          srcx={
+            "https://images.unsplash.com/photo-1485206412256-701ccc5b93ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHJhbmRvbSUyMHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+          }
+          testimonial="sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus orci ac auctor augue mauris augue neque gravida in"
+          name="Shakir Khan"
+        />
       </div>
-      {/* ///////////////////////////////// */}
-
-      <div className="featured-product-card">
-        <FeaturedProductCards title="T-Shirt" price="$33" img={tshirt1} />
-        <FeaturedProductCards
-          title="Kashmiri Shawl"
-          price="$323"
-          img={tshirt2}
-        />
-        <FeaturedProductCards
-          title="Kashmiri Shawl"
-          price="$323"
-          img={tshirt2}
-        />
-        <FeaturedProductCards
-          title="Kashmiri Shawl"
-          price="$323"
-          img={tshirt2}
-        />
-        <FeaturedProductCards
-          title="Kashmiri Shawl"
-          price="$323"
-          img={tshirt2}
-        />
-        <FeaturedProductCards
-          title="Kashmiri Shawl"
-          price="$323"
-          img={tshirt2}
-        />
-        <FeaturedProductCards
-          title="Kashmiri Shawl"
-          price="$323"
-          img={tshirt2}
-        />
-        <FeaturedProductCards
-          title="Kashmiri Shawl"
-          price="$323"
-          img={tshirt2}
-        />
-        <FeaturedProductCards
-          title="Kashmiri Shawl"
-          price="$323"
-          img={tshirt2}
-        />
-        <FeaturedProductCards
-          title="Kashmiri Shawl"
-          price="$323"
-          img={tshirt2}
-        />
-        <FeaturedProductCards
-          title="Kashmiri Shawl"
-          price="$323"
-          img={tshirt2}
-        />
-        <FeaturedProductCards
-          title="Kashmiri Shawl"
-          price="$323"
-          img={tshirt2}
-        />
-
-        <FeaturedProductCards title="Shawls" price="$116" img={tshirt1} />
-        <FeaturedProductCards title="Jackets" price="$467" img={tshirt2} />
-      </div>
-      {/* ///////////////////////////////// */}
+      <Footer />
     </div>
   );
-}
+};
 
 export default Home;

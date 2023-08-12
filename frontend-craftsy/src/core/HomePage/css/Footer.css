@@ -1,0 +1,136 @@
+/* Footer.css */
+
+.footer-container {
+    background-color: #333;
+    color: #fff;
+    padding: 5rem;
+   font-family: 'inter', sans-serif;
+   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1000%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M -426.5192208456765%2c319 C -330.52%2c267.8 -138.52%2c67.8 53.480779154323486%2c63 C 245.48%2c58.2 341.48%2c292 533.4807791543235%2c295 C 725.48%2c298 821.48%2c69.2 1013.4807791543235%2c78 C 1205.48%2c86.8 1408.18%2c328 1493.4807791543235%2c339 C 1578.78%2c350 1450.7%2c174.2 1440%2c133' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -292.1765862598966%2c87 C -196.18%2c159 -4.18%2c429.4 187.82341374010338%2c447 C 379.82%2c464.6 475.82%2c197.6 667.8234137401034%2c175 C 859.82%2c152.4 955.82%2c323.8 1147.8234137401034%2c334 C 1339.82%2c344.2 1569.39%2c226.4 1627.8234137401034%2c226 C 1686.26%2c225.6 1477.56%2c310.8 1440%2c332' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -742.5561102389586%2c238 C -646.56%2c279 -454.56%2c457.4 -262.5561102389586%2c443 C -70.56%2c428.6 25.44%2c159.2 217.44388976104142%2c166 C 409.44%2c172.8 505.44%2c495.4 697.4438897610414%2c477 C 889.44%2c458.6 1028.93%2c72.2 1177.4438897610414%2c74 C 1325.96%2c75.8 1387.49%2c403.6 1440%2c486' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -143.57553945826248%2c392 C -47.58%2c354.2 144.42%2c207.6 336.4244605417375%2c203 C 528.42%2c198.4 624.42%2c365 816.4244605417375%2c369 C 1008.42%2c373 1104.42%2c228.8 1296.4244605417375%2c223 C 1488.42%2c217.2 1747.71%2c338.6 1776.4244605417375%2c340 C 1805.14%2c341.4 1507.28%2c252 1440%2c230' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1000'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+   background-position: center; /* Center the image */
+   background-repeat: no-repeat; /* Do not repeat the image */
+   background-size: cover; /* Resize the background image to cover the entire container */ 
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 3rem;
+  }
+  
+  .footer-logo img {
+    height: 5rem;
+    margin-right: 10px;
+  }
+  
+  .footer-logo h2 {
+    font-size: 5rem;
+    margin: 0;
+    font-family: 'Pacifico' , cursive;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .footer-links li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+    font-size: 2rem;
+  }
+  
+  .footer-links a:before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  
+  .footer-links a:hover:before {
+    transform: scaleX(1);
+  }
+  
+  .footer-links a:hover {
+    color: #aaa;
+  }
+  
+  .footer-logos{
+        margin-top: 5rem;
+  }
+
+  .footer-bottom {
+    margin-top: 1rem;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 0.5s forwards;
+    font-size: 1.5rem;
+  }
+  
+  @keyframes fadeIn {
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive Styles */
+  @media only screen and (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+      
+    }
+    .footer-container{
+        padding: 2rem;
+    }
+    .footer-links ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .footer-links a {
+        font-size: 1.5rem;
+      }
+      
+  
+    .footer-logo {
+      margin-bottom: 1rem;
+    }
+    .footer-bottom{
+        font-size: 1rem;
+        
+    }
+    .footer-logos{
+        margin-top: 2rem;
+        
+    }
+    .footer-links li {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    .footer-logo h2 {
+        font-size: 4rem;
+        
+      }
+  }
+  

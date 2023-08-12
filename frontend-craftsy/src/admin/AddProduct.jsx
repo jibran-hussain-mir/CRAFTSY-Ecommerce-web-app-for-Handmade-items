@@ -60,12 +60,12 @@ const AddProduct = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setValues({ ...values, error: " ", loading: true });
-    console.log(formData);
     createProduct(user._id, token, formData)
       .then((data) => {
         if (data.error) {
           setValues({ ...values, error: data.error, loading: false });
         } else {
+          console.log(data);
           setValues({
             ...values,
             error: "",
@@ -95,8 +95,8 @@ const AddProduct = () => {
   return (
     <>
       {/* new form */}
-      <div className="container">
-        <div className="title">Add Product</div>
+      <div className="formsx-container">
+        <div className="formsx-title">Add Product</div>
         <div className="content">
           <form onSubmit={handleSubmit}>
             <div className="user-details">
@@ -182,12 +182,11 @@ const AddProduct = () => {
                 <span className="details">Price</span>
                 <input type="file" name="photo" onChange={handleChange} />
               </div>
-              <button>Submit</button>
+              <button className="submitx-button">Submit</button>
             </div>
           </form>
         </div>
       </div>
-      {JSON.stringify(values.category)}
     </>
   );
 };

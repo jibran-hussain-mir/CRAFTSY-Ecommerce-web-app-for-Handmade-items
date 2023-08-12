@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./css/AddCategory.css";
 import { isAuthenticated } from "../auth";
 import { createCategory } from "./adminapi";
 const AddCategory = () => {
@@ -39,17 +40,41 @@ const AddCategory = () => {
   };
 
   const newCategoryForm = () => (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="categroy">Name</label>
+    // <form onSubmit={handleSubmit}>
+    //   <label htmlFor="categroy">Name</label>
+    //   <input
+    //     type="text"
+    //     name="name"
+    //     value={name}
+    //     onChange={handleChange}
+    //     id="category"
+    //   />
+    //   <input type="file" name="photo" onChange={handleChange} />
+    //   <button>Add Category</button>
+    // </form>
+    <form className="category-form" onSubmit={handleSubmit}>
+      <label className="category-label" htmlFor="category">
+        Category Name
+      </label>
       <input
         type="text"
         name="name"
         value={name}
         onChange={handleChange}
         id="category"
+        className="category-input"
+        placeholder="Enter category name"
       />
-      <input type="file" name="photo" onChange={handleChange} />
-      <button>Add Category</button>
+      <label className="photo-label" htmlFor="photo">
+        Category Photo
+      </label>
+      <input
+        type="file"
+        name="photo"
+        onChange={handleChange}
+        className="photo-input"
+      />
+      <button className="add-category-button">Add Category</button>
     </form>
   );
   return (

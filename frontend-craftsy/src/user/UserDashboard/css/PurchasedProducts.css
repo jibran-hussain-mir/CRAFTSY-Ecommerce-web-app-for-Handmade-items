@@ -1,0 +1,49 @@
+.ph-ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+ 
+}
+.u-list-ph{
+    display: flex;
+    gap: 8rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    
+}
+
+.imgofpro{
+    width: 6rem;
+    height: 4rem;
+    border-radius: 12px;
+    border: 2px solid #000000;
+}
+
+@media (max-width: 1400px) {
+    .ph-ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+     
+    }
+    .u-list-ph{
+        display: flex;
+        gap: 1.2rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+       
+    }
+    
+    .imgofpro{
+        width: 6rem;
+        height: 4rem;
+        border-radius: 12px;
+        border: 2px solid #000000;
+    }
+}
+
+@media (max-width: 768px) {
+    .u-list-ph{
+        padding: 0;
+    }
+}

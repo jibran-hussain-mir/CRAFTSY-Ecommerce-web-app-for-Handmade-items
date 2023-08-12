@@ -1,0 +1,39 @@
+
+
+.carousel-cate{
+ display: flex;
+align-items: center;
+justify-content: center;  
+
+}
+
+.carousel-cont{
+margin:0 4rem 0 4rem;
+padding:0rem 3rem 0 3rem;
+border-radius: 22px;
+
+}
+
+.divv-contt{
+margin: 1rem;
+}
+
+button.rec-dot{
+    display: none;
+  }
+  
+  button.rec-dot:hover, button.rec-dot:active, button.rec-dot:focus  {
+    box-shadow: 0 0 1px 3px rgba(255, 255, 255, 0.5);
+  }
+
+  .rec.rec-arrow {
+    background-color: rgba(0, 0, 0, 0.877) !important;  
+}
+
+@media (max-width: 500px) {
+    .rec.rec-arrow {
+       display: none;
+    }
+
+
+}

@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+.categories-card{
+display: flex;
+align-items: center;
+justify-content: flex-start;
+flex-direction: column; 
+width: 33rem;
+font-family: 'Nunito', sans-serif;
+margin:6rem 0 2rem 0;
+padding: 0 1rem;
+border-radius:  12px;
+}
+
+.image-of-card{
+width: 100%;
+border-radius: 12px;
+}
+
+.image-cards{
+   cursor: pointer;
+}
+
+.change{
+display: none;
+}
+
+.card-heading{
+font-size: 1.5rem;
+font-weight: 900;
+}
+
+.card-pirce{
+	font-size: 1rem;
+}
+
+.shopnow-btn{
+  border: 3px solid #000000;
+  background: #ffffff;
+  padding: 10px 32px;
+  border-radius: 22px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 90%;
+  color: #000000;
+
+}
+
+.shopnow-btn:hover{
+	background: #000000;
+	color: white;
+cursor: pointer;
+  }
+
+  @media (max-width: 500px) {
+    .categories-card{
+      width: 18rem;
+    }
+
+    .shopnow-btn{
+      border: 3px solid #000000;
+      background: #ffffff;
+      padding: 10px 28px;
+      border-radius: 22px;
+      font-size: 10px;
+      font-weight: 600;
+      width: 100%;
+      color: #000000;
+    
+    }
+     
+  }

@@ -1,10 +1,13 @@
 import React from "react";
 import "./css/SidebarRow.css";
+import { useNavigate } from "react-router-dom";
 
 const SidebarRow = ({ Icon, label, setPath }) => {
+  const navigate = useNavigate();
   const handleClick = () => {
-    if (label === "Add Product") setPath("/create/product");
-    else if (label === "Add Category") setPath("/create/category");
+    if (label === "Add Product") navigate("/admin/dashboard/create/product");
+    else if (label === "Add Category")
+      navigate("/admin/dashboard/create/category");
   };
   return (
     <div className="list">

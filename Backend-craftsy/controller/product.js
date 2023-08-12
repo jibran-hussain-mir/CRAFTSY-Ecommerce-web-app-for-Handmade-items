@@ -174,3 +174,15 @@ exports.photo = (req, res, next) => {
   }
   next();
 };
+
+// Fetch Products created by a particular admin
+exports.listProducts = async (req, res) => {
+  try {
+    const products = await Product.find({ createdBy: req.profile.id })
+      .sort("-createdAt")
+      .exec();
+    return res.json(products);
+  } catch (e) {
+    console.log(e);
+  }
+};

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { isAuthenticated } from "../../auth";
 import Header from "../../core/Header";
-import DisplayArea from "./DisplayArea";
-import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar/Sidebar";
 import "./css/AdminDashboard.css";
 import AddProduct from "../AddProduct";
+import { Outlet } from "react-router-dom";
 
 const AdminDashboard = () => {
   const [path, setPath] = useState(window.location.pathname);
@@ -13,7 +13,7 @@ const AdminDashboard = () => {
       <Header />
       <div className="admin-panel">
         <Sidebar setPath={setPath} />
-        <DisplayArea path={path} />
+        <Outlet />
       </div>
     </>
   );

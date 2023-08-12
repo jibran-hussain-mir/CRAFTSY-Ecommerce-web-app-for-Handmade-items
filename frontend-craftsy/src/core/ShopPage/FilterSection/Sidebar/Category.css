@@ -1,0 +1,103 @@
+.sidebar-title {
+    font-size: 3rem;
+    font-weight: normal;
+    margin-bottom: 2rem;
+   letter-spacing: 2px;
+  }
+  
+  .sidebar-items {
+    margin-top: 4rem;
+  }
+  
+  .sidebar-label-container {
+    display: block;
+    position: relative;
+    padding-left: 4rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    font-size: 1.4rem;
+    user-select: none;
+  }
+
+  @media(max-width:750px){
+    
+    .cate-cont-f{
+        display:flex;
+        gap: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    
+    
+}
+
+@media(max-width:560px){
+    
+  .cate-cont-f{
+      display:grid;
+     grid-template-columns: 1fr 1fr 1fr;
+     gap: 0.8rem;
+  
+   
+  }
+  
+  .sidebar-label-container {
+    font-size: 12px;
+  }
+  
+  
+}
+
+  
+  .sidebar-label-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  .all {
+    background: linear-gradient(blue, crimson);
+  }
+  
+  .sidebar-label-container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  .sidebar-label-container input:checked ~ .checkmark {
+    background-color: #2196f3;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .sidebar-label-container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .sidebar-label-container .checkmark:after {
+    top: 6.4px;
+    left: 6.4px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: white;
+  }
+  
+  .line {
+    margin-top: 3rem;
+    border-color: #f7f7f7;
+  }

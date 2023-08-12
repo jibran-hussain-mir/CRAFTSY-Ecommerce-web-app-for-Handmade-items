@@ -1,4 +1,5 @@
 const { Order } = require("../models/order");
+const { updateOne } = require("../models/user");
 
 exports.createOrder = async (req, res) => {
   try {
@@ -13,5 +14,54 @@ exports.createOrder = async (req, res) => {
     console.log(`this is end of order`);
   } catch (e) {
     console.log(`Order Creation error: ${e.message}`);
+  }
+};
+exports.getStatusValues = async (req, res) => {
+  try {
+    res.json(Order.schema.path("status").enumValues);
+  } catch (e) {
+    console.log(`ae biduuuuu: ${e}`);
+  }
+};
+
+exports.orderById = async (req, res, next, id) => {
+  try {
+    const order = Order.findById(id)
+      .populate("products.product", "name price")
+      .exec();
+    if (!order) {
+      return res.status(400).json({
+        message: `No order found having order id as ${id}`,
+      });
+    }
+    req.order = order;
+    next();
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+exports.updateOrderStatus = async (req, res) => {
+  try {
+    const order = await Order.updateOne(
+      { _id: req.body.orderId },
+      { $set: { status: req.body.status } }
+    );
+    res.json(order);
+  } catch (e) {
+    return res.status(400).json({ error: e.message });
+  }
+};
+
+exports.getOrderStatus = async (req, res) => {
+  try {
+    const order = Order.findById(req.order._id);
+    if (!order) {
+      return res.status(400).json({ message: "No order with this id found" });
+    }
+    const status = order.status;
+    return res.json(status);
+  } catch (e) {
+    return res.json({ error: e.message });
   }
 };

@@ -11,9 +11,10 @@ const {
   listRelated,
   listCategories,
   photo,
+  listProducts,
 } = require("../controller/product");
 const { isAdmin, isAuth, requireSignin } = require("../controller/auth");
-const { userById } = require("../controller/user");
+const { userById, purchaseHistory } = require("../controller/user");
 
 router.get("/products", list); //It breaks when i switch it to get
 router.post("/product/create/:userId", requireSignin, isAuth, isAdmin, create);
@@ -35,6 +36,14 @@ router.put(
 router.get("/products/related/:productId", listRelated);
 router.get("/products/categories", listCategories);
 router.get("/product/photo/:productId", photo);
+router.get("/orders/by/user/:userId", requireSignin, isAuth, purchaseHistory);
+router.get(
+  "/list-products/:userId",
+  requireSignin,
+  isAuth,
+  isAdmin,
+  listProducts
+);
 
 router.param("userId", userById);
 router.param("productId", productById);

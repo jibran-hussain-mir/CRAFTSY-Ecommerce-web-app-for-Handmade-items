@@ -1,5 +1,6 @@
-import React from "react";
-import "../css/CategorieCard.css";
+import React, { useEffect, useState } from "react";
+import "./css/CategorieCard.css";
+import { fetchCategories } from "../apiCore";
 import handi2 from "./../../assets/handi1.jpg";
 import handi1 from "./../../assets/handi2.jpg";
 import tshirt1 from "./../../assets/tshirt1.jpg";
@@ -10,43 +11,40 @@ import pottery1 from "./../../assets/pottery1.jpg";
 import pottery2 from "./../../assets/pottery2.jpg";
 import rugimg1 from "./../../assets/rugimg1.jpg";
 import rugimg2 from "./../../assets/rugimg2.jpg";
-// import Carousel from "react-elastic-carousel";
+import Carousel from "react-elastic-carousel";
 import ProductSlider from "./ProductSlider";
 
+const breakpoints = [
+  { width: 1, itemsToShow: 2 },
+  { width: 550, itemsToShow: 2 },
+  { width: 768, itemsToShow: 2 },
+  { width: 1200, itemsToShow: 3 },
+];
+
 function CategorieCard() {
+  const [categories, setCategories] = useState([]);
+  const getCategories = () => {
+    fetchCategories()
+      .then((data) => {
+        console.log(data);
+        setCategories([...data]);
+      })
+      .catch((e) => console.log(`eeeeeerrror: ${e}`));
+  };
+  useEffect(() => {
+    getCategories();
+  }, []);
   return (
-    <div className="category-container">
-      <ProductSlider
-        title="T-Shirt"
-        price="$33"
-        img1={tshirt1}
-        img2={tshirt2}
-      />
-      <ProductSlider
-        title="Carpets"
-        price="$4433"
-        img1={rugimg1}
-        img2={rugimg2}
-      />
-      <ProductSlider
-        title="Pottery"
-        price="$343"
-        img1={pottery1}
-        img2={pottery2}
-      />
-      <ProductSlider
-        title="Handicraft Arts"
-        price="$933"
-        img1={handi1}
-        img2={handi2}
-      />
-      <ProductSlider
-        title="Clothes"
-        price="$133"
-        img1={clothe1}
-        img2={clothe2}
-      />
-    </div>
+    <Carousel breakPoints={breakpoints}>
+      {categories.map((category) => (
+        <ProductSlider
+          productId={category._id}
+          title={category.name}
+          img1={category.photo}
+          img2={category.photo}
+        />
+      ))}
+    </Carousel>
   );
 }
 

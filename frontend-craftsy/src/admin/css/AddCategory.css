@@ -1,0 +1,39 @@
+.category-form {
+    max-width: 43rem;
+    margin: 0 auto;
+    padding:2.5rem;
+    background-color: #f5f5f5;
+    border-radius:12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    font-family:'inter' , sans-serif;
+  }
+  
+  .category-label, .photo-label {
+    font-weight: bold;
+   padding-bottom: 1rem;
+  }
+  
+  .category-input, .photo-input {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .add-category-button {
+    padding: 0.8rem 2rem;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .add-category-button:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  

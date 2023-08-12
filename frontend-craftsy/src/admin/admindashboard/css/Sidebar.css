@@ -1,7 +1,7 @@
 .sidebar {
   flex: 12%;
   background-color: #fff;
-  height: 100vh;
+  height: 100%;
   font: 1.3rem Roboto, Arial, sans-serif;
   /*background: linear-gradient(#cc2b5e, #753a88);*/
   background-color: #353c4e;

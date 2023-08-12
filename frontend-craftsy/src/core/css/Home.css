@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&display=swap");
 
 .hero-section {
-  background-image: url("C:\Users\HP\Desktop\CRAFTSY\frontend-craftsy\src\assets\heroimage.jpg");
+  background-image: url("../../assets/heroimage.jpg");
   /* background-image: url("https://images.pexels.com/photos/352899/pexels-photo-352899.jpeg?auto=compress&cs=tinysrgb&w=600");*/
   height: 550px; /*You must set a specified height*/
   background-position: center; /* Center the image */

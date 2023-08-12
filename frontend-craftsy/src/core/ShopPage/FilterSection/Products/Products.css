@@ -1,0 +1,128 @@
+.f-card-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+   margin-top: 4rem;
+   gap: 3rem;
+   font-family: 'inter' , sans-serif;
+}
+
+@media(max-width:1410px){
+    .f-card-container{
+        grid-template-columns: 1fr 1fr 1fr;
+       
+    }
+}
+@media(max-width:1100px){
+    .f-card-container{
+        grid-template-columns: 1fr 1fr ;
+       
+    }
+}
+@media(max-width:760px){
+    .f-card-container{
+       
+       
+    }
+}
+
+
+
+
+.f-card{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 12px;  
+}
+
+.f-card-details{
+    padding: 2rem;
+}
+
+
+.f-card-img{
+    width: 25rem;
+    height: 18rem;
+    border-radius: 12px 12px 0 0;
+}
+
+.f-card-title{
+    margin-bottom: 1rem;
+    font-size:1.9rem;
+}
+
+.card-reviews{
+    margin-bottom: 1rem;
+    display: flex;
+    font-size: 2rem;
+}
+.ratings-star{
+    color: yellow;
+}
+.total-reviews{
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-left:10px ;
+}
+
+.card-price{
+    display: flex;
+    justify-content: space-between;
+   
+    align-items: center;
+   
+}
+.f-prices{
+            font-size: 2rem;
+}
+.fbtn-addtocard{
+    padding: 1rem 3rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    background-color: black;
+    color: white;
+    border: none;
+    border: 2px solid black;
+}
+.fbtn-addtocard:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    
+}
+
+
+@media(max-width:600px){
+    .f-card-img{
+        width: 18rem;
+        height: 10rem;
+    }
+    .card-price{
+
+        flex-direction: column;
+    
+    }
+}
+@media(max-width:500px){
+    .f-card-img{
+        width: 16rem;
+        height: 10rem;
+    }
+    .card-price{
+        flex-direction: column;
+
+    }
+    .fbtn-addtocard{
+        margin-top: 12px;
+        padding: 1rem 2rem;
+        font-size: 8px;
+        letter-spacing: 1px;
+      
+    }
+
+    .f-card-title{
+        margin-bottom: 0.5rem;
+        font-size:1.4rem;
+    }
+}

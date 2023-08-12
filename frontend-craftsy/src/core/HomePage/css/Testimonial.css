@@ -1,0 +1,111 @@
+.testi-container{
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1002%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%26quot%3b%23SvgjsLinearGradient1003%26quot%3b)'%3e%3c/rect%3e%3cpath d='M1440 0L1262.85 0L1440 19.56z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M1262.85 0L1440 19.56L1440 246.74L1227.4199999999998 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M1227.42 0L1440 246.74L1440 381.88L696.84 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M696.8399999999999 0L1440 381.88L1440 494.39L255.77999999999992 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 560L659.03 560L0 377.72z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 377.72L659.03 560L810.4399999999999 560L0 318.55z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 318.55L810.4399999999999 560L817.28 560L0 174.77z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 174.76999999999998L817.28 560L1040.09 560L0 65.02999999999999z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1002'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='15.28%25' y1='-39.29%25' x2='84.72%25' y2='139.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1003'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='%2300459e' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+background-position: center; /* Center the image */
+background-repeat: no-repeat; /* Do not repeat the image */
+background-size: cover; /* Resize the background image to cover the entire container */ 
+height:20rem;
+width: 30rem;
+padding: 2rem;
+margin-bottom: 5rem;
+border-radius: 12px;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+z-index: 100;
+}
+
+.user-image{
+width: 80px;
+height: 80px;
+border-radius:44px;
+
+}
+
+.testimonial-text{
+ font-family: 'inter',sans-serif;
+ font-size: 1.2rem;
+ text-align: center;
+ line-height:3rem;
+ font-weight: 400;
+ color: #ffffff;
+}
+
+
+.user-name{
+   font-family: 'inter',sans-serif;
+  font-size: 1.5rem;
+        text-align: center;
+       letter-spacing: 1px;
+       font-weight: 900;
+       padding-bottom: 5rem;
+       color: #000000;
+}
+
+@media (max-width: 800px) {
+    .testi-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height:15rem;
+        width: 13rem;
+        padding: 2rem;
+        margin-bottom: 5rem;
+        border-radius: 12px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        z-index: 100;
+        }
+        
+        .user-image{
+        width: 55px;
+        height: 55px;
+        border-radius:44px;
+        
+        }
+        
+        .testimonial-text{
+         font-family: 'inter',sans-serif;
+         font-size: 8px;
+         text-align: center;
+         line-height:1.2rem;
+         font-weight: 400;
+         
+        }
+        
+        
+        .user-name{
+          font-size: 1.3rem;
+    
+        }        
+  }
+  @media (max-width: 360px) {
+    .testi-container{
+        height:10rem;
+        width: 5rem;
+        padding: 3rem;
+        }
+        
+        .user-image{
+        width: 50px;
+        height: 50px;
+        border-radius:44px;
+        
+        }
+        
+        .testimonial-text{
+         font-family: 'inter',sans-serif;
+         font-size: 4px;
+         text-align: center;
+         line-height:1.2rem;
+         font-weight: 400;
+         
+        }
+        
+        
+        .user-name{
+          font-size: 8px;
+          padding-bottom: 4rem;
+        }        
+  }

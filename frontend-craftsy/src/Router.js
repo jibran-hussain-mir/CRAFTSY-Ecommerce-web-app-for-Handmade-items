@@ -5,18 +5,22 @@ import Signup from "./user/Signup";
 import Home from "./core/HomePage/Home";
 import About from "./core/About";
 import Cart from "./core/Cart";
-import UserDashBoard from "./user/UserDashboard";
+import UserDashBoard from "./user/UserDashboard/UserDashboard";
 import AdminDashboard from "./admin/admindashboard/AdminDashboard";
 import PrivateRoute from "./auth/PrivateRoute";
 import AdminRoute from "./auth/AdminRoute";
-import UserDashboard from "./user/UserDashboard";
+import UserDashboard from "./user/UserDashboard/UserDashboard";
 import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
 import ErrorPage from "./ErrorPage";
 import Layout from "./core/Layout";
 import SingleProduct from "./SingleProduct";
 import SearchBar from "./core/SearchBar";
-import Order from "./admin/Orders";
+import Order from "./admin/Orders/CustomerOrders";
+import Profile from "./user/Profile";
+import AdminPurchaseHistory from "./admin/AdminPurchaseHistory";
+import UpdateProduct from "./admin/UpdateProduct";
+import FilterSectionPage from "./core/ShopPage/FilterSectionPage";
 
 function Router() {
   return (
@@ -35,6 +39,7 @@ function Router() {
         </Route>
 
         <Route path="/cart" element={<Cart />} />
+        <Route path="/shop" element={<FilterSectionPage />} />
         <Route path="/signup" element={<Signin />}></Route>
         <Route
           path="/user/dashboard"
@@ -43,18 +48,31 @@ function Router() {
         <Route
           path="/admin/dashboard"
           element={<AdminRoute Component={AdminDashboard} />}
-        />
+        >
+          <Route index element={<AdminRoute Component={Order} />} />
+          <Route
+            path="create/category"
+            element={<AdminRoute Component={AddCategory} />}
+          />
+          <Route
+            path="create/product"
+            element={<AdminRoute Component={AddProduct} />}
+          />
+          <Route
+            path="purchase-history"
+            element={<AdminRoute Component={AdminPurchaseHistory} />}
+          />
+          <Route path="orders" element={<AdminRoute Component={Order} />} />
+        </Route>
+
         <Route
-          path="/create/category"
-          element={<AdminRoute Component={AddCategory} />}
+          path="/profile/:userId"
+          element={<PrivateRoute Component={Profile} />}
         />
+
         <Route
-          path="/create/product"
-          element={<AdminRoute Component={AddProduct} />}
-        />
-        <Route
-          path="/admin/orders"
-          element={<AdminRoute Component={Order} />}
+          path="/update/products"
+          element={<AdminRoute Component={UpdateProduct} />}
         />
         <Route path="/search" element={<SearchBar />} />
         <Route path="*" element={<ErrorPage />} />
