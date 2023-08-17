@@ -3,15 +3,15 @@ import "./css/Dropdown.css";
 import { isAuthenticated } from "../../../auth";
 import { getStatusValues, updateOrderStatus } from "../../adminapi";
 
-function DropDown({ orderId, refresh }) {
-  console.log(orderId);
+function DropDown({ orderId, refresh, productId }) {
+  // console.log(orderId);
   const [statusValues, setStatusValues] = useState([]);
   const userId = isAuthenticated()?.user?._id;
   const token = isAuthenticated()?.token;
   const getValues = async () => {
     try {
       const data = await getStatusValues(userId, token);
-      console.log(data);
+      // console.log(data);
       if (data.error) {
         console.log(`error is in api of DropDown.jsx page`);
       } else {
@@ -26,9 +26,10 @@ function DropDown({ orderId, refresh }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOptionClick = (option, event) => {
+    // console.log(option);
     setSelectedOption(option);
     setIsOpen(false);
-    updateOrderStatus(userId, token, orderId, option)
+    updateOrderStatus(userId, token, orderId, productId, option)
       .then((data) => {
         if (data.error) {
           console.log("Status update failed");

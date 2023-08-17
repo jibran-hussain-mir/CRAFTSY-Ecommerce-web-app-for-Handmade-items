@@ -1,3 +1,17 @@
+.upd-del-btns {
+  padding: 1rem 2rem;
+  border-radius: 23px;
+  background-color: rgb(2, 99, 2);
+  letter-spacing: 2px;
+  color: azure;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.red {
+  background-color: red;
+}
+
 .tablex {
   width: 100%;
   border-collapse: collapse;
@@ -10,6 +24,12 @@
   font-family: "roboto", sans-serif;
   font-size: 2rem;
   letter-spacing: 1px;
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .tablex td,

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Pacifico&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Pacifico&display=swap");
 
 header {
   display: flex;
@@ -14,15 +14,15 @@ header {
 .logo-name {
   font-size: 2.8rem;
 }
-.logo-name:hover{
-  color:#fffffa;
+.logo-name:hover {
+  color: #fffffa;
   transition: ease-in 0.5s;
 }
 li {
   list-style: none;
 }
 
-.sb-cont{
+.sb-cont {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,30 +31,28 @@ li {
   border-radius: 25px;
   margin-left: 30rem;
 }
-.searchbar{
-  width: 22rem ;
+.searchbar {
+  width: 22rem;
   padding: 0.8rem;
   border-radius: 25px;
   border: 0px;
   border: 1px solid #000000;
 }
 
-
-.search-btn{
-  background:none;
+.search-btn {
+  background: none;
   border: none;
   color: black;
   cursor: pointer;
 }
-.search-btn:hover{
+.search-btn:hover {
   color: #7400e7;
 }
 
-
-.logo-name{
-  font-family: 'Pacifico', cursive;
+.logo-name {
+  font-family: "Pacifico", cursive;
   color: #000000;
-  letter-spacing:1px;
+  letter-spacing: 1px;
 }
 .NavLinks {
   padding: 6px;
@@ -63,8 +61,7 @@ li {
   text-decoration: none;
   color: inherit;
   text-decoration: none;
-  color:#000000;
-  
+  color: #000000;
 }
 
 .nav-ul {
@@ -77,87 +74,71 @@ li {
 }
 
 @media (max-width: 1200px) {
-
   header {
-  
     padding: 0rem 0.1rem;
-    
+
     margin: 0 2rem;
   }
   .logo {
     font-size: 20px;
   }
-  .logo-name:hover{
-    color:#fffffa;
+  .logo-name:hover {
+    color: #fffffa;
     transition: ease-in 0.5s;
   }
   li {
     list-style: none;
   }
-  
-  .sb-cont{
 
+  .sb-cont {
     padding: 0.4rem;
     margin-left: 13rem;
   }
-  .searchbar{
-    width: 17rem ;
+  .searchbar {
+    width: 17rem;
     padding: 0.3rem;
-   
   }
-  
 
   .NavLinks {
     padding: 6px;
-    
   }
-  
-  
+
   .NavLinks:hover {
     color: #ffffff;
   }
   .nav-ul {
     gap: 0.3rem;
-    
   }
-  
-  
 }
 @media (max-width: 900px) {
-
   header {
     margin: 0 1rem;
   }
   .logo {
     font-size: 20px;
   }
-  .logo-name:hover{
-    color:#fffffa;
+  .logo-name:hover {
+    color: #fffffa;
     transition: ease-in 0.5s;
   }
   li {
     list-style: none;
   }
-  
-  .sb-cont{
+
+  .sb-cont {
     margin-left: 7rem;
   }
 
-  
   .NavLinks {
     padding: 6px;
     font-size: 1rem;
-    
   }
-  
 }
 
 @media (max-width: 780px) {
-
   .NavLinks {
     padding: 3px;
     font-size: 1rem;
-    
   }
 }
 
@@ -165,7 +146,7 @@ li {
   .nav-links {
     position: fixed;
     top: 0;
-    left:0;
+    left: 0;
     height: 100%;
     width: 100%;
     display: flex;
@@ -173,35 +154,33 @@ li {
     justify-content: center;
     background: #ffffff;
     transform: translateY(-100vh);
-    transition: 1s ease-in; 
+    transition: 1s ease-in;
     z-index: 1;
-    font-size:3rem;
+    font-size: 3rem;
   }
   .nav-ul {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-  margin-right: 4rem;
-  gap:0rem;
-
+    margin-right: 4rem;
+    gap: 0rem;
   }
 
   .menu-icon {
     display: inline;
     color: #000000;
-    
   }
 
   .responsive {
     transform: none;
   }
 
-  .hidden{
+  .hidden {
     display: none;
   }
 
-  .logo-name{
+  .logo-name {
     font-size: 2rem;
   }
 
@@ -212,6 +191,3 @@ li {
     right: 22px;
   }
 }
-
-
-

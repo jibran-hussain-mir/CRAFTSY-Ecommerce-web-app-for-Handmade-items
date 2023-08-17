@@ -17,6 +17,21 @@ exports.signup = async (req, res) => {
       .json({ /*error:error.message*/ error: [{ msg: error.message }] });
   }
 };
+exports.sellerSignup = async (req, res) => {
+  try {
+    const user = new User(req.body);
+    user.role = 1;
+    await user.save();
+    user.hashed_password = undefined;
+    user.salt = undefined;
+
+    res.status(201).json({ user });
+  } catch (error) {
+    res
+      .status(400)
+      .json({ /*error:error.message*/ error: [{ msg: error.message }] });
+  }
+};
 
 exports.signin = async (req, res) => {
   try {

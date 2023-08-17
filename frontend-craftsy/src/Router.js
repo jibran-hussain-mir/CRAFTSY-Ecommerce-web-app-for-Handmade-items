@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signin from "./user/Signin";
 import Signup from "./user/Signup";
+import SellerSignup from "./user/SellerSignup";
 import Home from "./core/HomePage/Home";
 import About from "./core/About";
 import Cart from "./core/Cart";
@@ -21,6 +22,7 @@ import Profile from "./user/Profile";
 import AdminPurchaseHistory from "./admin/AdminPurchaseHistory";
 import UpdateProduct from "./admin/UpdateProduct";
 import FilterSectionPage from "./core/ShopPage/FilterSectionPage";
+import ManageProduct from "./admin/ManageProduct";
 
 function Router() {
   return (
@@ -31,6 +33,7 @@ function Router() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />
+          <Route path="/seller-signup" element={<SellerSignup />} />
           <Route
             path="/singleproduct"
             element={<SingleProduct element={<SingleProduct />} />}
@@ -45,6 +48,7 @@ function Router() {
           path="/user/dashboard"
           element={<PrivateRoute Component={UserDashBoard} />}
         />
+        {/* Admin Routes */}
         <Route
           path="/admin/dashboard"
           element={<AdminRoute Component={AdminDashboard} />}
@@ -63,6 +67,18 @@ function Router() {
             element={<AdminRoute Component={AdminPurchaseHistory} />}
           />
           <Route path="orders" element={<AdminRoute Component={Order} />} />
+          <Route
+            path="manage-products"
+            element={<AdminRoute Component={ManageProduct} />}
+          />
+          <Route
+            path="update-product/:productId"
+            element={<AdminRoute Component={UpdateProduct} />}
+          />
+          <Route
+            path="profile/:userId"
+            element={<AdminRoute Component={Profile} />}
+          />
         </Route>
 
         <Route
@@ -70,11 +86,8 @@ function Router() {
           element={<PrivateRoute Component={Profile} />}
         />
 
-        <Route
-          path="/update/products"
-          element={<AdminRoute Component={UpdateProduct} />}
-        />
         <Route path="/search" element={<SearchBar />} />
+
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

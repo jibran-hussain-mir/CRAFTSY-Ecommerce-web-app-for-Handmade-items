@@ -15,6 +15,23 @@ export const userSignup = async (user) => {
   }
 };
 
+export const signupSeller = async (user) => {
+  try {
+    const response = await fetch("http://localhost:8000/api/seller-signup", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+
+    return response.json();
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
 export const signin = async (user) => {
   try {
     const response = await fetch("http://localhost:8000/api/signin", {

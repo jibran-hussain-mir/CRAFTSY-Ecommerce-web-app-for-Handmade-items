@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { read, update, updateUser } from "./apiUser";
 import { isAuthenticated } from "../auth";
+import "./css/Profile.css";
 
 const Profile = () => {
   const [values, setValues] = useState({
@@ -11,6 +12,7 @@ const Profile = () => {
     error: "",
     success: false,
   });
+  const [successMessage, setSuccessMessage] = useState("");
   const { name, email, password, error, success } = values;
   const userId = isAuthenticated()?.user?._id;
   const token = isAuthenticated()?.token;
@@ -59,14 +61,19 @@ const Profile = () => {
   }, []);
   useEffect(() => {
     if (success) {
-      navigate("/cart");
+      setSuccessMessage("Profile Updated Successfully");
     }
   }, [success, navigate]);
   return (
-    <div>
+    <div className="profile-x-contianer">
       <h1>Profile Section</h1>
-      {JSON.stringify(values)}
-      <form>
+      {/* {JSON.stringify(values)} */}
+      {successMessage && (
+        <div className="msg">
+          <p>{successMessage}</p>
+        </div>
+      )}
+      <form className="profile-form">
         <label>Name</label>
         <input type="text" value={name} onChange={handleChange("name")} />
         <label>Email</label>
@@ -77,7 +84,11 @@ const Profile = () => {
           value={password}
           onChange={handleChange("password")}
         />
-        <button onClick={handleSubmit}>Update Details</button>
+        <div className="profilebtncont">
+          <button className="profile-x-btn" onClick={handleSubmit}>
+            Update Details
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -4,6 +4,28 @@
   font-family: "inter", sans-serif;
 }
 
+.everyheading {
+  display: block;
+  text-align: center;
+  font-family: "roboto", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 
+.tablekacont{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+} */
+
 .tablex td,
 .tablex th {
   padding: 12px 15px;
@@ -27,20 +49,21 @@
 }
 .order-id {
   font-weight: 900;
+  font-size: 6px !important;
 }
+
 /*responsive*/
 
 @media (max-width: 1200px) {
   .tablex thead {
     display: none;
   }
-
   .tablex,
   .tablex tbody,
   .tablex tr,
   .tablex td {
     display: block;
-    width: 88%;
+    width: 50vw;
   }
   .tablex tr {
     margin-bottom: 2rem;
@@ -63,12 +86,12 @@
   }
 }
 
-@media (max-width: 330px) {
+@media (max-width: 360px) {
+  .tablex,
+  .tablex tbody,
+  .tablex tr,
   .tablex td {
-    font-size: 11px;
-  }
-  .tablex td::before {
-    content: attr(data-label);
-    font-size: 11px;
+    display: block;
+    width: 46vw;
   }
 }

@@ -23,18 +23,27 @@ const SearchBar = () => {
   };
 
   const handleChange = (name) => (event) => {
+    console.log(event.target.value);
     setData({ ...data, [name]: event.target.value, searched: false });
+  };
+
+  const searchData = () => {
+    console.log(data.searchValue, data.categorySelected);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    searchData();
   };
 
   const searchForm = () => (
     <form onSubmit={handleSubmit}>
       {/* Category Dropdown */}
-      <select onChange={handleChange("categorySelected")}>
-        <option value="All" selected disabled>
+      <select
+        value={categorySelected}
+        onChange={handleChange("categorySelected")}
+      >
+        <option value="All" disabled>
           Pick a category
         </option>
         {categories.map((category, index) => (
@@ -62,7 +71,7 @@ const SearchBar = () => {
   return (
     <div>
       {searchForm()}
-      {JSON.stringify(data)}
+      {JSON.stringify(data.searchValue)}
     </div>
   );
 };

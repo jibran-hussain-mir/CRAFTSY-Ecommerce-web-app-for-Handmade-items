@@ -1,10 +1,12 @@
 import React from "react";
 import "./css/ProductSlider.css";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 function ProductSlider(props) {
   console.log(`category`, props.img1);
   console.log(props.productId);
+
   return (
     <div className="categories-card">
       <div className="image-cards">
@@ -18,7 +20,14 @@ function ProductSlider(props) {
       <div className="card-pirce">
         <h3>{props.price}</h3>
       </div>
-      <button className="shopnow-btn">Shop Now</button>
+      <NavLink
+        to={{
+          pathname: "/shop",
+          search: `?categoryId=${props.productId}`,
+        }}
+      >
+        <button className="shopnow-btn">Shop Now</button>
+      </NavLink>
     </div>
   );
 }

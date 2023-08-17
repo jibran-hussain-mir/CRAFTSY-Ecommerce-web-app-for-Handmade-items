@@ -1,4 +1,4 @@
-const { Order } = require("../models/order");
+const { Order, CartItem } = require("../models/order");
 const { updateOne } = require("../models/user");
 
 exports.createOrder = async (req, res) => {
@@ -18,7 +18,7 @@ exports.createOrder = async (req, res) => {
 };
 exports.getStatusValues = async (req, res) => {
   try {
-    res.json(Order.schema.path("status").enumValues);
+    res.json(CartItem.schema.path("status").enumValues);
   } catch (e) {
     console.log(`ae biduuuuu: ${e}`);
   }
@@ -43,11 +43,25 @@ exports.orderById = async (req, res, next, id) => {
 
 exports.updateOrderStatus = async (req, res) => {
   try {
-    const order = await Order.updateOne(
-      { _id: req.body.orderId },
-      { $set: { status: req.body.status } }
+    const order = await Order.findById(req.body.orderId);
+
+    // Find the index of the product within the products array
+    const productIndexToUpdate = order.products.findIndex(
+      (product) => product._id.toString() === req.body.productId
     );
-    res.json(order);
+    console.log(productIndexToUpdate);
+
+    // Update the status of the product
+    if (productIndexToUpdate !== -1) {
+      order.products[productIndexToUpdate].status = req.body.status; // Set the new status here
+    } else {
+      return res.status(404).json({ error: "Product not found in the order" });
+    }
+
+    // Save the updated order
+    const updatedOrder = await order.save();
+
+    res.json(updatedOrder);
   } catch (e) {
     return res.status(400).json({ error: e.message });
   }

@@ -93,15 +93,110 @@ const AddProduct = () => {
     }
   };
   return (
+    // <>
+    //   {/* new form */}
+    //   <div className="formsx-container">
+    //     <div className="formsx-title">Add Product</div>
+    //     <div className="content">
+    //       <form onSubmit={handleSubmit}>
+    //         <div className="user-details">
+    //           <div className="input-boxx">
+    //             <span className="details">Product Name</span>
+    //             <input
+    //               type="text"
+    //               name="name"
+    //               value={name}
+    //               onChange={handleChange}
+    //               placeholder="Product Name"
+    //             />
+    //           </div>
+
+    //           <div className="input-box">
+    //             <span className="details">Description of Product</span>
+    //             <textarea
+    //               type="text"
+    //               name="description"
+    //               value={description}
+    //               onChange={handleChange}
+    //               placeholder="Description"
+    //             />
+    //           </div>
+
+    //           <div className="input-box">
+    //             <span className="details">Price</span>
+    //             <input
+    //               type="number"
+    //               name="price"
+    //               value={price}
+    //               onChange={handleChange}
+    //               placeholder="Price"
+    //             />
+    //           </div>
+
+    //           <div className="input-box">
+    //             <span className="details">Select Category</span>
+    //             <select
+    //               name="category"
+    //               value={category}
+    //               onChange={handleChange}
+    //             >
+    //               <option disabled>Please Select</option>
+    //               {categories &&
+    //                 categories.map((category) => {
+    //                   return (
+    //                     <option value={category._id} key={category._id}>
+    //                       {category.name}
+    //                     </option>
+    //                   );
+    //                 })}
+    //             </select>
+    //           </div>
+
+    //           <div className="input-box">
+    //             <span className="details">Shipping</span>
+    //             <select
+    //               name="shipping"
+    //               value={shipping}
+    //               onChange={handleChange}
+    //             >
+    //               <option disabled defaultValue>
+    //                 --Select--
+    //               </option>
+    //               <option>--Select--</option>
+    //               <option value="1">Yes</option>
+    //               <option value="0">No</option>
+    //             </select>
+    //           </div>
+
+    //           <div className="input-box">
+    //             <span className="details">Quantity</span>
+    //             <input
+    //               type="number"
+    //               name="quantity"
+    //               value={quantity}
+    //               onChange={handleChange}
+    //               placeholder="Quantity"
+    //             />
+    //           </div>
+    //           <div className="input-box">
+    //             <span className="details">Price</span>
+    //             <input type="file" name="photo" onChange={handleChange} />
+    //           </div>
+    //           <button className="submitx-button">Submit</button>
+    //         </div>
+    //       </form>
+    //     </div>
+    //   </div>
+    // </>
     <>
       {/* new form */}
-      <div className="formsx-container">
-        <div className="formsx-title">Add Product</div>
-        <div className="content">
+      <div className="custom-form-container">
+        {/* <div className="custom-form-title">Add Product</div> */}
+        <div className="custom-content">
           <form onSubmit={handleSubmit}>
-            <div className="user-details">
-              <div className="input-box">
-                <span className="details">Product Name</span>
+            <div className="custom-user-details">
+              <div className="custom-input-box">
+                <span className="custom-details">Product Name</span>
                 <input
                   type="text"
                   name="name"
@@ -111,8 +206,8 @@ const AddProduct = () => {
                 />
               </div>
 
-              <div className="input-box">
-                <span className="details">Description of Product</span>
+              <div className="custom-input-box">
+                <span className="custom-details">Description of Product</span>
                 <textarea
                   type="text"
                   name="description"
@@ -122,8 +217,8 @@ const AddProduct = () => {
                 />
               </div>
 
-              <div className="input-box">
-                <span className="details">Price</span>
+              <div className="custom-input-box">
+                <span className="custom-details">Price</span>
                 <input
                   type="number"
                   name="price"
@@ -133,8 +228,8 @@ const AddProduct = () => {
                 />
               </div>
 
-              <div className="input-box">
-                <span className="details">Select Category</span>
+              <div className="custom-input-box">
+                <span className="custom-details">Select Category</span>
                 <select
                   name="category"
                   value={category}
@@ -152,8 +247,8 @@ const AddProduct = () => {
                 </select>
               </div>
 
-              <div className="input-box">
-                <span className="details">Shipping</span>
+              <div className="custom-input-box">
+                <span className="custom-details">Shipping</span>
                 <select
                   name="shipping"
                   value={shipping}
@@ -168,8 +263,8 @@ const AddProduct = () => {
                 </select>
               </div>
 
-              <div className="input-box">
-                <span className="details">Quantity</span>
+              <div className="custom-input-box">
+                <span className="custom-details">Quantity</span>
                 <input
                   type="number"
                   name="quantity"
@@ -178,11 +273,11 @@ const AddProduct = () => {
                   placeholder="Quantity"
                 />
               </div>
-              <div className="input-box">
-                <span className="details">Price</span>
+              <div className="custom-input-box">
+                <span className="custom-details">Price</span>
                 <input type="file" name="photo" onChange={handleChange} />
               </div>
-              <button className="submitx-button">Submit</button>
+              <button className="custom-submit-button">Submit</button>
             </div>
           </form>
         </div>

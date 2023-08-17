@@ -3,7 +3,12 @@ import "./SideBar.css";
 import Category from "./Category";
 import Price from "./Price";
 
-function SideBar({ handleChange, handleCategoryChange }) {
+function SideBar({
+  handleChange,
+  handleCategoryChange,
+  checked,
+  handlePriceChange,
+}) {
   return (
     <>
       <section className="f-sidebar">
@@ -14,10 +19,15 @@ function SideBar({ handleChange, handleCategoryChange }) {
           <Category
             handleChange={handleChange}
             handleCategoryChange={handleCategoryChange}
+            checked={checked}
+            handlePriceChange={handlePriceChange}
           />
         </div>
         <div>
-          <Price handleChange={handleChange} />
+          <Price
+            handleChange={handleChange}
+            handlePriceChange={handlePriceChange}
+          />
         </div>
       </section>
     </>

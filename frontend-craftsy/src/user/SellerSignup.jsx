@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./css/Signup.css";
-import { userSignup } from "../auth/index";
+import { signupSeller } from "../auth/index";
 import "../user/css/Signup.css";
 import { NavLink } from "react-router-dom";
 import { FaUserFriends } from "react-icons/fa";
 import signupimg from "../assets/signup.jpg";
 
-const Signup = () => {
+const SellerSignup = () => {
   const [userRegistration, setUserRegistration] = useState({
     name: "",
     email: "",
@@ -24,7 +24,7 @@ const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    userSignup({ ...userRegistration }).then((res) => {
+    signupSeller({ ...userRegistration }).then((res) => {
       if (res.error) {
         setUserRegistration({
           ...userRegistration,
@@ -58,7 +58,7 @@ const Signup = () => {
         <div className="signup-form-cont">
           <div className="signup-form">
             <div className="sign-up-section">
-              <h1 className="signup-h1-login">SIGN UP</h1>
+              <h1 className="signup-h1-login">SELLER SIGN UP</h1>
               <NavLink to="/signin" className="signup-NavLinks">
                 <h6 className="signup-addH4">
                   <span className="signup-addSvg">
@@ -67,14 +67,7 @@ const Signup = () => {
                   Already have an account?
                 </h6>
               </NavLink>
-              <NavLink to="/seller-signup" className="signup-NavLinks">
-                <h6 className="signup-addH4">
-                  <span className="signup-addSvg">
-                    <FaUserFriends size={16} />
-                  </span>
-                  Become a Seller?
-                </h6>
-              </NavLink>
+
               {userRegistration.error && (
                 <div>
                   <h3>{userRegistration.error}</h3>
@@ -86,7 +79,7 @@ const Signup = () => {
                 className="signup-form"
               >
                 <div className="signup-form-field">
-                  <label htmlFor="full-name">Name</label>
+                  <label htmlFor="full-name">Seller Name</label>
                   <input
                     type="signup-name"
                     name="name"
@@ -97,7 +90,7 @@ const Signup = () => {
                   />
                 </div>
                 <div className="signup-form-field">
-                  <label htmlFor="from-email">Email</label>
+                  <label htmlFor="from-email">Seller Email</label>
                   <input
                     type="email"
                     name="email"
@@ -130,4 +123,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SellerSignup;

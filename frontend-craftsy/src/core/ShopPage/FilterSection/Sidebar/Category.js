@@ -3,7 +3,7 @@ import "./Category.css";
 import Input from "../Components/Input";
 import { fetchCategories } from "../../../apiCore";
 
-function Category({ handleChange, handleCategoryChange }) {
+function Category({ handleChange, handleCategoryChange, checked }) {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState("");
 
@@ -25,17 +25,18 @@ function Category({ handleChange, handleCategoryChange }) {
       {JSON.stringify(error)} */}
       <h2 className="sidebar-title">Category</h2>
       <div className="cate-cont-f">
-        <label className="sidebar-label-container">
+        {/* <label className="sidebar-label-container">
           <input type="radio" value="" name="test" />
           <span className="checkmark"></span>All
-        </label>
+        </label>*/}
         {categories.map((category, index) => (
           <Input
             key={index}
             handleChange={handleChange}
             handleCategoryChange={handleCategoryChange(category._id)}
-            value={category.name}
+            value={category._id}
             title={category.name}
+            checked={checked.includes(category._id)} // Pass checked status here
           />
         ))}
       </div>

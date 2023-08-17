@@ -1,7 +1,7 @@
 exports.getProducts = async (sortBy) => {
   try {
     const response = await fetch(
-      `http://localhost:8000/api/products?sortBy=sold&order=desc&limit=10`,
+      `http://localhost:8000/api/products?sortBy=sold&order=desc&limit=12`,
       {
         method: "POST",
       }
@@ -88,5 +88,28 @@ exports.createOrder = async (userId, token, orderedProducts) => {
     return response.json();
   } catch (e) {
     console.log(e);
+  }
+};
+
+exports.getFilteredProducts = async (skip, limit, filters = {}) => {
+  try {
+    const data = {
+      limit,
+      skip,
+      filters,
+    };
+    const response = await fetch(
+      `http://localhost:8000/api/products/by/search`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    return await response.json();
+  } catch (error) {
+    return console.log(error);
   }
 };

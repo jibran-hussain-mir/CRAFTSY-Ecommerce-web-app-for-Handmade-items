@@ -111,7 +111,7 @@ exports.listOrders = async (req, res) => {
           address: order.address,
           transaction_id: order.transaction_id,
           amount: order.amount,
-          status: order.status,
+          status: matchingProduct.status,
         }));
     });
 

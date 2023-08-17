@@ -109,6 +109,7 @@ exports.getProduct = async (productId) => {
 };
 exports.updateProduct = async (productId, userId, token, product) => {
   try {
+    console.log(product);
     const response = await fetch(
       `http://localhost:8000/api/product/${productId}/${userId}`,
       {
@@ -165,8 +166,15 @@ exports.getStatusValues = async (userId, token) => {
   }
 };
 
-exports.updateOrderStatus = async (userId, token, orderId, status) => {
+exports.updateOrderStatus = async (
+  userId,
+  token,
+  orderId,
+  productId,
+  status
+) => {
   try {
+    console.log(productId);
     const statusValues = await fetch(
       `http://localhost:8000/api/order/${orderId}/status/${userId}`,
       {
@@ -176,7 +184,7 @@ exports.updateOrderStatus = async (userId, token, orderId, status) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ status, orderId }),
+        body: JSON.stringify({ status, orderId, productId }),
       }
     );
     return statusValues.json();

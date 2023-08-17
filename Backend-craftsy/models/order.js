@@ -11,6 +11,17 @@ const CartItemSchema = new mongoose.Schema(
     name: String,
     price: Number,
     quantity: Number,
+    status: {
+      type: String,
+      default: "Not processed",
+      enum: [
+        "Not processed",
+        "Processing",
+        "Shipped",
+        "Delivered",
+        "Cancelled",
+      ], // enum means string objects
+    },
   },
   { timestamps: true }
 );
@@ -23,17 +34,7 @@ const OrderSchema = new mongoose.Schema(
     transaction_id: {},
     amount: { type: Number },
     address: String,
-    status: {
-      type: String,
-      default: "Not processed",
-      enum: [
-        "Not processed",
-        "Processing",
-        "Shipped",
-        "Delivered",
-        "Cancelled",
-      ], // enum means string objects
-    },
+
     updated: Date,
     user: { type: ObjectId, ref: "User" },
   },

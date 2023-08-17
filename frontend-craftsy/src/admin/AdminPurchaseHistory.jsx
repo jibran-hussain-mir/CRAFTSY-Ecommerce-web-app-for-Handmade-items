@@ -20,10 +20,9 @@ const AdminPurchaseHistory = () => {
     init();
   }, []);
   return (
-    <div>
-      <h1>Purchase History</h1>
+    <div className="middle">
       <div className="table-container">
-        <h1 className="tabletophead">Admin User Orders</h1>
+        <h1 className="everyheading">Purchase History</h1>
         <table className="tablex">
           <thead>
             <tr>
@@ -55,7 +54,6 @@ const AdminPurchaseHistory = () => {
           </tbody>
         </table>
       </div>
-      {/* ... */}
     </div>
   );
 };

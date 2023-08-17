@@ -14,7 +14,7 @@
       rgba(85, 85, 85, 0.4),
       rgba(0, 0, 0, 0.3)
     ),
-    url("../../../assets/img1.jpg");
+    url("../../../assets/heroimage.jpg");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */

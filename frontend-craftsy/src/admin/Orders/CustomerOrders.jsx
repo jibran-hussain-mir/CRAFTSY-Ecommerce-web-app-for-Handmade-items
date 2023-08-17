@@ -47,7 +47,7 @@ const Order = () => {
   console.log(orders);
 
   return (
-    <>
+    <div className="middle">
       <div className="table-container">
         <h1 className="tabletophead">Admin User Orders</h1>
         <table className="tablex">
@@ -76,7 +76,11 @@ const Order = () => {
                 <td data-label={"Address"}>{order.address}</td>
                 <td data-label={"Status"}>{order.status}</td>
                 <td data-label={" Update Status"}>
-                  <DropDown orderId={order.orderId} refresh={handleStatus} />
+                  <DropDown
+                    orderId={order.orderId}
+                    productId={order.productId}
+                    refresh={handleStatus}
+                  />
                 </td>
               </tr>
             ))}
@@ -84,7 +88,7 @@ const Order = () => {
         </table>
       </div>
       <h1>{error}</h1>
-    </>
+    </div>
   );
 };
 

@@ -52,7 +52,7 @@ const Header = () => {
                     }
                     className="NavLinks"
                   >
-                    HOME
+                    Home
                   </NavLink>
                 </li>
                 <li onClick={() => setName("nav-links")}>
@@ -63,7 +63,7 @@ const Header = () => {
                     }
                     className="NavLinks"
                   >
-                    SIGN-UP
+                    Signup
                   </NavLink>
                 </li>
                 <li onClick={() => setName("nav-links")}>
@@ -74,12 +74,12 @@ const Header = () => {
                     }
                     className="NavLinks"
                   >
-                    SIGN-IN
+                    Signin
                   </NavLink>
                 </li>
               </>
             )}
-            {isAuthenticated() && (
+            {/* {!isAuthenticated() && (
               <>
                 <li
                   onClick={() => setName("nav-links")}
@@ -92,17 +92,25 @@ const Header = () => {
                     }
                     className="NavLinks"
                   >
-                    SIGN-IN
+                    Signin
                   </NavLink>
-
-                  <span
+                </li>
+              </>
+            )} */}
+            {isAuthenticated() && (
+              <>
+                <li
+                  onClick={() => setName("nav-links")}
+                  style={{ cursor: "pointer" }}
+                >
+                  <a
                     className="NavLinks"
                     onClick={() => {
                       signout(() => navigate("/"));
                     }}
                   >
                     Signout
-                  </span>
+                  </a>
                 </li>
                 <li onClick={() => setName("nav-links")}>
                   {isAuthenticated().user.role === 1 && (
@@ -133,24 +141,13 @@ const Header = () => {
 
             <li onClick={() => setName("nav-links")}>
               <NavLink
-                to="/profile"
+                to="/shop"
                 style={({ isActive }) =>
                   isActive ? { color: "#7400e7" } : { color: "black" }
                 }
                 className="NavLinks"
               >
-                PROFILE
-              </NavLink>
-            </li>
-            <li onClick={() => setName("nav-links")}>
-              <NavLink
-                to="/about"
-                style={({ isActive }) =>
-                  isActive ? { color: "#7400e7" } : { color: "black" }
-                }
-                className="NavLinks"
-              >
-                ABOUT US
+                Shop
               </NavLink>
             </li>
             <li>
