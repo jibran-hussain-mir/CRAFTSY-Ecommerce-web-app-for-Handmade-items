@@ -95,6 +95,37 @@ function FilterSectionPage(props) {
   };
 
   //filteredData
+  // function filteredData() {
+  //   if (filteredResults && filteredResults.data) {
+  //     return filteredResults.data.map((product, i) => (
+  //       <Card
+  //         key={i}
+  //         img={product.photo}
+  //         title={product.name}
+  //         star="⭐"
+  //         price={product.price}
+  //         productId={product._id}
+  //       />
+  //     ));
+  //   } else if (filteredResults && filteredResults.length === 0) {
+  // return products.map((product, i) => {
+  //   console.log(product);
+  //   return (
+  //     <Card
+  //       key={i}
+  //       img={product.photo}
+  //       title={product.name}
+  //       star={4}
+  //       price={product.price}
+  //       productId={product._id}
+  //       product={product}
+  //     />
+  //   );
+  // });
+  //   } else {
+  //     return <p>Loading...</p>;
+  //   }
+  // }
   function filteredData() {
     if (filteredResults && filteredResults.data) {
       return filteredResults.data.map((product, i) => (
@@ -105,22 +136,24 @@ function FilterSectionPage(props) {
           star="⭐"
           price={product.price}
           productId={product._id}
-        />
-      ));
-    } else if (filteredResults && filteredResults.length === 0) {
-      return products.map((product, i) => (
-        <Card
-          key={i}
-          img={product.photo}
-          title={product.name}
-          star={4}
-          price={product.price}
-          productId={product._id}
           product={product}
         />
       ));
     } else {
-      return <p>Loading...</p>;
+      return products.map((product, i) => {
+        console.log(product);
+        return (
+          <Card
+            key={i}
+            img={product.photo}
+            title={product.name}
+            star={4}
+            price={product.price}
+            productId={product._id}
+            product={product}
+          />
+        );
+      });
     }
   }
 
@@ -164,8 +197,8 @@ function FilterSectionPage(props) {
     <>
       <Header />
       {/* {JSON.stringify(myFilters)}
-      <h1>Filtered Results</h1>
-      <h1>{JSON.stringify(filteredResults)}</h1> */}
+      <h1>Filtered Results</h1>*/}
+      {/* // <h1>{JSON.stringify(products)}</h1> */}
       <div className="fspage-contianer">
         <div className="rd">
           <SideBar

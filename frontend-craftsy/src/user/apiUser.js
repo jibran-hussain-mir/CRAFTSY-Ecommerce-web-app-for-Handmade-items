@@ -58,3 +58,41 @@ exports.getPurchaseHistory = async (userId, token) => {
     console.log(e.message);
   }
 };
+
+exports.forgotPassword = async (email) => {
+  try {
+    console.log("hi");
+    console.log(email);
+    const response = await fetch(`http://localhost:8000/api/reset-password`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+    return response.json();
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+exports.resetPassword = async (id, token, newPassword) => {
+  try {
+    console.log(`dkkkkkkkkkkjjjj: ${newPassword}`);
+    const response = await fetch(
+      `http://localhost:8000/api/reset-password/${id}/${token}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ newPassword }),
+      }
+    );
+    return response.json();
+  } catch (e) {
+    console.log(e);
+  }
+};

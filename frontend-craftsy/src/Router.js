@@ -23,6 +23,8 @@ import AdminPurchaseHistory from "./admin/AdminPurchaseHistory";
 import UpdateProduct from "./admin/UpdateProduct";
 import FilterSectionPage from "./core/ShopPage/FilterSectionPage";
 import ManageProduct from "./admin/ManageProduct";
+import ForgotPassword from "./user/ForgotPassword";
+import ResetPassword from "./user/ResetPassword";
 
 function Router() {
   return (
@@ -34,6 +36,12 @@ function Router() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />
           <Route path="/seller-signup" element={<SellerSignup />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route
+            path="/reset-password/:id/:token"
+            element={<ResetPassword />}
+          ></Route>
+
           <Route
             path="/singleproduct"
             element={<SingleProduct element={<SingleProduct />} />}

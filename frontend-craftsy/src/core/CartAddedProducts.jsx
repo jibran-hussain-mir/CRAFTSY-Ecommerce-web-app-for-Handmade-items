@@ -20,20 +20,79 @@ function CartAddedProducts({
   const [amount, setAmount] = useState(quantity);
 
   return (
-    <div className="added-products-container">
-      <div className="cart-product-img">
-        <img
-          src={`http://localhost:8000/api/product/photo/${productId}`}
-          alt="ok"
-          className="prdct-imgx"
-        />
-        <h3>{name}</h3>
-      </div>
-      <div className="cart-p-price">
-        <h3>Rs {price}</h3>
-      </div>
-      <div className="cart-p-Quantity">
-        <div className="cartBtn">
+    // <div className="added-products-container">
+    //   <div className="cart-product-img">
+    //     <img
+    //       src={`http://localhost:8000/api/product/photo/${productId}`}
+    //       alt="ok"
+    //       className="prdct-imgx"
+    //     />
+    //     <h3>{name}</h3>
+    //   </div>
+    //   <div className="cart-p-price">
+    //     <h3>Rs {price}</h3>
+    //   </div>
+    //   <div className="cart-p-Quantity">
+    //     <div className="cartBtn">
+    //       <div className="amountTogglle">
+    //         <button
+    //           onClick={() => {
+    //             if (amount > 1) {
+    //               setAmount(amount - 1);
+    //               setDecrease(productId);
+    //             } else {
+    //               setAmount(1);
+    //             }
+    //           }}
+    //           className="togglle-btns"
+    //         >
+    //           <FaMinus size={12} className="togglleicons" />
+    //         </button>
+    //         <div className="amt-sttyle">{amount}</div>
+    //         <button
+    //           onClick={() => {
+    //             setAmount(amount + 1);
+    //             if (amount < stock) {
+    //               setAmount(amount + 1);
+    //               setIncrease(productId);
+    //             } else {
+    //               setAmount(stock);
+    //             }
+    //           }}
+    //           className="togglle-btns"
+    //         >
+    //           <FaPlus size={12} className="togglleicons" />
+    //         </button>
+    //       </div>
+    //     </div>
+    //   </div>
+    //   <div className="cart-p-total">
+    //     <h3>{amount * price}</h3>
+    //   </div>
+    //   <div className="cart-p-delete">
+    //     <AiFillDelete
+    //     className="ai-filldelete"
+    //       onClick={() => {
+    //         removeFromCart(productId);
+    //       }}
+    //       size={32}
+    //     />
+    //   </div>
+    // </div>
+    <>
+      <tr>
+        <td data-label={"Item"}>
+          <div className="cart-product-img">
+            <img
+              src={`http://localhost:8000/api/product/photo/${productId}`}
+              alt="ok"
+              className="prdct-imgx"
+            />
+            <h3>{name}</h3>
+          </div>
+        </td>
+        <td data-label={"Price"}>{price}</td>
+        <td data-label={"Quantity"}>
           <div className="amountTogglle">
             <button
               onClick={() => {
@@ -46,7 +105,7 @@ function CartAddedProducts({
               }}
               className="togglle-btns"
             >
-              <FaMinus size={10} className="togglleicons" />
+              <FaMinus size={12} className="togglleicons" />
             </button>
             <div className="amt-sttyle">{amount}</div>
             <button
@@ -61,22 +120,24 @@ function CartAddedProducts({
               }}
               className="togglle-btns"
             >
-              <FaPlus size={10} className="togglleicons" />
+              <FaPlus size={12} className="togglleicons" />
             </button>
           </div>
-        </div>
-      </div>
-      <div className="cart-p-total">
-        <h3>{amount * price}</h3>
-      </div>
-      <div className="cart-p-delete">
-        <AiFillDelete
-          onClick={() => {
-            removeFromCart(productId);
-          }}
-        />
-      </div>
-    </div>
+        </td>
+        <td data-label={"Total Amount"}>{amount * price}</td>
+        <td data-label={"Remove"}>
+          <div className="cart-p-delete">
+            <AiFillDelete
+              className="ai-filldelete"
+              onClick={() => {
+                removeFromCart(productId);
+              }}
+              size={32}
+            />
+          </div>
+        </td>
+      </tr>
+    </>
   );
 }
 

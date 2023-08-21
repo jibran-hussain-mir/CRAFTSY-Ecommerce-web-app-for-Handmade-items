@@ -14,6 +14,7 @@ function ProductSlider(props) {
           src={`http://localhost:8000/api/category/photo/${props.productId}`}
           alt="img"
           className="image-of-card"
+          style={{ height: "45vh", width: "40vh" }}
         />
       </div>
       <div className="card-heading">{props.title}</div>

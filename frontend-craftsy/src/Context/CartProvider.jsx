@@ -18,6 +18,7 @@ const CartProvider = ({ children }) => {
   };
   const [state, dispatch] = useReducer(reducer, initialState);
   const addToCart = (id, name, price, createdBy, quantity, product_info) => {
+    console.log(quantity);
     dispatch({
       type: "ADD_TO_CART",
       payload: { id, name, price, createdBy, quantity, product_info },

@@ -120,7 +120,7 @@ const Signin = (userCredentials) => {
                   />
                 </div>
                 <div className="form-options">
-                  <a href="#">Forgot Password?</a>
+                  <a href="forgot-password">Forgot Password?</a>
                 </div>
                 <div className="form-field">
                   <button className="btn btn-signin">

@@ -2,6 +2,9 @@ const User = require("../models/user");
 const { errorHandler } = require("../helper/dbErrorHandler");
 const jwt = require("jsonwebtoken");
 const { expressjwt } = require("express-jwt");
+require("dotenv").config();
+const crypto = require("crypto");
+const { v4: uuidv4 } = require("uuid");
 
 exports.signup = async (req, res) => {
   const user = new User(req.body);
@@ -92,4 +95,42 @@ exports.isAdmin = (req, res, next) => {
     });
   }
   next();
+};
+
+exports.resetPasswordPost = async (req, res) => {
+  try {
+    const userEmail = req.body.email;
+    const user = await User.findOne({ email: userEmail });
+    if (!user) {
+      return res.status(400).json("User with this email not found");
+    }
+    const payload = {
+      _id: user._id,
+      email: user.email,
+    };
+    const secret = process.env.JWT_SECRET_KEY + user.hashed_password;
+    const token = jwt.sign(payload, secret, { expiresIn: "15m" });
+    const link = `http://localhost:3000/reset-password/${user._id}/${token}`;
+    console.log(`This is the link: ${link}`);
+    return res.json("We have sent a reset link to this email");
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+exports.resetPassword = async (req, res) => {
+  try {
+    const { id, token } = req.params;
+    const plainPassword = req.body.newPassword;
+    console.log(`dkkkkkkkkkkjjjj: ${plainPassword}`);
+    const user = await User.findById(id).exec();
+    if (!user) {
+      return res.json("No user with this Id found");
+    }
+    user.password = plainPassword; // Use the virtual setter
+    await user.save();
+    return res.json("Password changed successfully");
+  } catch (e) {
+    console.log(e);
+  }
 };

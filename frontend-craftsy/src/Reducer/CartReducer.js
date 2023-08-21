@@ -2,12 +2,13 @@ import React from "react";
 
 const CartReducer = (state, action) => {
   if (action.type === "ADD_TO_CART") {
-    console.log("subah hogayi mamu");
     const { id, name, price, createdBy, quantity, product_info } =
       action.payload;
     console.log(
       `Here is my product info details : ${JSON.stringify(product_info)}`
     );
+    console.log("subah hogayi mamu", product_info);
+
     const existing = state.cart.find((product) => product.id === id);
     if (existing) {
       const updatedCart = state.cart.map((product) => {
@@ -28,6 +29,7 @@ const CartReducer = (state, action) => {
         cart: updatedCart,
       };
     } else {
+      console.log(product_info);
       const cartProduct = {
         id,
         name,

@@ -3,9 +3,13 @@ import { CartContext } from "../../../../Context/CartProvider";
 import { useNavigate } from "react-router-dom";
 
 function Card({ img, title, star, price, productId, product }) {
+  console.log(1);
+  console.log(product);
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
   const handleClick = () => {
+    console.log(product);
+
     addToCart(
       product?._id,
       product?.name,

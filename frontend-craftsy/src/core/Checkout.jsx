@@ -23,14 +23,37 @@ const Checkout = () => {
     <div onBlur={() => setData({ ...data, error: "" })}>
       {data.clientToken !== null && total_items > 0 ? (
         <>
-          <h2>Checkout Page</h2>
+          <h2
+          style={{
+           textAlign: "center",
+           fontSize: "2rem",
+           letterSpacing: "2px"
+          }}
+          >Checkout Page</h2>
           {showError()}
-          <div>
-            <label>Delivery Address</label>
+          <div 
+           style={{
+           display:"flex",
+           flexDirection:"column",
+           alignItems:"flex-start",
+           justifyContent:"center"
+           }}
+          >
+            <label
+             style={{
+             padding:"2rem 0rem",
+             marginLeft:"6px",
+             fontSize:"1.6rem"
+              }}
+            >Delivery Address</label>
             <textarea
               onChange={handleAddressChange}
               value={data.address}
               placeholder="Enter the delivery address"
+              style={{
+               width:"90%",
+               background:"#eee"
+                 }}
             />
           </div>
           <DropIn
@@ -43,11 +66,13 @@ const Checkout = () => {
             onClick={buy}
             style={{
               border: "none",
+              
               backgroundColor: "#5cb85c",
               color: "white",
               height: "3.5rem",
               width: "100%",
               fontSize: "1.5rem",
+
             }}
           >
             Pay Now
