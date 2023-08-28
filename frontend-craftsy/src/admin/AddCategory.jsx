@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./css/AddCategory.css";
 import { isAuthenticated } from "../auth";
 import { createCategory } from "./adminapi";
+import SuccessMessage from "../Notifications/SuccessMessage";
+import ErrorMessage from "../Notifications/ErrorMessage";
 const AddCategory = () => {
   const [values, setValues] = useState({
     name: "",
@@ -20,7 +22,8 @@ const AddCategory = () => {
     const target = event.target.name;
     const value =
       target === "photo" ? event.target.files[0] : event.target.value;
-    setValues({ ...values, [target]: value });
+    setValues({ ...values, error: false, success: false, [target]: value });
+
     formData.set([target], value);
   };
 
@@ -31,27 +34,35 @@ const AddCategory = () => {
       .then((data) => {
         if (data?.error) {
           console.log(data.error);
-          setValues({ ...values, error: data.error });
+          setValues({ ...values, success: false, error: data.error });
         } else {
-          setValues({ ...values, error: "", success: true });
+          setValues({ ...values, error: false, success: true });
         }
       })
       .catch((error) => console.log(error));
   };
 
+  const successMessage = () => {
+    if (success) {
+      return (
+        <div>
+          <SuccessMessage message="Category Added Successfully" />
+        </div>
+      );
+    }
+  };
+
+  const errorMessage = () => {
+    if (error) {
+      return (
+        <div>
+          <ErrorMessage message={error} />
+        </div>
+      );
+    }
+  };
+
   const newCategoryForm = () => (
-    // <form onSubmit={handleSubmit}>
-    //   <label htmlFor="categroy">Name</label>
-    //   <input
-    //     type="text"
-    //     name="name"
-    //     value={name}
-    //     onChange={handleChange}
-    //     id="category"
-    //   />
-    //   <input type="file" name="photo" onChange={handleChange} />
-    //   <button>Add Category</button>
-    // </form>
     <form className="category-form" onSubmit={handleSubmit}>
       <label className="category-label" htmlFor="category">
         Category Name
@@ -79,8 +90,8 @@ const AddCategory = () => {
   );
   return (
     <>
-      <h1>{error}</h1>
-      <h1>{name}</h1>
+      {errorMessage()}
+      {successMessage()}
       {newCategoryForm()}
     </>
   );

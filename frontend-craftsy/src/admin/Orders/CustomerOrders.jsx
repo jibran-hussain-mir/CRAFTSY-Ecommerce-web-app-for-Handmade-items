@@ -80,8 +80,10 @@ const Order = () => {
                     orderId={order.orderId}
                     productId={order.productId}
                     refresh={handleStatus}
+                    customerEmail={order.userEmail}
                   />
                 </td>
+                {console.log(orders)}
               </tr>
             ))}
           </tbody>

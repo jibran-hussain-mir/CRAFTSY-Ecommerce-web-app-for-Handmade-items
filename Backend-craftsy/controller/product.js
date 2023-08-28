@@ -4,6 +4,7 @@ const { IncomingForm } = require("formidable");
 const fs = require("fs");
 const { ResultWithContext } = require("express-validator/src/chain");
 const product = require("../models/product");
+const { updateProduct } = require("../../frontend-craftsy/src/admin/adminapi");
 
 exports.create = (req, res) => {
   console.log(`Here is the creators id :${req.profile._id}`);
@@ -77,50 +78,36 @@ exports.remove = async (req, res) => {
     .json({ product, message: `Product has been deleted successfully` });
 };
 
-exports.update = (req, res) => {
-  const form = new IncomingForm();
-  form.keepExtentions = true;
-  form.parse(req, async (err, fields, files) => {
-    if (err) {
-      res.status(401).json({
-        error: "Image could not be uploaded",
-      });
-    }
+exports.update = async (req, res) => {
+  try {
+    const product = req.product;
 
-    const { name, description, price, category, quantity, shipping } = fields;
+    const { name, description, price, category, shipping, quantity } = req.body;
 
-    if (
-      !name ||
-      !description ||
-      !price ||
-      !category ||
-      !quantity ||
-      !shipping
-    ) {
-      return res.status(400).json({ error: "All fields are required" });
-    }
+    product.name = name;
+    product.description = description;
+    product.price = price;
+    product.category = category;
+    product.shipping = shipping;
+    product.quantity = quantity;
 
-    if (files.photo) {
-      if (files.photo.size > 1048576) {
+    if (req.file) {
+      if (req.file.size > 1048576) {
         return res.status(400).json({
           error: "Image should be less than 1mb in size",
         });
       }
-
-      product.photo.data = fs.readFileSync(files.photo.filepath); // change path to filepath
+      product.photo.data = fs.readFileSync(req.file.path);
+      product.photo.contentType = req.file.mimetype;
     }
-    const product = await Product.updateOne(
-      { _id: req.product._id.toString() },
-      {
-        $set: {
-          fields,
-        },
-      }
-    );
-    product.photo = undefined;
-    console.log(product);
-    res.status(201).json({ product });
-  });
+
+    const updatedProduct = await product.save();
+    res.json(updatedProduct);
+  } catch (error) {
+    res.status(400).json({
+      error: error.message,
+    });
+  }
 };
 
 exports.list = async (req, res) => {

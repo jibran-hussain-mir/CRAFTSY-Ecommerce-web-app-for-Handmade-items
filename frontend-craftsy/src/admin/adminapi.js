@@ -18,6 +18,7 @@ exports.createCategory = async (user_id, token, category) => {
 
 exports.createProduct = async (user_id, token, product) => {
   try {
+    console.log(product);
     const response = await fetch(
       `http://localhost:8000/api/product/create/${user_id}`,
       {
@@ -109,6 +110,7 @@ exports.getProduct = async (productId) => {
 };
 exports.updateProduct = async (productId, userId, token, product) => {
   try {
+    console.log("Hi Jibran, I am in the admin api", product);
     console.log(product);
     const response = await fetch(
       `http://localhost:8000/api/product/${productId}/${userId}`,
@@ -119,7 +121,7 @@ exports.updateProduct = async (productId, userId, token, product) => {
           Accept: "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: product,
+        body: JSON.stringify(product),
       }
     );
     return response.json();
@@ -209,5 +211,35 @@ exports.getOrderStatus = async (userId, token) => {
     return statusValues.json();
   } catch (e) {
     console.log(e);
+  }
+};
+
+exports.generateOTP = async () => {
+  try {
+    const response = await fetch("http://localhost:8000/api/generateOTP", {
+      method: "GET",
+      headers: {},
+    });
+    return response.json();
+  } catch (e) {
+    return e.message;
+  }
+};
+
+exports.sendOTP = async (to, subject, message) => {
+  try {
+    console.log("qwertyuiopoiuytrewertyuio");
+    console.log(to, subject, message);
+    const response = await fetch(`http://localhost:8000/api/sendOTP`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ to, subject, message }),
+    });
+    return response;
+  } catch (error) {
+    return console.log(error);
   }
 };

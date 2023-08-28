@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { isAuthenticated } from "../auth";
 import { createProduct, fetchCategories } from "./adminapi";
 import "./css/AddProduct.css";
-
+import SuccessMessage from "../Notifications/SuccessMessage";
+import ErrorMessage from "../Notifications/ErrorMessage";
 const AddProduct = () => {
   const { user, token } = isAuthenticated();
   const [values, setValues] = useState({
@@ -40,7 +41,7 @@ const AddProduct = () => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
-        setValues({ ...values, categories: data });
+        setValues({ ...values, error: false, categories: data });
       }
     });
   };
@@ -54,12 +55,12 @@ const AddProduct = () => {
     const value =
       target === "photo" ? event.target.files[0] : event.target.value;
     formData.set(target, value);
-    setValues({ ...values, [target]: value });
+    setValues({ ...values, error: false, [target]: value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setValues({ ...values, error: " ", loading: true });
+    setValues({ ...values, error: false, loading: true });
     createProduct(user._id, token, formData)
       .then((data) => {
         if (data.error) {
@@ -67,10 +68,16 @@ const AddProduct = () => {
         } else {
           console.log(data);
           setValues({
-            ...values,
+            name: "",
+            description: "",
+            price: "",
+            category: "",
+            shipping: "",
+            quantity: "",
+            photo: " ",
             error: "",
             loading: false,
-            createdProduct: data.name,
+            createdProduct: true,
           });
         }
       })
@@ -83,113 +90,30 @@ const AddProduct = () => {
     }
   };
 
-  const showError = () => (
-    <div style={{ display: error ? "" : "none" }}>{error}</div>
-  );
+  const showError = () => {
+    if (error) {
+      return (
+        <div>
+          <ErrorMessage message={error} />
+        </div>
+      );
+    }
+  };
 
   const showSuccess = () => {
     if (createdProduct) {
-      return <h2>{createProduct}</h2>;
+      return (
+        <div>
+          {" "}
+          <SuccessMessage message="Product Created Successfully" />
+        </div>
+      );
     }
   };
   return (
-    // <>
-    //   {/* new form */}
-    //   <div className="formsx-container">
-    //     <div className="formsx-title">Add Product</div>
-    //     <div className="content">
-    //       <form onSubmit={handleSubmit}>
-    //         <div className="user-details">
-    //           <div className="input-boxx">
-    //             <span className="details">Product Name</span>
-    //             <input
-    //               type="text"
-    //               name="name"
-    //               value={name}
-    //               onChange={handleChange}
-    //               placeholder="Product Name"
-    //             />
-    //           </div>
-
-    //           <div className="input-box">
-    //             <span className="details">Description of Product</span>
-    //             <textarea
-    //               type="text"
-    //               name="description"
-    //               value={description}
-    //               onChange={handleChange}
-    //               placeholder="Description"
-    //             />
-    //           </div>
-
-    //           <div className="input-box">
-    //             <span className="details">Price</span>
-    //             <input
-    //               type="number"
-    //               name="price"
-    //               value={price}
-    //               onChange={handleChange}
-    //               placeholder="Price"
-    //             />
-    //           </div>
-
-    //           <div className="input-box">
-    //             <span className="details">Select Category</span>
-    //             <select
-    //               name="category"
-    //               value={category}
-    //               onChange={handleChange}
-    //             >
-    //               <option disabled>Please Select</option>
-    //               {categories &&
-    //                 categories.map((category) => {
-    //                   return (
-    //                     <option value={category._id} key={category._id}>
-    //                       {category.name}
-    //                     </option>
-    //                   );
-    //                 })}
-    //             </select>
-    //           </div>
-
-    //           <div className="input-box">
-    //             <span className="details">Shipping</span>
-    //             <select
-    //               name="shipping"
-    //               value={shipping}
-    //               onChange={handleChange}
-    //             >
-    //               <option disabled defaultValue>
-    //                 --Select--
-    //               </option>
-    //               <option>--Select--</option>
-    //               <option value="1">Yes</option>
-    //               <option value="0">No</option>
-    //             </select>
-    //           </div>
-
-    //           <div className="input-box">
-    //             <span className="details">Quantity</span>
-    //             <input
-    //               type="number"
-    //               name="quantity"
-    //               value={quantity}
-    //               onChange={handleChange}
-    //               placeholder="Quantity"
-    //             />
-    //           </div>
-    //           <div className="input-box">
-    //             <span className="details">Price</span>
-    //             <input type="file" name="photo" onChange={handleChange} />
-    //           </div>
-    //           <button className="submitx-button">Submit</button>
-    //         </div>
-    //       </form>
-    //     </div>
-    //   </div>
-    // </>
     <>
-      {/* new form */}
+      {showError()}
+      {showSuccess()}
       <div className="custom-form-container">
         {/* <div className="custom-form-title">Add Product</div> */}
         <div className="custom-content">

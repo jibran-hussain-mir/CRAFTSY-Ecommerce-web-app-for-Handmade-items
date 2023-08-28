@@ -29,7 +29,7 @@ const Header = () => {
           </NavLink>
         </div>
         {/* Search Bar */}
-        <div className="sb-cont hidden">
+        {/* <div className="sb-cont hidden">
           <input
             type="text"
             className="searchbar"
@@ -38,7 +38,7 @@ const Header = () => {
           <button className="search-btn">
             <BiSearch size={23} />
           </button>
-        </div>
+        </div> */}
         {/* Links */}
         <nav className={name}>
           <ul className="nav-ul">

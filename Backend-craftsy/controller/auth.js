@@ -5,7 +5,8 @@ const { expressjwt } = require("express-jwt");
 require("dotenv").config();
 const crypto = require("crypto");
 const { v4: uuidv4 } = require("uuid");
-
+const { sendEmail } = require("../controller/user");
+require("dotenv").config();
 exports.signup = async (req, res) => {
   const user = new User(req.body);
   try {
@@ -111,7 +112,11 @@ exports.resetPasswordPost = async (req, res) => {
     const secret = process.env.JWT_SECRET_KEY + user.hashed_password;
     const token = jwt.sign(payload, secret, { expiresIn: "15m" });
     const link = `http://localhost:3000/reset-password/${user._id}/${token}`;
+    message = `<h1>Click on this link to Reset your password</h1><br>${link}`;
+    await sendEmail(user.email, "Reset Password Link", message);
+
     console.log(`This is the link: ${link}`);
+
     return res.json("We have sent a reset link to this email");
   } catch (e) {
     console.log(e);
@@ -120,17 +125,26 @@ exports.resetPasswordPost = async (req, res) => {
 
 exports.resetPassword = async (req, res) => {
   try {
+    console.log(process.env.JWT_SECRET_KEY);
     const { id, token } = req.params;
-    const plainPassword = req.body.newPassword;
-    console.log(`dkkkkkkkkkkjjjj: ${plainPassword}`);
+
     const user = await User.findById(id).exec();
     if (!user) {
       return res.json("No user with this Id found");
     }
+    const verify = jwt.verify(
+      token,
+      process.env.JWT_SECRET_KEY + user.hashed_password
+    );
+    console.log(verify);
+    const plainPassword = req.body.newPassword;
+    console.log(`dkkkkkkkkkkjjjj: ${plainPassword}`);
     user.password = plainPassword; // Use the virtual setter
     await user.save();
     return res.json("Password changed successfully");
   } catch (e) {
-    console.log(e);
+    console.log(e.message);
+    console.log(e.message);
+    res.status(400).json({ error: e.message });
   }
 };

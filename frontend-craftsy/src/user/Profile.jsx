@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { read, update, updateUser } from "./apiUser";
 import { isAuthenticated } from "../auth";
 import "./css/Profile.css";
+import SuccessMessage from "../Notifications/SuccessMessage";
+import ErrorMessage from "../Notifications/ErrorMessage";
 
 const Profile = () => {
   const [values, setValues] = useState({
@@ -33,14 +35,19 @@ const Profile = () => {
       .catch((e) => console.log(e));
   };
   const handleChange = (name) => (e) => {
-    setValues({ ...values, error: false, [name]: e.target.value });
+    setValues({
+      ...values,
+      success: false,
+      error: false,
+      [name]: e.target.value,
+    });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(`Data Subitted Successfully`);
     update(userId, token, { name, email, password }).then((data) => {
       if (data.error) {
-        console.log(data);
+        setValues({ ...values, error: data.error, success: false });
       } else {
         updateUser(data, () => {
           setValues({
@@ -59,13 +66,34 @@ const Profile = () => {
   useEffect(() => {
     getUserDetails();
   }, []);
-  useEffect(() => {
+  // useEffect(() => {
+  //   if (success) {
+  //     setSuccessMessage("Profile Updated Successfully");
+  //   }
+  // }, [success, navigate]);
+
+  const showSuccess = () => {
     if (success) {
-      setSuccessMessage("Profile Updated Successfully");
+      return (
+        <div>
+          <SuccessMessage message="Profile Updated Successfully" />
+        </div>
+      );
     }
-  }, [success, navigate]);
+  };
+  const showError = () => {
+    if (error) {
+      return (
+        <div>
+          <ErrorMessage message={error} />
+        </div>
+      );
+    }
+  };
   return (
     <div className="profile-x-contianer">
+      {showSuccess()}
+      {showError()}
       <h1>Profile Section</h1>
       {/* {JSON.stringify(values)} */}
       {successMessage && (

@@ -31,7 +31,9 @@ exports.create = async (req, res) => {
     }
     category.save((err, result) => {
       if (err) {
-        return res.status(400).json({ error: err.message });
+        return res
+          .status(400)
+          .json({ error: "Category with this name already exists" });
       }
       return res.status(201).json({ result });
     });

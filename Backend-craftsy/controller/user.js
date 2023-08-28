@@ -1,6 +1,9 @@
 const User = require("../models/user");
 const Product = require("../models/product");
 const { Order } = require("../models/order");
+const mg = require("mailgun-js");
+const otpGenerator = require("otp-generator");
+require("dotenv").config();
 
 exports.userById = async (req, res, next, userId) => {
   try {
@@ -24,6 +27,10 @@ exports.read = (req, res) => {
 
 exports.update = async (req, res) => {
   try {
+    const { name, email, password } = req.body;
+    if (!name || !email || !password) {
+      return res.status(400).json({ error: "All fields are Mandatory" });
+    }
     const user = await User.findOneAndUpdate(
       { _id: req.profile._id },
       {
@@ -89,11 +96,15 @@ exports.decreaseQuantityAndIncreaseSold = async (req, res, next) => {
 exports.listOrders = async (req, res) => {
   try {
     const orders = await Order.find()
-      .populate("user", "_id name")
+      .populate("user", "_id name email")
       .sort("-createdAt")
       .exec();
 
     const updatedProducts = orders.flatMap((order) => {
+      {
+        console.log(order);
+      }
+
       return order.products
         .filter((singleProduct) => {
           return (
@@ -104,6 +115,7 @@ exports.listOrders = async (req, res) => {
           productId: matchingProduct._id,
           userId: order.user._id,
           userName: order.user.name,
+          userEmail: order.user.email,
           name: matchingProduct.name,
           price: matchingProduct.price,
           quantity: matchingProduct.quantity,
@@ -130,5 +142,63 @@ exports.purchaseHistory = async (req, res) => {
     return res.json(orders);
   } catch (e) {
     return res.status(400).json({ error: e });
+  }
+};
+
+exports.sendEmail = async (to, subject, message) => {
+  try {
+    const mailgun = () =>
+      mg({
+        apiKey: process.env.MAILGUN_API_KEY,
+        domain: process.env.MAILGUN_DOMAIN,
+      });
+    emailInfo = {
+      from: '"Jibran" <mirjibranhussain@gmail.com>',
+      to: to,
+      subject: subject,
+      html: message,
+    };
+    mailgun().messages().send(emailInfo);
+    console.log("Email sent Succesfully");
+  } catch (e) {
+    console.log(`The error is : ${e.message}`);
+  }
+};
+
+exports.generateOTP = async (req, res) => {
+  try {
+    const OTP = otpGenerator.generate(6, {
+      digits: true,
+      upperCaseAlphabets: false,
+      lowerCaseAlphabets: false,
+      specialChars: false,
+    });
+    console.log(OTP);
+    res.json({ otp: OTP });
+  } catch (e) {
+    console.log("Error in user.js");
+  }
+};
+
+exports.sendOTP = async (req, res) => {
+  try {
+    console.log(`bye world`);
+    const { to, subject, message } = req.body;
+    const mailgun = () =>
+      mg({
+        apiKey: process.env.MAILGUN_API_KEY,
+        domain: process.env.MAILGUN_DOMAIN,
+      });
+    emailInfo = {
+      from: '"Jibran" <mirjibranhussain@gmail.com>',
+      to: to,
+      subject: subject,
+      html: message,
+    };
+    mailgun().messages().send(emailInfo);
+    console.log("OTP sent Succesfully");
+    res.json({ message: "OTP send successfully" });
+  } catch (e) {
+    console.log(`The error is : ${e.message}`);
   }
 };
