@@ -37,7 +37,7 @@ exports.createProduct = async (user_id, token, product) => {
 
 exports.fetchCategories = async () => {
   try {
-    const response = await fetch("http://localhost:8000/categories", {
+    const response = await fetch("http://localhost:8000/api/categories", {
       method: "GET",
       headers: {},
     });
