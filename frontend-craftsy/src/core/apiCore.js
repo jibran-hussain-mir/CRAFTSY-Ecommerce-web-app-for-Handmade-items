@@ -1,7 +1,7 @@
-exports.getProducts = async (sortBy) => {
+export async function getProducts(sortBy) {
   try {
     const response = await fetch(
-      `http://localhost:8000/api/products?sortBy=sold&order=desc&limit=12`,
+      `${process.env.REACT_APP_API_URL}/products?sortBy=sold&order=desc&limit=12`,
       {
         method: "POST",
       }
@@ -10,23 +10,26 @@ exports.getProducts = async (sortBy) => {
   } catch (e) {
     return console.log(e);
   }
-};
+}
 
-exports.fetchCategories = async () => {
+export async function fetchCategories() {
   try {
-    const response = await fetch(`http://localhost:8000/api/categories`, {
-      method: "GET",
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/categories`,
+      {
+        method: "GET",
+      }
+    );
     return response.json();
   } catch (e) {
     console.log(e);
   }
-};
+}
 
-exports.getClientToken = async (userId, token) => {
+export async function getClientToken(userId, token) {
   try {
     const response = await fetch(
-      `http://localhost:8000/api/braintree/getToken/${userId}`,
+      `${process.env.REACT_APP_API_URL}/braintree/getToken/${userId}`,
       {
         method: "GET",
         headers: {
@@ -40,12 +43,12 @@ exports.getClientToken = async (userId, token) => {
   } catch (error) {
     console.log(error);
   }
-};
+}
 
-exports.processPayment = async (userId, token, paymentData) => {
+export async function processPayment(userId, token, paymentData) {
   try {
     const response = await fetch(
-      `http://localhost:8000/api/braintree/payment/${userId}`,
+      `${process.env.REACT_APP_API_URL}/braintree/payment/${userId}`,
       {
         method: "POST",
         headers: {
@@ -68,13 +71,13 @@ exports.processPayment = async (userId, token, paymentData) => {
   } catch (error) {
     console.error(error);
   }
-};
+}
 
-exports.createOrder = async (userId, token, orderedProducts) => {
+export async function createOrder(userId, token, orderedProducts) {
   try {
     console.log(`Bye world`, orderedProducts);
     const response = await fetch(
-      `http://localhost:8000/api/order/create/${userId}`,
+      `${process.env.REACT_APP_API_URL}/order/create/${userId}`,
       {
         method: "POST",
         headers: {
@@ -89,9 +92,9 @@ exports.createOrder = async (userId, token, orderedProducts) => {
   } catch (e) {
     console.log(e);
   }
-};
+}
 
-exports.getFilteredProducts = async (skip, limit, filters = {}) => {
+export async function getFilteredProducts(skip, limit, filters = {}) {
   try {
     const data = {
       limit,
@@ -99,7 +102,7 @@ exports.getFilteredProducts = async (skip, limit, filters = {}) => {
       filters,
     };
     const response = await fetch(
-      `http://localhost:8000/api/products/by/search`,
+      `${process.env.REACT_APP_API_URL}/products/by/search`,
       {
         method: "POST",
         headers: {
@@ -112,4 +115,4 @@ exports.getFilteredProducts = async (skip, limit, filters = {}) => {
   } catch (error) {
     return console.log(error);
   }
-};
+}

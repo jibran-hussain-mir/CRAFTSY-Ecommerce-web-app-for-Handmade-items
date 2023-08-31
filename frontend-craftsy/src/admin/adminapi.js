@@ -1,7 +1,7 @@
-exports.createCategory = async (user_id, token, category) => {
+export async function createCategory(user_id, token, category) {
   try {
     const response = await fetch(
-      `http://localhost:8000/api/category/create/${user_id}`,
+      `${process.env.REACT_APP_API_URL}/category/create/${user_id}`,
       {
         method: "POST",
         headers: {
@@ -14,13 +14,13 @@ exports.createCategory = async (user_id, token, category) => {
   } catch (error) {
     return console.log(error);
   }
-};
+}
 
-exports.createProduct = async (user_id, token, product) => {
+export async function createProduct(user_id, token, product) {
   try {
     console.log(product);
     const response = await fetch(
-      `http://localhost:8000/api/product/create/${user_id}`,
+      `${process.env.REACT_APP_API_URL}/product/create/${user_id}`,
       {
         method: "POST",
         headers: {
@@ -33,24 +33,27 @@ exports.createProduct = async (user_id, token, product) => {
   } catch (error) {
     return console.log(error);
   }
-};
+}
 
-exports.fetchCategories = async () => {
+export async function fetchCategories() {
   try {
-    const response = await fetch("http://localhost:8000/api/categories", {
-      method: "GET",
-      headers: {},
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/categories`,
+      {
+        method: "GET",
+        headers: {},
+      }
+    );
     return response.json();
   } catch (e) {
     return console.log(e);
   }
-};
+}
 
-exports.listOrders = async (userId, token) => {
+export async function listOrders(userId, token) {
   try {
     const orders = await fetch(
-      `http://localhost:8000/api/order/list/${userId}`,
+      `${process.env.REACT_APP_API_URL}/order/list/${userId}`,
       {
         method: "GET",
         headers: {
@@ -65,23 +68,23 @@ exports.listOrders = async (userId, token) => {
     console.log(e);
     return e;
   }
-};
+}
 
-exports.getProducts = async () => {
+export async function getProducts() {
   try {
-    const response = await fetch(`http://localhost:8000/api/products`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/products`, {
       method: "GET",
     });
     return response.json();
   } catch (e) {
     return console.log(e);
   }
-};
+}
 
-exports.deleteProduct = async (productId, userId, token) => {
+export async function deleteProduct(productId, userId, token) {
   try {
     const response = await fetch(
-      `http://localhost:8000/api/product/${productId}/${userId}`,
+      `${process.env.REACT_APP_API_URL}/product/${productId}/${userId}`,
       {
         method: "DELETE",
         headers: {
@@ -95,25 +98,25 @@ exports.deleteProduct = async (productId, userId, token) => {
   } catch (e) {
     console.log(e);
   }
-};
+}
 
-exports.getProduct = async (productId) => {
+export async function getProduct(productId) {
   try {
     const response = await fetch(
-      `http://localhost:8000/api/product/${productId}`,
+      `${process.env.REACT_APP_API_URL}/product/${productId}`,
       {
         method: "GET",
       }
     );
     return response.json();
   } catch (e) {}
-};
-exports.updateProduct = async (productId, userId, token, product) => {
+}
+export async function updateProduct(productId, userId, token, product) {
   try {
     console.log("Hi Jibran, I am in the admin api", product);
     console.log(product);
     const response = await fetch(
-      `http://localhost:8000/api/product/${productId}/${userId}`,
+      `${process.env.REACT_APP_API_URL}/product/${productId}/${userId}`,
       {
         method: "PUT",
         headers: {
@@ -128,12 +131,12 @@ exports.updateProduct = async (productId, userId, token, product) => {
   } catch (e) {
     console.log(e);
   }
-};
+}
 // Fetch all products of a particular admin
-exports.listProducts = async (userId, token) => {
+export async function listProducts(userId, token) {
   try {
     const products = await fetch(
-      `http://localhost:8000/api/list-products/${userId}`,
+      `${process.env.REACT_APP_API_URL}/list-products/${userId}`,
       {
         method: "GET",
         headers: {
@@ -147,12 +150,12 @@ exports.listProducts = async (userId, token) => {
   } catch (e) {
     console.log(e);
   }
-};
+}
 
-exports.getStatusValues = async (userId, token) => {
+export async function getStatusValues(userId, token) {
   try {
     const statusValues = await fetch(
-      `http://localhost:8000/api/order/status-values/${userId}`,
+      `${process.env.REACT_APP_API_URL}/order/status-values/${userId}`,
       {
         method: "GET",
         headers: {
@@ -166,19 +169,19 @@ exports.getStatusValues = async (userId, token) => {
   } catch (e) {
     console.log(e);
   }
-};
+}
 
-exports.updateOrderStatus = async (
+export async function updateOrderStatus(
   userId,
   token,
   orderId,
   productId,
   status
-) => {
+) {
   try {
     console.log(productId);
     const statusValues = await fetch(
-      `http://localhost:8000/api/order/${orderId}/status/${userId}`,
+      `${process.env.REACT_APP_API_URL}/order/${orderId}/status/${userId}`,
       {
         method: "PUT",
         headers: {
@@ -193,12 +196,12 @@ exports.updateOrderStatus = async (
   } catch (e) {
     console.log(e);
   }
-};
+}
 
-exports.getOrderStatus = async (userId, token) => {
+export async function getOrderStatus(userId, token) {
   try {
     const statusValues = await fetch(
-      `http://localhost:8000/api/order/status-values/${userId}`,
+      `${process.env.REACT_APP_API_URL}/order/status-values/${userId}`,
       {
         method: "GET",
         headers: {
@@ -212,25 +215,28 @@ exports.getOrderStatus = async (userId, token) => {
   } catch (e) {
     console.log(e);
   }
-};
+}
 
-exports.generateOTP = async () => {
+export async function generateOTP() {
   try {
-    const response = await fetch("http://localhost:8000/api/generateOTP", {
-      method: "GET",
-      headers: {},
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/generateOTP`,
+      {
+        method: "GET",
+        headers: {},
+      }
+    );
     return response.json();
   } catch (e) {
     return e.message;
   }
-};
+}
 
-exports.sendOTP = async (to, subject, message) => {
+export async function sendOTP(to, subject, message) {
   try {
     console.log("qwertyuiopoiuytrewertyuio");
     console.log(to, subject, message);
-    const response = await fetch(`http://localhost:8000/api/sendOTP`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/sendOTP`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -242,4 +248,4 @@ exports.sendOTP = async (to, subject, message) => {
   } catch (error) {
     return console.log(error);
   }
-};
+}

@@ -12,8 +12,8 @@ import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import queryString from "query-string";
 import { useContext } from "react";
-import { ProductContext } from "./Context/ProductProvider";
-import { CartContext } from "./Context/CartProvider";
+import { ProductContext } from "./Context/ProductProvider.js";
+import { CartContext } from "./Context/CartProvider.jsx";
 
 const SingleProduct = () => {
   const location = useLocation();
@@ -37,7 +37,7 @@ const SingleProduct = () => {
   const setDecrease = () => {
     amount > 1 ? setAmount(amount - 1) : setAmount(1);
   };
-  const imageURL = `http://localhost:8000/api/product/photo/${product?._id}`;
+  const imageURL = `${process.env.REACT_APP_API_URL}/product/photo/${product?._id}`;
 
   useEffect(() => {
     if (product);

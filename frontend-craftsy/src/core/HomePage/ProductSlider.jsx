@@ -11,7 +11,7 @@ function ProductSlider(props) {
     <div className="categories-card">
       <div className="image-cards">
         <img
-          src={`http://localhost:8000/api/category/photo/${props.productId}`}
+          src={`${process.env.REACT_APP_API_URL}/category/photo/${props.productId}`}
           alt="img"
           className="image-of-card"
           style={{ height: "45vh", width: "40vh" }}

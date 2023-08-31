@@ -25,7 +25,7 @@ function Card({ img, title, star, price, productId, product }) {
     <>
       <section className="f-card">
         <img
-          src={`http://localhost:8000/api/product/photo/${productId}`}
+          src={`${process.env.REACT_APP_API_URL}/product/photo/${productId}`}
           alt={title}
           className="f-card-img"
         />

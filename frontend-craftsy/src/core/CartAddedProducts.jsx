@@ -23,7 +23,7 @@ function CartAddedProducts({
     // <div className="added-products-container">
     //   <div className="cart-product-img">
     //     <img
-    //       src={`http://localhost:8000/api/product/photo/${productId}`}
+    //       src={`${process.env.REACT_APP_API_URL}/product/photo/${productId}`}
     //       alt="ok"
     //       className="prdct-imgx"
     //     />
@@ -84,7 +84,7 @@ function CartAddedProducts({
         <td data-label={"Item"}>
           <div className="cart-product-img">
             <img
-              src={`http://localhost:8000/api/product/photo/${productId}`}
+              src={`${process.env.REACT_APP_API_URL}/product/photo/${productId}`}
               alt="ok"
               className="prdct-imgx"
             />

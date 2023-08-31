@@ -7,7 +7,7 @@ function BestSellingProducts(props) {
   const handleClick = () => {
     navigate(`singleproduct?id=${props.productId}`);
   };
-  const imgUrl = `http://localhost:8000/api/product/photo/${props.productId}`;
+  const imgUrl = `${process.env.REACT_APP_API_URL}/product/photo/${props.productId}`;
   return (
     <div
       className="card"

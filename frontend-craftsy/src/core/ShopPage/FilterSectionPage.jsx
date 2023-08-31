@@ -171,7 +171,7 @@ function FilterSectionPage(props) {
   const getAllProducts = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/products?limit=12"
+        "${process.env.REACT_APP_API_URL}/products?limit=12"
       );
       console.log(response);
       const { products } = response.data;

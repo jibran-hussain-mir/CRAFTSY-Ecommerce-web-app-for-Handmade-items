@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { createContext, useReducer } from "react";
 import axios from "axios";
-import reducer from "../Reducer/SingleProductReducer";
+import reducer from "../Reducer/SingleProductReducer.js";
 
 const ProductContext = createContext();
 
@@ -19,7 +19,7 @@ const ProductProvider = ({ children }) => {
     dispatch({ type: "SET_SINGLE_LOADING" });
     try {
       const singleProduct = await axios.get(
-        `http://localhost:8000/api/product/${productId}`
+        `${process.env.REACT_APP_API_URL}/product/${productId}`
       );
       const data = await singleProduct.data;
       console.log(data);

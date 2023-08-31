@@ -1,10 +1,6 @@
 const Product = require("../models/product");
-const formidable = require("formidable");
 const { IncomingForm } = require("formidable");
 const fs = require("fs");
-const { ResultWithContext } = require("express-validator/src/chain");
-const product = require("../models/product");
-const { updateProduct } = require("../../frontend-craftsy/src/admin/adminapi");
 
 exports.create = (req, res) => {
   console.log(`Here is the creators id :${req.profile._id}`);
