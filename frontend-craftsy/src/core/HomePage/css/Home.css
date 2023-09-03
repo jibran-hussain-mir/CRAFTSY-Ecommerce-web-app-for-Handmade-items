@@ -132,7 +132,7 @@
 .cate-heading {
   font-family: "Inter", sans-serif;
   text-align: center;
-  font-size: 6rem;
+  font-size: 3.5rem;
   letter-spacing: 1px;
   font-weight: 900;
   margin: 0 1rem;
@@ -184,15 +184,16 @@
   font-family: "roboto", sans-serif;
   display: block;
   text-align: center;
-  font-size: 8rem;
+  font-size: 3rem;
+  letter-spacing: 2px;
 }
 
 .aboutus-section {
-  background-image: url("../../../assets/img1.jpg");
+  background-image: url("../../../assets/heroimage2.jpg");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
-  height: 95vh;
+  height: 85vh;
   margin: 6rem 0 6rem 0;
   display: flex;
   align-items: center;
@@ -208,12 +209,12 @@
 .aboutus-btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 2rem 8rem;
+  padding: 1.5rem 4rem;
   display: inline-block;
   border-radius: 100px;
   transition: all 0.2s;
   font-family: "roboto", sans-serif;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .aboutus-btn:hover {
@@ -323,7 +324,7 @@
 .section-heading {
   text-align: center;
   font-family: "inter", sans-serif;
-  font-size: 5rem;
+  font-size: 3rem;
   padding-bottom: 4rem;
   font-weight: 900;
   letter-spacing: 1px;
@@ -380,13 +381,13 @@
 
 .testimonial-heading {
   text-align: center;
-  font-family: "roboto", sans-serif;
-  font-size: 5rem;
+  font-family: "inter", sans-serif;
+  font-size: 3rem;
   text-transform: uppercase;
   font-weight: 900;
   margin-bottom: 8rem;
   padding-top: 3rem;
-  letter-spacing: 6px;
+  letter-spacing: 1px;
 }
 
 .testmonial-section {

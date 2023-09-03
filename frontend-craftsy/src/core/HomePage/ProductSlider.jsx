@@ -1,6 +1,5 @@
 import React from "react";
 import "./css/ProductSlider.css";
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function ProductSlider(props) {
@@ -14,9 +13,9 @@ function ProductSlider(props) {
           src={`${process.env.REACT_APP_API_URL}/category/photo/${props.productId}`}
           alt="img"
           className="image-of-card"
-          style={{ height: "45vh", width: "40vh" }}
         />
       </div>
+      <hr className="card-kiline" />
       <div className="card-heading">{props.title}</div>
       <div className="card-pirce">
         <h3>{props.price}</h3>

@@ -52,10 +52,15 @@ const AddProduct = () => {
 
   const handleChange = (event) => {
     const target = event.target.name;
-    const value =
-      target === "photo" ? event.target.files[0] : event.target.value;
-    formData.set(target, value);
-    setValues({ ...values, error: false, [target]: value });
+    if (target === "photo") {
+      const value = event.target.files[0];
+      formData.set(target, value);
+      setValues({ ...values, error: false, [target]: value });
+    } else {
+      const value = event.target.value;
+      formData.set(target, value);
+      setValues({ ...values, error: false, [target]: value });
+    }
   };
 
   const handleSubmit = (event) => {
@@ -127,6 +132,7 @@ const AddProduct = () => {
                   value={name}
                   onChange={handleChange}
                   placeholder="Product Name"
+                  className="product-input"
                 />
               </div>
 
@@ -137,6 +143,7 @@ const AddProduct = () => {
                   name="description"
                   value={description}
                   onChange={handleChange}
+                  className="product-input"
                   placeholder="Description"
                 />
               </div>
@@ -148,6 +155,7 @@ const AddProduct = () => {
                   name="price"
                   value={price}
                   onChange={handleChange}
+                  className="product-input"
                   placeholder="Price"
                 />
               </div>
@@ -156,6 +164,7 @@ const AddProduct = () => {
                 <span className="custom-details">Select Category</span>
                 <select
                   name="category"
+                  className="product-input"
                   value={category}
                   onChange={handleChange}
                 >
@@ -175,6 +184,7 @@ const AddProduct = () => {
                 <span className="custom-details">Shipping</span>
                 <select
                   name="shipping"
+                  className="product-input"
                   value={shipping}
                   onChange={handleChange}
                 >
@@ -191,6 +201,7 @@ const AddProduct = () => {
                 <span className="custom-details">Quantity</span>
                 <input
                   type="number"
+                  className="product-input"
                   name="quantity"
                   value={quantity}
                   onChange={handleChange}
@@ -198,8 +209,15 @@ const AddProduct = () => {
                 />
               </div>
               <div className="custom-input-box">
-                <span className="custom-details">Price</span>
-                <input type="file" name="photo" onChange={handleChange} />
+                <span className="custom-details">Enter Product Photos</span>
+
+                <input
+                  type="file"
+                  className="product-input"
+                  name="photo"
+                  multiple
+                  onChange={handleChange}
+                />
               </div>
               <button className="custom-submit-button">Submit</button>
             </div>

@@ -1,31 +1,33 @@
 .cart-product-img {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
+justify-content: center;
   gap: 12px;
 }
 
 .prdct-imgx {
-  width: 6rem;
-  border-radius: 66px;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 44px;
 }
 
 .amountTogglle {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 1.5rem;
 }
 
-.togglleicons {
-  color: aliceblue;
+.togglleicons{
+  color: #8620ea;
 }
 
+
 .togglle-btns {
-  background: linear-gradient(to right, #e100ff, #7f00ff);
+background: none;
   border-radius: 4px;
   border: none;
-  padding: 0.55rem 2rem;
+  padding: 0;
   cursor: pointer;
   margin: 0;
 }
@@ -36,6 +38,10 @@
 }
 
 /* /////////////////////////// */
+.table-first-row h3{
+padding: 0;
+margin: 0;
+}
 
 .tablec {
   width: 100%;
@@ -45,7 +51,7 @@
 
 .tablec td,
 .tablec th {
-  padding: 12px 15px;
+  padding:7px 23px;
   border: 1px solid #ddd;
   text-align: center;
   font-size: 16px;
@@ -54,7 +60,7 @@
 .tablec th {
   background: #8620ea;
   color: #ffffff;
-}
+} 
 
 .tablec tbody tr:nth-child(even) {
   background-color: #f5f5f5;
@@ -63,9 +69,18 @@
 /*responsive*/
 
 @media (max-width: 1200px) {
+  .cart-product-img {
+justify-content: flex-end;
+  }
+
   .tablec thead {
     display: none;
   }
+
+  .amountTogglle {
+ justify-content: flex-end;
+  }
+  
 
   .tablec,
   .tablec tbody,
@@ -104,3 +119,9 @@
     font-size: 11px;
   }
 }
+
+
+@media (max-width: 500px) {
+ 
+}
+

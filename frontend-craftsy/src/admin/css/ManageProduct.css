@@ -56,6 +56,11 @@
 .order-id {
   font-weight: 900;
 }
+
+.product-id{
+font-weight: 900;
+font-size: 1.2rem !important;
+}
 /*responsive*/
 
 @media (max-width: 1200px) {

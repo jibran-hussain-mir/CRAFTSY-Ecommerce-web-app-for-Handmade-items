@@ -290,6 +290,8 @@ input[type="password"] {
   .form-field {
     width: 20rem;
   }
+
+
 }
 
 @media (max-width: 300px) {
@@ -307,3 +309,23 @@ input[type="password"] {
     padding: 1rem;
   }
 }
+
+.loading-contianer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-family: 'inter', 'sans-serif';
+  letter-spacing: 2px;
+ 
+ }
+ .loading-icon{
+     animation: spin 2s linear infinite;
+ }
+ 
+ @keyframes spin {
+     0% { transform: rotate(0deg); }
+     100% { transform: rotate(360deg); }
+   }

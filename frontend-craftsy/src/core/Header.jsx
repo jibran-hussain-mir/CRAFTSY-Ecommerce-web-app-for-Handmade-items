@@ -106,7 +106,10 @@ const Header = () => {
                   <a
                     className="NavLinks"
                     onClick={() => {
-                      signout(() => navigate("/"));
+                      signout(() => {
+                        setName("nav-links");
+                        navigate("/");
+                      });
                     }}
                   >
                     Signout

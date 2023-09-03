@@ -63,9 +63,17 @@
 
 @media (max-width: 600px) {
   .profile-x-btn {
-    width: 90%;
+    width: 99%;
+  }
+
+  .profile-x-contianer {
+  
+    padding: 2rem 0rem;
+    margin: 1rem 0rem;
   }
 }
+
+
 
 .profilebtncont {
   display: flex;

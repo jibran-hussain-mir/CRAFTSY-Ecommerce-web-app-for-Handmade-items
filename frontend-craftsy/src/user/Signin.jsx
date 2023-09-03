@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { MutatingDots } from "react-loader-spinner";
-
 import { signin } from "../auth/index";
 import { authenticate, isAuthenticated } from "../auth/index";
 import "../user/css/Signin.css";
@@ -9,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import signinimg from "../assets/signin.jpg";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Signin = (userCredentials) => {
   const [userSignin, setUserSignin] = useState({
@@ -125,26 +124,15 @@ const Signin = (userCredentials) => {
                 <div className="form-field">
                   <button className="btn btn-signin">
                     {userSignin.loading ? (
-                      <MutatingDots
-                        height="100"
-                        width="100"
-                        color="#4fa94d"
-                        secondaryColor="#4fa94d"
-                        radius="12.5"
-                        ariaLabel="mutating-dots-loading"
-                        wrapperStyle={{}}
-                        wrapperClass=""
-                        visible={true}
-                      />
+                      <div className="loading-contianer">
+                        <div>
+                          <AiOutlineLoading3Quarters className="loading-icon" />
+                        </div>
+                      </div>
                     ) : (
                       "Login"
                     )}
                   </button>
-                  {userSignin.loading && (
-                    <div>
-                      <h1>Loading....</h1>
-                    </div>
-                  )}
                 </div>
               </form>
             </div>

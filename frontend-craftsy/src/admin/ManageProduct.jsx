@@ -51,7 +51,7 @@ const ManageProduct = () => {
           <tbody>
             {products.map((product, index) => (
               <tr key={index}>
-                <td data-label={"Id"}>{product._id}</td>
+                <td data-label={"Id"} className="product-id">{product._id}</td>
                 <td data-label={"Product Name"}>{product.name}</td>
                 <td data-label={"Description"}>{product.description}</td>
                 <td data-label={"Price"}>{product.price}</td>

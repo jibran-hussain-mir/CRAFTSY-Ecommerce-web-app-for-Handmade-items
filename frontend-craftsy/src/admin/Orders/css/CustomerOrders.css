@@ -1,9 +1,12 @@
 .middle {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  display: none;
 }
 
+.table-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
 .tablex {
   width: 100%;
   border-collapse: collapse;
@@ -31,6 +34,7 @@
   font-family: "inter", sans-serif;
   letter-spacing: 1px;
 }
+
 .order-id {
   font-weight: 900;
 }
@@ -46,7 +50,7 @@
   .tablex tr,
   .tablex td {
     display: block;
-    width: 88%;
+    width: 100%;
   }
   .tablex tr {
     margin-bottom: 2rem;

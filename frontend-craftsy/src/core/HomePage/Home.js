@@ -14,6 +14,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Testimonials from "./Testimonials";
 import Footer from "./Footer";
+import { Bars } from "react-loader-spinner";
 
 const Home = () => {
   const responsive = {
@@ -36,12 +37,15 @@ const Home = () => {
     },
   };
   const [data, setData] = useState([]);
+  const [productLoading, setProductLoading] = useState(true);
 
   const getAllProducts = async () => {
     try {
       const response = await axios.get(
-        "${process.env.REACT_APP_API_URL}/products?limit=12"
+        `${process.env.REACT_APP_API_URL}/products?limit=12`
       );
+      setProductLoading(false);
+
       console.log(response);
       const { products } = response.data;
       console.log(products);
@@ -82,18 +86,36 @@ const Home = () => {
       </div>
 
       <div className="section-heading">Shop our best selling products</div>
-      <div className="page-content">
-        {data.map((product) => (
-          <BestSellingProducts
-            key={product._id}
-            productId={product._id}
-            title={product.name}
-            price={product.price}
-            imgURL={product.photo}
-            copy={product.description.slice(0, 60)}
-          />
-        ))}
-      </div>
+
+      {productLoading ? (
+        <Bars
+          height="80"
+          width="80"
+          color="#8A4AF3"
+          ariaLabel="bars-loading"
+          wrapperStyle={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          wrapperClass=""
+          visible={true}
+        />
+      ) : (
+        <div className="page-content">
+          {data.map((product) => (
+            <BestSellingProducts
+              key={product._id}
+              productId={product._id}
+              title={product.name}
+              price={product.price}
+              imgURL={product.photo}
+              copy={product.description.slice(0, 60)}
+            />
+          ))}
+        </div>
+      )}
+
       <hr />
       <div className="car-section">
         <Carousel
@@ -149,27 +171,6 @@ const Home = () => {
           }
           testimonial="sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus orci ac auctor augue mauris augue neque gravida in"
           name="Aqeel Sidiq"
-        />
-        <Testimonials
-          srcx={
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80"
-          }
-          testimonial="sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus orci ac auctor augue mauris augue neque gravida in"
-          name="Jibran Hussain"
-        />
-        <Testimonials
-          srcx={
-            "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80"
-          }
-          testimonial="sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus orci ac auctor augue mauris augue neque gravida in"
-          name="Abdullah Fazili"
-        />
-        <Testimonials
-          srcx={
-            "https://images.unsplash.com/photo-1485206412256-701ccc5b93ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHJhbmRvbSUyMHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
-          }
-          testimonial="sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus orci ac auctor augue mauris augue neque gravida in"
-          name="Shakir Khan"
         />
       </div>
       <Footer />

@@ -8,6 +8,7 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { TbReplaceFilled } from "react-icons/tb";
 import { FaRupeeSign } from "react-icons/fa";
 import { BsFillShieldFill } from "react-icons/bs";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import queryString from "query-string";
@@ -51,9 +52,14 @@ const SingleProduct = () => {
   const [changedimg, setChangedimg] = useState("");
   return (
     <>
-      {isError && JSON.stringify(isError)}
       {isSingleLoading ? (
-        <h2>Loading.....</h2>
+        <div className="loading-contianer-single">
+          <AiOutlineLoading3Quarters
+            className="loading-icon-single"
+            size={55}
+          />
+          <h1>Loading...</h1>
+        </div>
       ) : (
         <>
           {" "}

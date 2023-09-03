@@ -3,6 +3,7 @@ import { getClientToken, processPayment, createOrder } from "./apiCore";
 import { isAuthenticated } from "../auth";
 import DropIn from "braintree-web-drop-in-react";
 import { CartContext } from "../Context/CartProvider";
+import "./css/Checkout.css";
 
 const Checkout = () => {
   const [data, setData] = useState({
@@ -24,36 +25,42 @@ const Checkout = () => {
       {data.clientToken !== null && total_items > 0 ? (
         <>
           <h2
-          style={{
-           textAlign: "center",
-           fontSize: "2rem",
-           letterSpacing: "2px"
-          }}
-          >Checkout Page</h2>
+            style={{
+              textAlign: "center",
+              fontSize: "2rem",
+              letterSpacing: "2px",
+            }}
+          >
+            Checkout Page
+          </h2>
           {showError()}
-          <div 
-           style={{
-           display:"flex",
-           flexDirection:"column",
-           alignItems:"flex-start",
-           justifyContent:"center"
-           }}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              justifyContent: "center",
+            }}
           >
             <label
-             style={{
-             padding:"2rem 0rem",
-             marginLeft:"6px",
-             fontSize:"1.6rem"
+              style={{
+                padding: "2rem 0rem",
+                marginLeft: "6px",
+                fontSize: "1.6rem",
               }}
-            >Delivery Address</label>
+            >
+              Delivery Address
+            </label>
             <textarea
               onChange={handleAddressChange}
               value={data.address}
               placeholder="Enter the delivery address"
               style={{
-               width:"90%",
-               background:"#eee"
-                 }}
+                width: "90%",
+                background: "#eee",
+                fontFamily: "inter",
+                padding: "1rem",
+              }}
             />
           </div>
           <DropIn
@@ -66,13 +73,11 @@ const Checkout = () => {
             onClick={buy}
             style={{
               border: "none",
-              
               backgroundColor: "#5cb85c",
               color: "white",
               height: "3.5rem",
               width: "100%",
               fontSize: "1.5rem",
-
             }}
           >
             Pay Now
@@ -120,7 +125,10 @@ const Checkout = () => {
     return isAuthenticated() ? (
       <div>{showDropIn()}</div>
     ) : (
-      <button>Sign in</button>
+      <div className="auth-secc">
+        <h2>Please Sign in to Checkout</h2>
+        <button className="isAUTH">Sign in</button>
+      </div>
     );
   };
 
@@ -158,12 +166,7 @@ const Checkout = () => {
     clientToken();
   }, []);
 
-  return (
-    <div>
-      {showCheckout()}
-      {JSON.stringify(data.error)}
-    </div>
-  );
+  return <div>{showCheckout()}</div>;
 };
 
 export default Checkout;

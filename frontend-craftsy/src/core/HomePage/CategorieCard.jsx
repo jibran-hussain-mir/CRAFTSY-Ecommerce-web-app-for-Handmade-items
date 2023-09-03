@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./css/CategorieCard.css";
 import { fetchCategories } from "../apiCore";
-import handi2 from "./../../assets/handi1.jpg";
-import handi1 from "./../../assets/handi2.jpg";
-import tshirt1 from "./../../assets/tshirt1.jpg";
-import tshirt2 from "./../../assets/tshirt2.jpg";
-import clothe1 from "./../../assets/clothe1.jpg";
-import clothe2 from "./../../assets/clothe2.jpg";
-import pottery1 from "./../../assets/pottery1.jpg";
-import pottery2 from "./../../assets/pottery2.jpg";
-import rugimg1 from "./../../assets/rugimg1.jpg";
-import rugimg2 from "./../../assets/rugimg2.jpg";
+import { Bars } from "react-loader-spinner";
 import Carousel from "react-elastic-carousel";
 import ProductSlider from "./ProductSlider";
 
@@ -18,16 +9,18 @@ const breakpoints = [
   { width: 1, itemsToShow: 2 },
   { width: 550, itemsToShow: 2 },
   { width: 768, itemsToShow: 2 },
-  { width: 1200, itemsToShow: 3 },
+  { width: 1200, itemsToShow: 4 },
 ];
 
 function CategorieCard() {
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
   const getCategories = () => {
     fetchCategories()
       .then((data) => {
         console.log(data);
         setCategories([...data]);
+        setLoading(false);
       })
       .catch((e) => console.log(`eeeeeerrror: ${e}`));
   };
@@ -35,16 +28,34 @@ function CategorieCard() {
     getCategories();
   }, []);
   return (
-    <Carousel breakPoints={breakpoints}>
-      {categories.map((category) => (
-        <ProductSlider
-          productId={category._id}
-          title={category.name}
-          img1={category.photo}
-          img2={category.photo}
+    <>
+      {loading ? (
+        <Bars
+          height="80"
+          width="80"
+          color="#8A4AF3"
+          ariaLabel="bars-loading"
+          wrapperStyle={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          wrapperClass=""
+          visible={true}
         />
-      ))}
-    </Carousel>
+      ) : (
+        <Carousel breakPoints={breakpoints}>
+          {categories.map((category) => (
+            <ProductSlider
+              productId={category._id}
+              title={category.name}
+              img1={category.photo}
+              img2={category.photo}
+            />
+          ))}
+        </Carousel>
+      )}
+    </>
   );
 }
 

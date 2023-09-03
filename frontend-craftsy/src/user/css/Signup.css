@@ -10,9 +10,11 @@
   overflow: hidden;
   }
   .signup-addH4{
-    padding: 12px 0 0 0 ;
+    padding: 0rem;
     display: flex;
     align-items: center;
+    margin: 0.5rem;
+    margin-top: 1rem;
     justify-content: center;
     cursor: pointer;
     font-size: 1rem;
@@ -29,7 +31,8 @@
   }
   
   .signup-h1-login{
-    cursor:pointer
+    cursor:pointer;
+    margin-bottom:6rem;
   }
   .img-name{
     text-align: center;
@@ -69,7 +72,7 @@
     outline: none;
   }
   .signup-form {
-    font-family: Roboto, sans-serif;
+    font-family: 'inter', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -151,4 +154,69 @@
   
   /* media queries */
   
+  @media (max-width: 1200px) {
+    .signup-main-container{
+      grid-template-columns:2fr 1fr;
+     margin:2rem 8rem;
  
+    }
+  
+    .signup-form-field input[type="email"],
+    input[type="password"], input[type="signup-name"]  {
+      width: 90%;
+    
+    }
+    
+  }
+
+  @media (max-width: 850px) {
+    .signup-main-container{
+      grid-template-columns:1fr;
+    }
+     .signup-image-cont{
+     display: none;
+     }
+    
+  }
+
+  @media (max-width: 600px) {
+    .signup-main-container{
+      grid-template-columns: 1fr;
+     margin:2rem 2rem;
+ 
+    }
+  
+    .signup-form-field input[type="email"],
+    input[type="password"], input[type="signup-name"]  {
+      width: 100%;
+    
+    }
+    
+  }
+
+  @media (max-width: 500px) {
+    .signup-main-container{
+      grid-template-columns:1fr;
+     margin:2rem 2rem;
+ 
+    }
+  
+    .signup-form-field input[type="email"],
+    input[type="password"], input[type="signup-name"]  {
+      width: 90%;
+    
+    }
+
+    .signup-form-field {
+      width: 30rem;
+    }
+    
+  }
+
+  @media (max-width: 370px) {
+  
+    .signup-form-field {
+      width: 20rem;
+    }
+    
+  }

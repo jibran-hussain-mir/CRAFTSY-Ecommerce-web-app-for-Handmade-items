@@ -5,18 +5,24 @@ display: flex;
 align-items: center;
 justify-content: flex-start;
 flex-direction: column; 
-width: 33rem;
+width: 20rem;
 font-family: 'Nunito', sans-serif;
 margin:6rem 0 2rem 0;
-padding: 0 1rem;
 border-radius:  12px;
+
 }
 
 .image-of-card{
-width: 100%;
+width: 20rem;
 border-radius: 12px;
+height: 28rem;
 }
 
+.card-kiline{
+
+  border: 1px solid #000;
+  width: 80%;
+}
 .image-cards{
    cursor: pointer;
 }
@@ -26,8 +32,10 @@ display: none;
 }
 
 .card-heading{
-font-size: 1.5rem;
+font-size: 3rem;
 font-weight: 900;
+color: #ffffff;
+letter-spacing: 1PX;
 }
 
 .card-pirce{
@@ -35,38 +43,66 @@ font-weight: 900;
 }
 
 .shopnow-btn{
-  border: 3px solid #000000;
-  background: #ffffff;
-  padding: 10px 32px;
-  border-radius: 22px;
-  font-size: 16px;
-  font-weight: 600;
-  width: 90%;
-  color: #000000;
-
+  cursor: pointer;
+border-radius: 44px;
+border: none;
+padding: 1.2rem 4rem;
+margin-bottom: 1.5rem;
+color: #ffffff;
+background-color: #000000;
+font-size: 1.8rem;
+width: 100%;
 }
 
 .shopnow-btn:hover{
-	background: #000000;
-	color: white;
-cursor: pointer;
+  cursor: pointer;
+  background: #2b0070;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     .categories-card{
       width: 18rem;
     }
 
     .shopnow-btn{
-      border: 3px solid #000000;
-      background: #ffffff;
-      padding: 10px 28px;
-      border-radius: 22px;
-      font-size: 10px;
-      font-weight: 600;
+    
       width: 100%;
-      color: #000000;
+      padding: 1.2rem 3rem;
     
     }
      
   }
+
+  @media (max-width: 800px) {
+    
+.image-of-card{
+  width: 15rem;
+  border-radius: 12px;
+  height: 20rem;
+  }
+  
+     
+  }
+
+  @media (max-width: 400px) {
+    
+    .image-of-card{
+      width: 10rem;
+      border-radius: 12px;
+      height: 16rem;
+      }
+      
+         
+      }
+
+      @media (max-width: 390px) {
+    
+        .shopnow-btn{
+        
+          width: 100%;
+          padding: 1.2rem 2.5rem;
+          font-size: 1.3rem;
+        
+        }
+         
+      }

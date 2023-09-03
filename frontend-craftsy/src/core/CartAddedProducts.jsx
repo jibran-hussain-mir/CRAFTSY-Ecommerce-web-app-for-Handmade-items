@@ -79,20 +79,20 @@ function CartAddedProducts({
     //     />
     //   </div>
     // </div>
+    //
     <>
       <tr>
-        <td data-label={"Item"}>
+        <td data-label={"Item"} className="table-first-row">
           <div className="cart-product-img">
             <img
-              src={`${process.env.REACT_APP_API_URL}/product/photo/${productId}`}
-              alt="ok"
+              src={`${process.env.REACT_APP_API_URL}/product/photo/${productId}`} alt="ok"
               className="prdct-imgx"
             />
             <h3>{name}</h3>
           </div>
         </td>
         <td data-label={"Price"}>{price}</td>
-        <td data-label={"Quantity"}>
+        <td data-label={"Quantity"} className="toggle-wala-section">
           <div className="amountTogglle">
             <button
               onClick={() => {
@@ -132,7 +132,7 @@ function CartAddedProducts({
               onClick={() => {
                 removeFromCart(productId);
               }}
-              size={32}
+              size={25}
             />
           </div>
         </td>

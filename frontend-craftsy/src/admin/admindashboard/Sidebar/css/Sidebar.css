@@ -2,7 +2,7 @@
   width: 15%;
   color: #fff;
   padding: 2rem;
-  background-image: url("https://t3.ftcdn.net/jpg/03/22/30/46/360_F_322304683_7ysRarFkmy2osfPKTOYQv7qTPofKelfb.jpg");
+  background-image: url("https://elementor.com/cdn-cgi/image/f=auto,w=1024,h=576/marketing/wp-content/uploads/sites/9/2021/09/1-linear-color-gradient-example-1024x576.jpg");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -54,7 +54,7 @@
   margin-bottom: 0;
 }
 .admin-user-img {
-  border-radius: 44px;
+  border-radius: 1000px;
   width: 5rem;
   border: 2px solid #ffffff;
 }
@@ -77,9 +77,6 @@
 .user-x-x-name {
   font-size: 2rem;
   letter-spacing: 1px;
-  padding: 1rem;
-  border: 2px solid #ffffff;
-  border-radius: 12px;
   cursor: pointer;
   text-align: center;
 }
@@ -106,7 +103,7 @@
 
 @media (max-width: 762px) {
   .side-panel {
-    width: 10%;
+    width: 13%;
     padding: 1rem;
     height: 120vh;
   }
@@ -180,12 +177,10 @@
 
 @media (max-width: 600px) {
   .side-panel {
-    width: 11%;
+    width: 15%;
   }
 }
 
 @media (max-width: 500px) {
-  .user-x-x-name {
-    display: none;
-  }
+ 
 }

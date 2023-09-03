@@ -1,0 +1,25 @@
+.isAUTH{
+      cursor: pointer;
+      background: #7f00ff;
+      background: linear-gradient(to right, #e100ff, #7f00ff);
+      color: #fff;
+      padding: 1.2rem 4rem;
+      font-size:1.5rem;
+      letter-spacing: 2px;
+      border: none;
+      font-weight: 200;
+      border-radius: 44px;
+}
+
+.isAUTH:hover {
+    cursor: pointer;
+    background: #e100ff;
+  }
+
+.auth-secc{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

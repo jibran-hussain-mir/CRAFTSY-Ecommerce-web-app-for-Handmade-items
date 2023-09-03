@@ -111,7 +111,7 @@ exports.resetPasswordPost = async (req, res) => {
     };
     const secret = process.env.JWT_SECRET_KEY + user.hashed_password;
     const token = jwt.sign(payload, secret, { expiresIn: "15m" });
-    const link = `http://localhost:3000/reset-password/${user._id}/${token}`;
+    const link = `${process.env.SITE_URL}/reset-password/${user._id}/${token}`;
     message = `<h1>Click on this link to Reset your password</h1><br>${link}`;
     await sendEmail(user.email, "Reset Password Link", message);
 
