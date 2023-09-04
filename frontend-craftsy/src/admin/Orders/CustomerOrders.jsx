@@ -56,7 +56,8 @@ const Order = () => {
             <th>Ordered By</th>
             <th>Product Name</th>
             <th>Quantity</th>
-            <th>Total Amount</th>
+            <th>Product Price</th>
+            <th>Total Order Amount</th>
             <th>Transaction Id</th>
             <th>Address</th>
             <th>Status</th>
@@ -71,6 +72,8 @@ const Order = () => {
                 <td data-label={"Ordered By"}>{order.userName}</td>
                 <td data-label={"Product Name"}>{order.name}</td>
                 <td data-label={"Quantity"}>{order.quantity}</td>
+                <td data-label={"Product Price"}>{order.price}</td>
+
                 <td data-label={"Total Amount"}>{order.amount}</td>
                 <td data-label={"Transaction Id"}>{order.transaction_id}</td>
                 <td data-label={"Address"}>{order.address}</td>

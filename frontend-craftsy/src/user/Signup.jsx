@@ -22,7 +22,7 @@ const Signup = () => {
     if (userRegistration.success) {
       return (
         <div>
-          <SuccessMessage message="Seller Created Successfully" />
+          <SuccessMessage message="User Created Successfully" />
         </div>
       );
     }

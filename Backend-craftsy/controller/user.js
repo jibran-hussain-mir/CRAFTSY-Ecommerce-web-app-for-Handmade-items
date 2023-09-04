@@ -122,7 +122,7 @@ exports.listOrders = async (req, res) => {
           orderId: order._id,
           address: order.address,
           transaction_id: order.transaction_id,
-          amount: order.amount,
+          amount: matchingProduct.amount,
           status: matchingProduct.status,
         }));
     });

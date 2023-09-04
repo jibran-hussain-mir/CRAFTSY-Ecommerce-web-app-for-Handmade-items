@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { getClientToken, processPayment, createOrder } from "./apiCore";
 import { isAuthenticated } from "../auth";
+import { NavLink } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
 import { CartContext } from "../Context/CartProvider";
 import "./css/Checkout.css";
@@ -127,7 +128,9 @@ const Checkout = () => {
     ) : (
       <div className="auth-secc">
         <h2>Please Sign in to Checkout</h2>
-        <button className="isAUTH">Sign in</button>
+        <NavLink to="/signin">
+          <button className="isAUTH">Sign in</button>
+        </NavLink>
       </div>
     );
   };

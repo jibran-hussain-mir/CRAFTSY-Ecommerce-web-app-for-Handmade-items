@@ -32,6 +32,7 @@ const AdminPurchaseHistory = () => {
               <th>Price</th>
               <th>Quantity</th>
               <th>Purchase Date</th>
+              <th>Status</th>
             </tr>{" "}
             {/* Corrected this line */}
           </thead>
@@ -47,6 +48,8 @@ const AdminPurchaseHistory = () => {
                   <td data-label={"Purchase Date"}>
                     {moment(h.createdAt).fromNow()}
                   </td>
+                  <td data-label={"Status"}>{h.status}</td>
+
                   {console.log(h)}
                 </tr>
               ));
