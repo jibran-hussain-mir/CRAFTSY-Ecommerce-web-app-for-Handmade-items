@@ -28,19 +28,34 @@ exports.read = (req, res) => {
 exports.update = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    if (!name || !email || !password) {
-      return res.status(400).json({ error: "All fields are Mandatory" });
+    if (!name || !email) {
+      return res
+        .status(400)
+        .json({ error: "Name and email are mandatory fields" });
     }
-    const user = await User.findOneAndUpdate(
-      { _id: req.profile._id },
-      {
-        $set: req.body,
-      },
-      { new: true }
-    );
-    user.hashed_password = undefined;
-    user.salt = undefined;
-    return res.json(user);
+
+    const user = await User.findOne({ _id: req.profile._id });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Update name and email
+    user.name = name;
+    user.email = email;
+
+    // Update password if provided
+    if (password) {
+      user.password = password; // Update the virtual 'password' field
+    }
+
+    // Save the updated user
+    const updatedUser = await user.save();
+
+    updatedUser.hashed_password = undefined;
+    updatedUser.salt = undefined;
+
+    return res.json(updatedUser);
   } catch (e) {
     return res.status(400).json({ error: e.message });
   }
