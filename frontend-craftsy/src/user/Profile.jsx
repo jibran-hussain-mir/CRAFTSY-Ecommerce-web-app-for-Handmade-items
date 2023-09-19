@@ -35,6 +35,7 @@ const Profile = () => {
       .catch((e) => console.log(e));
   };
   const handleChange = (name) => (e) => {
+    console.log(name, e.target.value);
     setValues({
       ...values,
       success: false,
@@ -44,7 +45,7 @@ const Profile = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`Data Subitted Successfully`);
+    console.log(`Data Subitted Successfully`, password);
     update(userId, token, { name, email, password }).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });

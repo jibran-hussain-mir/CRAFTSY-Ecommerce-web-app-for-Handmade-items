@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { isAuthenticated } from "../auth";
 import { getProduct, fetchCategories, updateProduct } from "./adminapi";
 import "./css/AddProduct.css";
+import SuccessMessage from "../Notifications/SuccessMessage";
+import ErrorMessage from "../Notifications/ErrorMessage";
 
 const UpdateProduct = () => {
   const { productId } = useParams();
@@ -19,6 +21,7 @@ const UpdateProduct = () => {
     photo: "",
     loading: false,
     error: "",
+    success: false,
     createdProduct: false,
     redirectToProfile: false,
   });
@@ -75,7 +78,7 @@ const UpdateProduct = () => {
     const target = event.target.name;
     const value =
       target === "photo" ? event.target.files[0] : event.target.value;
-    setValues({ ...values, [target]: value });
+    setValues({ ...values, [target]: value, success: false });
   };
 
   const handleSubmit = (event) => {
@@ -102,6 +105,7 @@ const UpdateProduct = () => {
             ...values,
             error: "",
             loading: false,
+            success: true,
             createdProduct: data.name,
           });
         }
@@ -109,95 +113,126 @@ const UpdateProduct = () => {
       .catch((error) => console.log(error));
   };
 
-  const showError = () => (
-    <div style={{ display: error ? "" : "none" }}>{error}</div>
-  );
+  // const showError = () => (
+  //   <div style={{ display: error ? "" : "none" }}>{error}</div>
+  // );
 
+  const showSuccess = () => {
+    if (values.success) {
+      return (
+        <div>
+          <SuccessMessage message="Product Updated Successfully" />
+        </div>
+      );
+    }
+  };
+
+  const showError = () => {
+    if (values.error) {
+      return (
+        <div>
+          <ErrorMessage message={values.error} />
+        </div>
+      );
+    }
+  };
   return (
-    <div className="custom-form-container">
-      <div className="custom-content">
-        <form onSubmit={handleSubmit}>
-          <div className="custom-user-details">
-            <div className="custom-input-box">
-              <span className="custom-details">Product Name</span>
-              <input
-                type="text"
-                name="name"
-                value={name}
-                onChange={handleChange}
-                placeholder="Product Name"
-              />
-            </div>
+    <>
+      {showSuccess()}
+      {showError()}
+      <div className="custom-form-container">
+        <div className="custom-content">
+          <form onSubmit={handleSubmit}>
+            <div className="custom-user-details">
+              <div className="custom-input-box">
+                <span className="custom-details">Product Name</span>
+                <input
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={handleChange}
+                  placeholder="Product Name"
+                />
+              </div>
 
-            <div className="custom-input-box">
-              <span className="custom-details">Description of Product</span>
-              <textarea
-                type="text"
-                name="description"
-                value={description}
-                onChange={handleChange}
-                placeholder="Description"
-              />
-            </div>
+              <div className="custom-input-box">
+                <span className="custom-details">Description of Product</span>
+                <textarea
+                  type="text"
+                  name="description"
+                  value={description}
+                  onChange={handleChange}
+                  placeholder="Description"
+                />
+              </div>
 
-            <div className="custom-input-box">
-              <span className="custom-details">Price</span>
-              <input
-                type="number"
-                name="price"
-                value={price}
-                onChange={handleChange}
-                placeholder="Price"
-              />
-            </div>
+              <div className="custom-input-box">
+                <span className="custom-details">Price</span>
+                <input
+                  type="number"
+                  name="price"
+                  value={price}
+                  onChange={handleChange}
+                  placeholder="Price"
+                />
+              </div>
 
-            <div className="custom-input-box">
-              <span className="custom-details">Select Category</span>
-              <select name="category" value={category} onChange={handleChange}>
-                <option disabled>Please Select</option>
-                {categories &&
-                  categories.map((category) => {
-                    return (
-                      <option value={category._id} key={category._id}>
-                        {category.name}
-                      </option>
-                    );
-                  })}
-              </select>
-            </div>
+              <div className="custom-input-box">
+                <span className="custom-details">Select Category</span>
+                <select
+                  name="category"
+                  value={category}
+                  onChange={handleChange}
+                >
+                  <option disabled>Please Select</option>
+                  {categories &&
+                    categories.map((category) => {
+                      return (
+                        <option value={category._id} key={category._id}>
+                          {category.name}
+                        </option>
+                      );
+                    })}
+                </select>
+              </div>
 
-            <div className="custom-input-box">
-              <span className="custom-details">Shipping</span>
-              <select name="shipping" value={shipping} onChange={handleChange}>
-                <option disabled defaultValue>
-                  --Select--
-                </option>
-                <option>--Select--</option>
-                <option value="1">Yes</option>
-                <option value="0">No</option>
-              </select>
-            </div>
+              <div className="custom-input-box">
+                <span className="custom-details">Shipping</span>
+                <select
+                  name="shipping"
+                  value={shipping}
+                  onChange={handleChange}
+                >
+                  <option disabled defaultValue>
+                    --Select--
+                  </option>
+                  <option>--Select--</option>
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                </select>
+              </div>
 
-            <div className="custom-input-box">
-              <span className="custom-details">Quantity</span>
-              <input
-                type="number"
-                name="quantity"
-                value={quantity}
-                onChange={handleChange}
-                placeholder="Quantity"
-              />
+              <div className="custom-input-box">
+                <span className="custom-details">Quantity</span>
+                <input
+                  type="number"
+                  name="quantity"
+                  value={quantity}
+                  onChange={handleChange}
+                  placeholder="Quantity"
+                />
+              </div>
+              <div className="custom-input-box">
+                <span className="custom-details">Price</span>
+                <input type="file" name="photo" onChange={handleChange} />
+              </div>
+              <button className="custom-submit-button">Update Product</button>
             </div>
-            <div className="custom-input-box">
-              <span className="custom-details">Price</span>
-              <input type="file" name="photo" onChange={handleChange} />
-            </div>
-            <button className="custom-submit-button">Update Product</button>
-          </div>
-        </form>
-        {showError()}
+          </form>
+          {showError()}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

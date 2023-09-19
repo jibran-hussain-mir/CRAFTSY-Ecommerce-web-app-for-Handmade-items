@@ -78,11 +78,11 @@ const Home = () => {
         <div className="aboutus-heading">
           Craftsy <span className="aboutus-span">Empowering Artisans</span>
         </div>
-        <div className="">
+        {/* <div className="">
           <a href="/" className="aboutus-btn btnz">
             About us
           </a>
-        </div>
+        </div> */}
       </div>
 
       <div className="section-heading">Shop our best selling products</div>
@@ -155,22 +155,22 @@ const Home = () => {
           srcx={
             "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80"
           }
-          testimonial="sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus orci ac auctor augue mauris augue neque gravida in"
-          name="Jibran Hussain"
+          testimonial="Craftsy's handmade items are a treasure trove! They've transformed my home with unique, quality pieces. Every purchase feels like discovering a hidden gem."
+          name="Jibran Hussain Mir"
         />
         <Testimonials
           srcx={
             "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80"
           }
-          testimonial="sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus orci ac auctor augue mauris augue neque gravida in"
+          testimonial="Craftsy's artisans are true wizards! I've found exceptional gifts here. Their creations reflect craftsmanship and genuine passion. Craftsy is my go-to for one-of-a-kind treasures."
           name="Fahad Farooq"
         />
         <Testimonials
           srcx={
             "https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cmFuZG9tJTIwcGVyc29ufGVufDB8fDB8fHww&w=1000&q=80"
           }
-          testimonial="sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus orci ac auctor augue mauris augue neque gravida in"
-          name="Aqeel Sidiq"
+          testimonial="Craftsy is my ultimate destination for supporting artisans. Their collection showcases remarkable skill and boundless creativity. With Craftsy, gifting becomes an artful expression of appreciation."
+          name="Abdullah Fazili"
         />
       </div>
       <Footer />

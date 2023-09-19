@@ -74,7 +74,9 @@ const Order = () => {
                 <td data-label={"Quantity"}>{order.quantity}</td>
                 <td data-label={"Product Price"}>{order.price}</td>
 
-                <td data-label={"Total Amount"}>{order.amount}</td>
+                <td data-label={"Total Amount"}>
+                  {order.quantity * order.price}
+                </td>
                 <td data-label={"Transaction Id"}>{order.transaction_id}</td>
                 <td data-label={"Address"}>{order.address}</td>
                 <td data-label={"Status"}>{order.status}</td>
